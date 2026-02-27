@@ -1,0 +1,5 @@
+out/
+.idea/
+*.class
+__pycache__/
+.venv/
