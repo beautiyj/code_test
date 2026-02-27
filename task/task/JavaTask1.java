@@ -1,4 +1,4 @@
-package p260226.quiz;
+package task;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -9,7 +9,7 @@ import java.util.Scanner;
  * 제한사항: 조건연산자 활용
  */
 
-public class Task1 {
+public class JavaTask1 {
 
     public static void main(String[] ar) {
         Scanner sc = new Scanner(System.in);
