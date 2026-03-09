@@ -1,3 +1,5 @@
+package task.kotlin
+
 import kotlin.math.max
 import kotlin.math.min
 
