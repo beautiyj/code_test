@@ -47,10 +47,7 @@ class MemberInfo2{
 
 public class JavaTask8 {
     public static void main(String[] args) {
-        // Scanner 객체 생성
         Scanner scanner = new Scanner(System.in);
-
-        // MemberInfo 객체 생성
         MemberInfo2 member = new MemberInfo2();
 
         // 회원 정보 입력 받기
@@ -74,3 +71,33 @@ public class JavaTask8 {
         scanner.close();
     }
 }
+
+/*
+과제 7: "재료 다 가져와, 한꺼번에 만든다!"
+모든 재료(name, age 등)를 먼저 변수에 다 받아놓은 다음,
+마지막에 생성자라는 입구에 한꺼번에 털어 넣습니다.
+
+// 1. 재료 먼저 수집
+String n = sc.nextLine();
+int a = sc.nextInt();
+// 2. 마지막에 조립 (생성자 호출)
+MemberInfo member = new MemberInfo(n, a, e, ad);
+
+
+과제 8: "일단 몸체부터 만들고, 하나씩 끼워 넣자!"
+재료가 있든 없든 일단 객체(member)부터 만들어 놓습니다. 그 후 입력받는 족족 세터라는 빨대를 꽂아서 하나씩 주입합니다.
+
+// 1. 빈 통부터 생성
+MemberInfo2 member = new MemberInfo2();
+// 2. 그때그때 주입 (Setter 호출)
+member.setName(sc.nextLine());
+member.setAge(sc.nextInt());
+
+
+**생성자(과제 7)**는 **"필수 데이터"**를 강제할 때 좋습니다.
+이름 없는 회원이 생기면 안 될 때, 생성자에 이름을 무조건 넣게 만들면 실수를 방지할 수 있죠.
+
+**세터(과제 8)**는 **"선택적 데이터"**나 **"나중에 바뀔 데이터"**를 다룰 때 좋습니다.
+회원 가입 후 나중에 주소만 바꾸고 싶을 때 생성자를 다시 부를 순 없으니 세터를 쓰는 겁니다.
+
+ */
