@@ -18,5 +18,42 @@ a+b, 2*a*b
 행위: 문자열->정수 자료형 변환, 정수 크기 비교 연산
  */
 
+class Solution7 {
+    public int solution(int a, int b) {
+        int result = 0;
+
+        String ab = "" + a+b;
+        int mul = 2*a*b;
+
+        int abInt = Integer.parseInt(ab);
+
+        if (abInt >= mul) {
+            result = abInt;
+        } else {
+            result = mul;
+        }
+        return result;
+    }
+}
+
+// 간략버전 - math.max() 사용
+class Test7 {
+    public int solution(int a, int b) {
+        int ab = Integer.parseInt("" + a + b);
+        int mult = 2 * a * b;
+
+        return Math.max(ab, mult);
+    }
+}
+
 public class JavaTest7 {
+
+        public static void main(String[] args) {
+            Solution7 sol = new Solution7();
+            int answer = sol.solution(12, 3);
+            System.out.println(answer);
+
+            Test7 t7 = new Test7();
+            System.out.println(t7.solution(1, 7));
+        }
 }
