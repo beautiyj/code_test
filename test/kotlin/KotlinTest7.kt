@@ -36,6 +36,8 @@ fun t7(a:Int, b:Int):Int {
 
     return max(ab, mult)
 }
+// 단일 형태도 가능
+// fun solution(a: Int, b: Int) = max("$a$b".toInt(), 2 * a * b)
 
 fun main() {
     println(sol7(1, 2))
