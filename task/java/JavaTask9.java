@@ -44,6 +44,8 @@ public class JavaTask9 {
         List<Integer> lotto = new ArrayList<>();
 
         while (lotto.size() < 6) {
+
+            // 난수 발생 공식: 난수 = (정수화)Math.random()*(상한값-하한값+1)+하한값;
             int num = (int) (Math.random() * 45) + 1;
 
             if (!lotto.contains(num)) {
