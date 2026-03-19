@@ -41,7 +41,6 @@ public class JavaTest11 {
         System.out.println("바꾼 후   -> a: " + a + ", b: " + b);
         System.out.println();
 
-
         // 3. 암호화 및 복호화
         System.out.println("3. 암호화 및 복호화");
         int originalData = 12345;

@@ -45,8 +45,29 @@ public class JavaTask11 {
             default:
                 System.out.println("F학점");
         }
+        /*
+        최신 방식 - 코틀린처럼 화살표 방식 존재, 조건식 입력 가능, 브레이크문 필요 없음
+        String grade = switch (n) {
+            case 90 -> "A학점";
+            case 80 -> "B학점";
+            case 70 -> "C학점";
+            case 60 -> "D학점";
+            default -> "F학점";
+        };
 
-        // case문 안에 조건식을 넣을 수 없음.
+        // if문은 여전히 넣을 수 없으나 범위지정 가능 (대신 가장 위의 조건을 기준으로 범위가 지정됨)
+        String grade = switch (m) {
+            case Integer s when s >= 90 -> "A학점";
+            case Integer s when s >= 80 -> "B학점";
+            case Integer s when s >= 70 -> "C학점";
+            case Integer s when s >= 60 -> "D학점";
+            default -> "F학점";
+        };
+
+        System.out.println(grade);
+         */
+
+        // 기존의 case문 안에 조건식을 넣을 수 없음.
         // 대신 나누기 등을 통해 십의 자리 숫자만 추출하는 형태로 범위 추출 가능.
         switch (m / 10) {
             case 10: // 100점일 경우
@@ -65,6 +86,23 @@ public class JavaTask11 {
             default: // 60점 미만
                 System.out.println("F학점");
         }
+
+        // yield 키워드 활용해서 조건 추가하기. 일드 키워드는 예외처리같은 개념임
+        // 람다함수의 서식처럼 보이지만 실제 람다함수는 아님
+        /*
+        String result = switch (score) {
+            case Integer s when s >= 90 -> {
+                // 여기서부터는 일반 자바코드 입력 가능
+                if (s == 100) {
+                    System.out.println("만점자 보너스 지급!");
+                }
+                yield "A학점"; // 최종 결과값 반환
+            }
+            case Integer s when s >= 80 -> "B학점"; // 한 줄일 땐 중괄호/yield 생략
+            default -> "F학점";
+        };
+         */
+
 
     }
 }
