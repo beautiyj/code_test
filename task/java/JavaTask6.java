@@ -15,7 +15,7 @@ public class JavaTask6 {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        int ar[][] = new int[5][3];
+        int[][] ar = new int[5][3];
 
         String[] scores = { "Korean", "English", "Math" };
 

@@ -13,7 +13,7 @@ public class JavaTask5 {
 
         Scanner sc = new Scanner(System.in);
         System.out.println("정수 5개를 입력하시오. 단, ',' 없이 숫자만 입력하시오.");
-        int numbers[] = new int[5];
+        int[] numbers = new int[5];
 
         // 파이썬, 코틀린과 달리 자바는 선언 따로 배열의 숫자 정수로 대입 따로 과정 필요
         // 파이썬은 선언이 없고 코틀린은 선언하면서 블록으로 대입처리 가능
