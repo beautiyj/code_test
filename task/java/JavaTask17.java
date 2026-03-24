@@ -34,6 +34,7 @@ public class JavaTask17 {
             sum1 += s;
         }
         System.out.println(sum1);
+        System.out.println();
 
 // ============================================================================
 
@@ -48,6 +49,7 @@ public class JavaTask17 {
         for (int i : newArray){
             System.out.println(i+"\t");
         }
+        System.out.println();
 
 // ============================================================================
 
