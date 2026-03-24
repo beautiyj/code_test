@@ -128,7 +128,7 @@ fun main() {
 fun add(sss: IntArray): Int {
     var sum = 0
 
-//          범위 3으로 지정도 ㅇㅋ긴 함. 데이터 증가 대비해서 until 사용
+//          범위 3으로 지정도 ㅇㅋ긴 함. 데이터 증가 대비해서 until 사용.(인덱스니까 .. 말고 < 역할인 until)
     for (i in 0 until sss.size) {
         sum += sss[i]
     }
