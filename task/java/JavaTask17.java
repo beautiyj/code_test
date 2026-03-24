@@ -51,12 +51,14 @@ public class JavaTask17 {
 
 // ============================================================================
 
+        // p210~
         // 예제3. 사용자 정의 메소드를 활용한 문자열 숫자 변환, 절대값 구하기
         // run 파일의 구성편집 -> 프로그램 인수에 -10 -20 입력하면 이후엔 출력됨
         System.out.println(args[0]);    // "-10"
         System.out.println(args[1]);    // "-20"
+//      System.out.println(abs(args[1])); 같은건오류남
 
-        int num = Integer.parseInt(args[0]);
+        int num = Integer.parseInt(args[0]);    // Integer.parseInt: Wrapper 클래스
         System.out.println(abs(num));
 
     }
