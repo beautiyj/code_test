@@ -21,6 +21,23 @@ def maxmin_func():
     # max_val = max(a, b)   내장함수로 처리하고 리턴 던져도 무방함
     # min_val = min(a, b)
 
+# 예제 3. 값 비교, 주소 비교 메소드
+def compare_string(s1, s2):
+    if s1 is s2:
+        print("결과: 같주소")
+    else:
+        print("결과: 다른주소")
+
+    if s1 == s2:
+        print("결과: 같값")
+    else:
+        print("결과: 다른값")
+
+    n1, n2 = int(s1), int(s2)
+    print(f"MAX: {max(n1, n2)}")
+    print(f"MIN: {min(n1, n2)}")
+
+
 if __name__ == "__main__":
     print("예제1")
     print(sum_func())
@@ -29,3 +46,10 @@ if __name__ == "__main__":
     max_val, min_val = maxmin_func()
     print(max_val, min_val)
     print(f"최대: {max_val}, 최소: {min_val}")
+
+    print("예제3")
+    # 파이썬은 리터럴을 자동으로 인터닝(String Pool)함
+    str1 = "30"
+    # 강제로 다른 주소를 만들기 위해 join 등을 사용
+    str2 = "".join(["3", "0"])
+    compare_string(str1, str2)
