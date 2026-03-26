@@ -111,7 +111,7 @@ public class JavaTask8 {
 
         System.out.print("나이: ");
         member4.setAge(scanner.nextInt());
-        scanner.nextLine(); // 버퍼 비우기
+        scanner.nextLine(); // 버퍼 비우기. 자주쓰는방식은 그냥 넥.라로받고 필요하면 정수변환
 
         System.out.print("이메일: ");
         member4.setEmail(scanner.nextLine());
@@ -158,4 +158,49 @@ member.setAge(sc.nextInt());
 **세터(과제 8)**는 **"선택적 데이터"**나 **"나중에 바뀔 데이터"**를 다룰 때 좋습니다.
 회원 가입 후 나중에 주소만 바꾸고 싶을 때 생성자를 다시 부를 순 없으니 세터를 쓰는 겁니다.
 
+ */
+
+/*
+예시
+
+package task.java;
+
+// [1. 설계도 영역] : 사용자 정의 클래스
+class Student {
+    // A. 필드(Field): 객체의 데이터가 저장되는 곳 (기존의 변수 선언부)
+    // 여기 선언된 변수들은 클래스 전체에서 사용할 수 있습니다.
+    String name;
+    int score;
+
+    // B. 생성자(Constructor): 객체 생성 시 "초기화" 역할을 담당
+    // 실행부에서 'new Student("홍길동", 90)' 하는 순간 이 블록이 실행됩니다.
+    public Student(String name, int score) {
+        this.name = name;   // 외부에서 들어온 값을 필드(주머니)에 넣음
+        this.score = score; // 초기값 셋팅 완료!
+        System.out.println(">> [생성자] 학생 데이터가 생성되었습니다.");
+    }
+
+    // C. 메소드(Method): 객체의 동작 (기존의 함수 부분)
+    public void printInfo() {
+        System.out.println("--- 학생 정보 ---");
+        System.out.println("이름: " + name);
+        System.out.println("점수: " + score);
+    }
+}
+
+// [2. 실행부 영역] : 클래스 호출 및 출력
+public class UserClassStudy {
+    public static void main(String[] args) {
+
+        // 호출부 1: 'new'와 '생성자'를 이용해 실제 객체(인스턴스) 만들기
+        // 이때 생성자가 호출되면서 name에 "김철수", score에 85가 담깁니다.
+        Student st1 = new Student("김철수", 85);
+
+        // 호출부 2: 메소드를 호출하여 동작시키기
+        st1.printInfo();
+
+        // 호출부 3: 필드에 직접 접근해서 값 확인하기 (기존 변수 사용법과 유사)
+        System.out.println("이 학생의 이름만 출력: " + st1.name);
+    }
+}
  */

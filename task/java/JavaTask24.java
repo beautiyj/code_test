@@ -1,40 +1,100 @@
 package task.java;
 
-// 2차원 배열 예제
+// 클래스, 생성자, 메소드
 
-// 1. 정수 n과 k가 주어졌을 때 k의 배수를 오름차순으로 저장한 배열 return 함수
-// 예: 1 이상 10 이하의 3의 배수는 3, 6, 9 이므로 [3, 6, 9]를 return 합니다.
+// 1. 기본 생성자에서 메시지만 출력 (필드는 기본값 0으로 초기화됨)
+class MyDate1 {
+    private int year;
+    private int month;
+    private int day;
 
+    public MyDate1() {
+        System.out.println("[MyDate1 생성자] : 객체가 생성될 때 자동 호출됩니다.");
+    }
 
-/*
-2. 정수 n과 k가 주어졌을 때 숫자 0과 5로만 이루어진 모든 정수를 오름차순으로 저장 return,
- 정수가 없을 경우 -1 배열을 return 함수 만들기.
- 예:   l	 r	        result
-      5	555	    [5, 50, 55, 500, 505, 550, 555]
-      10	20	    [-1]
-*/
+    public void print() {
+        System.out.println("MyDate1: " + year + "/" + month + "/" + day);
+    }
+}
 
+// 2. 기본 생성자에서 특정 날짜로 값을 직접 고정 (하드코딩)
+class MyDate2 {
+    private int year;
+    private int month;
+    private int day;
 
-/*
-3. 정수 배열 arr와 2개의 구간이 담긴 배열 intervals 주어졌을 때,
- intervals는 항상 [[a1, b1], [a2, b2]]의 꼴로 주어지며 각 구간은 닫힌 구간이다.
- 닫힌 구간은 양 끝값과 그 사이의 값을 모두 포함하는 구간을 의미한다.
+    public MyDate2() { // 기본 생성자
+        year = 2023;
+        month = 4;
+        day = 1;
+    }
 
- 이때 배열 arr의 첫 번째 구간에 해당하는 배열과 두 번째 구간에 해당하는 배열을
- 앞뒤로 붙여 새로운 배열을 만들어 return하는 함수 만들기.
+    public void print() {
+        System.out.println("MyDate2: " + year + "/" + month + "/" + day);
+    }
+}
 
-    예시
-        arr	                    intervals	            result
-        [1, 2, 3, 4, 5]	    [[1, 3], [0, 4]]	[2, 3, 4, 1, 2, 3, 4, 5]
+// 3. 매개변수가 있는 생성자만 만들었을 때 (가장 중요한 오류 포인트!)
+class MyDate3 {
+    int year;
+    int month;
+    int day;
 
-    첫 번째 구간에 해당하는 배열은 [2, 3, 4] 입니다.
-    따라서 이 두 배열을 앞뒤로 붙인 배열인 [2, 3, 4, 1, 2, 3, 4, 5]를 return 합니다.
-    두 번째 구간에 해당하는 배열은 [1, 2, 3, 4, 5] 입니다.
+    // 매개변수가 있는 생성자를 직접 정의함
+    public MyDate3(int year, int month, int day) {
+        this.year = year;
+        this.month = month;
+        this.day = day;
+    }
 
- */
+    public void print() {
+        System.out.println("MyDate3: " + year + "/" + month + "/" + day);
+    }
+}
 
-// 기초문제 - 배열만들기3까지 적어둠
+// 4. 기본 생성자와 매개변수 생성자를 둘 다 만들었을 때
+class MyDate4 {
+    private int year;
+    private int month;
+    private int day;
+
+    public MyDate4() { // 기본 생성자 수동 추가
+    }
+
+    public MyDate4(int new_year, int new_month, int new_day) {
+        year = new_year;
+        month = new_month;
+        day = new_day;
+    }
+
+    public void print() {
+        System.out.println("MyDate4: " + year + "/" + month + "/" + day);
+    }
+}
+
 public class JavaTask24 {
+    public static void main(String[] args) {
 
+        // --- MyDate1 테스트 ---
+        MyDate1 d1 = new MyDate1();
+        d1.print(); // 결과: 0/0/0
 
+        // --- MyDate2 테스트 ---
+        MyDate2 d2 = new MyDate2();
+        d2.print(); // 결과: 2023/4/1
+
+        // --- MyDate3 테스트 (오류 주의!) ---
+        // MyDate3 d3 = new MyDate3(); // ❌ 오류 발생! (기본 생성자가 자동 생성되지 않음)
+        // d3.print();
+
+        MyDate3 d3_fixed = new MyDate3(2023, 7, 19); // 값을 넣어서 호출해야 함
+        d3_fixed.print();
+
+        // --- MyDate4 테스트 (가장 유연함) ---
+        MyDate4 d4_empty = new MyDate4(); // 빈 괄호 가능
+        d4_empty.print(); // 결과: 0/0/0
+
+        MyDate4 d4_data = new MyDate4(2023, 7, 19); // 데이터 주입 가능
+        d4_data.print();
+    }
 }

@@ -111,3 +111,98 @@ public class JavaTask7 {
 이메일: 11@11.com
 주소: 서울시 마포구
  */
+
+/*
+1. 생성자 중심으로 작성하는 경우
+package task.java;
+
+// [클래스 설계도]
+class MemberConstructor {
+    private String name;
+    private int age;
+
+    // 생성자: 객체 생성 시 데이터를 강제로 넣게 함 (데이터가 빠지는 걸 방지)
+    public MemberConstructor(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public void display() {
+        System.out.println("[생성자 방식] 이름: " + name + ", 나이: " + age);
+    }
+}
+
+// [실행부]
+public class RunConstructor {
+    public static void main(String[] args) {
+        // 객체 생성과 동시에 데이터 주입 (new 할 때 다 넣어야 함)
+        MemberConstructor m = new MemberConstructor("홍길동", 20);
+        m.display();
+    }
+}
+
+
+2. getter setter 활용하는 경우
+package task.java;
+
+// [클래스 설계도]
+class MemberGetterSetter {
+    private String name;
+    private int age;
+
+    // 기본 생성자 (내용물 없이 일단 틀만 만듦)
+    public MemberGetterSetter() { }
+
+    // Getter/Setter: 수동 노가다 작성
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+
+    public int getAge() { return age; }
+    public void setAge(int age) { this.age = age; }
+}
+
+// [실행부]
+public class RunGetterSetter {
+    public static void main(String[] args) {
+        MemberGetterSetter m = new MemberGetterSetter(); // 빈 객체 생성
+
+        m.setName("이순신"); // 나중에 하나씩 주입 (Setter)
+        m.setAge(30);
+
+        // 직접 꺼내서 출력 (Getter)
+        System.out.println("[게터세터 방식] 이름: " + m.getName() + ", 나이: " + m.getAge());
+    }
+}
+
+3. Lombok 라이브러리 활용, 어노테이션 게터세터 방식의 경우
+
+package task.java;
+
+import lombok.*;
+
+// [클래스 설계도]
+@Getter @Setter              // 게터세터 자동 생성
+@AllArgsConstructor          // 생성자 방식 자동 생성 (과제 7 해결)
+@NoArgsConstructor           // 빈 생성자 자동 생성 (과제 8 해결)
+@ToString                    // display() 대신 객체 내용을 한 번에 찍어주는 기능
+class MemberPro {
+    private String name;
+    private int age;
+}
+
+// [실행부]
+public class RunLombokPro {
+    public static void main(String[] args) {
+        // 1. 생성자 방식으로 쓰기 (과제 7 스타일)
+        MemberPro m1 = new MemberPro("강감찬", 40);
+
+        // 2. 세터 방식으로 쓰기 (과제 8 스타일)
+        MemberPro m2 = new MemberPro();
+        m2.setName("유관순");
+
+        // 3. 출력 (ToString 덕분에 메소드 없이도 객체 내용 확인 가능)
+        System.out.println(m1); // 결과: MemberPro(name=강감찬, age=40)
+        System.out.println(m2.getName() + "님 반갑습니다.");
+    }
+}
+ */
