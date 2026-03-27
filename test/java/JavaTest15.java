@@ -4,13 +4,40 @@ package test.java;
 // 1. 정수 n과 k가 주어졌을 때 1~n이하 정수 중 k의 배수를 오름차순으로 저장한 배열 return 함수
 // 예: 1 이상 10 이하의 3의 배수는 3, 6, 9 이므로 [3, 6, 9]를 return 합니다.
 // 입력값변수: 정수n,k     출력값변수: k의배수를 오름차순정렬한 배열[]
-// 행위: sort오름차순정렬, 조건식배수확인
-//class Solution24{
-//    public int[] solution24(int n, int k) {
-//
-//    }
-//}
-//
+// 행위: 오름차순정렬, 조건식으로k배수확인
+
+class Solution24{
+    public int[] solution24(int n, int k) {
+
+        // 결과 배열의 크기를 계산하기. 1~n 이하 중 k의 배수만 들어가는 거니까 나머지 빼고 몫=크기
+        // 예시처럼 n=10, k=3일때 count = 3, result[]=3개의 수만 들어감.
+        int count = n/k;
+        int[] result = new int[count];
+
+        int index = 0;
+
+        for (int i = 1; i <= n; i++) {
+            if (i % k == 0) {
+                result[index] = i;
+                index++;
+            }
+        }
+        return result;
+
+        //등차수열 원리로 진행할 경우 (if문필요x kx1=k, kx2=k+k, kx3=k+k+k니까");
+        /*
+        // i = 3부터 시작해서 10까지 진행될 때, i=i+k로 증가하니 3, i=3+3으로 6, 그다음은 9
+        for (int i = k; i <= n; i += k) {
+            result[index++] = i;
+            // result[0] = i = 3        등차수열 진행될때 인덱스에도 동시에 데이터 주입
+            // result[1] = i = 6
+        }
+        // 자동으로 오름차순 정렬된 3 6 9 순차로 확인해서 담았으니까
+        return result;
+         */
+    }
+}
+
 
 /*
 2. 정수 n과 k가 주어졌을 때 숫자 0과 5로만 이루어진 모든 정수를 오름차순으로 저장 return,
