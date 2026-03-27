@@ -37,10 +37,10 @@ private String address;
 // 자바는 무조건 클래스 안에 들어가야하는 형태인데,
 // 실행클래스에 넣는 게 아니라 별도클래스 따로 서식잡아서 하는 게 일반적이라고 함(헷갈려~~)
 
-class MemberInfo{
+class MemberInfo {
     // 변수선언
     private String name;
-    private  int age;
+    private int age;
     private String email;
     private String address;
 
@@ -66,30 +66,57 @@ class MemberInfo{
 
 // = MemberInput class 역할. 실제 실행코드.
 public class JavaTask7 {
-    public static void  main(String[] args) {
-
-        Scanner sc=new Scanner(System.in);
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
 
         System.out.println("회원의 이름을 입력하세요");
-        String name=sc.nextLine();
+        String name = sc.nextLine();
 
         System.out.println("회원의 나이를 입력하세요");
-        int age=sc.nextInt();
+        int age = sc.nextInt();
         // 중요: 숫자 입력 후 남은 엔터 키를 제거 (버퍼 비우기)
         // 파이썬코틀린과 달리 자바에선 숫자입력뒤 문자열이면 청소필요
         sc.nextLine();
 
         System.out.println("회원의 이메일을 입력하세요");
-        String email=sc.nextLine();
+        String email = sc.nextLine();
 
         System.out.println("회원의 주소를 입력하세요");
-        String address=sc.nextLine();
+        String address = sc.nextLine();
 
         // 클래스받아오는 참조변수(=객체변수) 멤버 = 새로객체생성하라 생성자호출. 지역변수임.
-        // 생성자 = 초기화 (파이썬이나코틀린 init)
-        MemberInfo member=new MemberInfo(name,age,email,address);
+        // 생성자 = 초기화 (파이썬이나코틀린 init). String만 new생략가능이고 배열 리스트도 다 new연산자 써야함
+        MemberInfo member = new MemberInfo(name, age, email, address);
 
         member.display();
+
+        /*  // 여러명 출력 시 배열 활용하기 (사실 ArrayList방식이 더 많이 쓰이긴 함)
+        MemberInfo[] members = new MemberInfo[2];
+        // 리스트는 ArrayList<MemberInfo> memberList = new ArrayList<>();
+
+        // 리스트를 동적으로 입력받으려면 아예 while문으로 진행하면 됨
+        for (int i = 0; i < members.length; i++) {      // 리스트는 숫자넣거나 i<memberList.size()
+            System.out.println((i + 1) + "번째 회원 정보 입력");
+
+            System.out.print("이름: ");
+            String name = sc.nextLine();
+            System.out.print("나이: ");
+            int age = sc.nextInt();
+            sc.nextLine(); // 버퍼 비우기
+            System.out.print("이메일: ");
+            String email = sc.nextLine();
+            System.out.print("주소: ");
+            String address = sc.nextLine();
+
+            members[i] = new MemberInfo(name, age, email, address);
+            // 리스트는 memberList.add(new MemberInfo(name, age, email, address));
+        }
+
+        // for (MemberInfo m : memberList) { 리스트도 반복문동일
+        for (MemberInfo m : members) {
+            m.display();
+        }
+         */
     }
 }
 
@@ -185,6 +212,9 @@ import lombok.*;
 @AllArgsConstructor          // 생성자 방식 자동 생성 (과제 7 해결)
 @NoArgsConstructor           // 빈 생성자 자동 생성 (과제 8 해결)
 @ToString                    // display() 대신 객체 내용을 한 번에 찍어주는 기능
+** 해당 어노테이션 5개를 모두 적용하는 @Data 어노테이션이 있긴 한데 잉여방지용으로 그냥 5개 어노테이션으로
+작성하는 경우들도 있고, 사실 5개도 다 안전빵으로 미리 적어두는 어노테이션이라고 함.
+
 class MemberPro {
     private String name;
     private int age;
