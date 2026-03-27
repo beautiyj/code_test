@@ -15,6 +15,7 @@ class MyDate1 {
     public void print() {
         System.out.println("MyDate1: " + year + "/" + month + "/" + day);
     }
+    // 결과: 0/0/0
 }
 
 // 2. 기본 생성자에서 특정 날짜로 값을 직접 고정 (하드코딩)
@@ -32,6 +33,7 @@ class MyDate2 {
     public void print() {
         System.out.println("MyDate2: " + year + "/" + month + "/" + day);
     }
+    // 결과: 2023/4/1
 }
 
 // 3. 매개변수가 있는 생성자만 만들었을 때 (가장 중요한 오류 포인트!)
@@ -50,6 +52,7 @@ class MyDate3 {
     public void print() {
         System.out.println("MyDate3: " + year + "/" + month + "/" + day);
     }
+    // 데이터 주입 출력해야함
 }
 
 // 4. 기본 생성자와 매개변수 생성자를 둘 다 만들었을 때
@@ -70,7 +73,9 @@ class MyDate4 {
     public void print() {
         System.out.println("MyDate4: " + year + "/" + month + "/" + day);
     }
+    // 결과: 0/0/0  데이터 주입 시 주입한 데이터대로 출력됨
 }
+
 
 public class JavaTask24 {
     public static void main(String[] args) {

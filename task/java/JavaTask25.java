@@ -6,7 +6,7 @@ package task.java;
 class MyDate5 {
     private int year, month, day;
 
-    public MyDate5() { } // 기본 생성자를 수동으로 써줘서 오류 방지
+    public MyDate5() { } // 기본 생성자를 수동으로 써줘서 오류 방지하기
 
     public MyDate5(int new_year, int new_month, int new_day) {
         year = new_year; month = new_month; day = new_day;
