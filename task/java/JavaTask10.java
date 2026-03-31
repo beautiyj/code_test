@@ -15,9 +15,10 @@ public class JavaTask10 {
         int month = cal.get(Calendar.MONTH) + 1; // 0부터 시작하므로 +1
         int date = cal.get(Calendar.DATE);
 
-        // 요일 가공 (1:일, 2:월 ... 7:토)
+        // 요일이 기본적으로 숫자 매칭된 상태라 배열로 문자열 변환하기
+        //              인덱스제거용"". 7까지니까 사실상 0,1,2,... 7로 8개 맨 앞의 인덱스 0은 ""
         String[] week = {"", "일", "월", "화", "수", "목", "금", "토"};
-        String day = week[cal.get(Calendar.DAY_OF_WEEK)];
+        String day = week[cal.get(Calendar.DAY_OF_WEEK)];   // = 7
 
         int hour = cal.get(Calendar.HOUR_OF_DAY);
         int minute = cal.get(Calendar.MINUTE);

@@ -67,7 +67,7 @@ public class JavaTask32 {
         System.out.println();
 
         // Calendar : 날짜 계산(더하기, 빼기)을 위해 등장했으나, 월(Month)이 0부터 시작하는 등 사용이 불편함.
-        // 직접 new를 못 쓰고 getInstance()라는 정적 메소드로 객체를 생성해야 함.
+        // 추상클래스라서 직접 new를 못 쓰고 getInstance()라는 정적 메소드로 객체를 생성해야 함.
         // 출력용보단 날짜 계산용임. 요일도 나오긴 하는데 숫자로 나와서 문자로 바꾸기 필요.
         Calendar calendar = Calendar.getInstance();
         System.out.println("Calendar 년: " + calendar.get(Calendar.YEAR));
@@ -92,7 +92,7 @@ public class JavaTask32 {
         // Calendar의 단점(월이 0부터 시작 등)을 해결했고, 훨씬 직관적임.
         // 출력을 위해 'DateTimeFormatter'라는 짝꿍 포맷터가 필요함.
         // SimpleDateFormat보다 속도가 빠르고 멀티스레드 환경에서 안전함(Thread-safe).
-        // 출력 결과물: 2026-03-31T16:35:19.928209
+        // 출력 결과물: 2026-03-31T16:35:19.928209. ZonedDateTime사용 세계시간으로도 표기됨.
         LocalDateTime now = LocalDateTime.now();
         System.out.println("LocalDateTime 기본 출력: " + now);
 
