@@ -47,7 +47,6 @@ class Lotto {
     }
 }
 
-
 public class JavaTask30 {
     public static void main(String[] args) {
 

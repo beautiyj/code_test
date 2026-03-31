@@ -48,9 +48,11 @@
 28. 클래스5: 클래스 내부에서 메소드 호출
 29. 클래스6: 정적필드와 정적메소드 static(코틀린은 컴패니언객체), 그 외 자바의 정적메소드(=내장함수같은 거) Math 등
 30. 로또: 로또 프로그램 만들기
-31. ㅓ
-32. ㅓ
-33. ㅓ
+31. Singleton: 싱글톤 객체
+32. API 클래스: Date(날짜), Timestamp(DB시간), Calendar(날짜계산), LocalDateTime(신형날짜), SimpleDateFormat/DateTimeFormatter(포맷팅), InputStream/Scanner(입력), Random(난수)
+33. 패키지: 같은 패키지와 다른 패키지의 메소드 호출하기
+34. final: final 메소드, 클래스, 상속 불가 예제
+35. 
 
 # test
 1. 역순출력: 학생들의 점수 배열을 뒤에서부터 하나씩 출력하는 프로그램
