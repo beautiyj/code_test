@@ -13,8 +13,8 @@ package test.java;
 
 import java.util.Arrays;
 
-class Solution24 {
-    public int[] solution24(int n, int k) {
+class Solution15 {
+    public int[] solution15(int n, int k) {
 
         // 결과 배열의 크기를 계산하기. 1~n 이하 중 k의 배수만 들어가는 거니까 나머지 빼고 몫=크기
         // 예시처럼 n=10, k=3일때 count = 3, result[]=3개의 수만 들어감.
@@ -69,7 +69,7 @@ class Solution24 {
       / 10  →  마지막 자리 제거  (나누기 소수점버림)
 */
 
-class Solution24T2 {
+class Solution15T2 {
 
     boolean isNum(int n) {      // 만약 n이 505일때
         while (n > 0) {
@@ -84,7 +84,7 @@ class Solution24T2 {
         return true;
     }
 
-    public int[] solution24T2(int l, int r) {
+    public int[] solution15T2(int l, int r) {
 
         int[] temp = new int[r - l + 1];
         int count = 0;
@@ -180,8 +180,8 @@ class Solution24T2 {
     3. 두번째 구간은 이어붙이고 결과배열 리턴
  */
 
-class Solution24T3 {
-    public int[] solution24T3(int[] arr, int[][] intervals) {
+class Solution15T3 {
+    public int[] solution15T3(int[] arr, int[][] intervals) {
 
         int a1 = intervals[0][0];
         int b1 = intervals[0][1];
@@ -210,26 +210,26 @@ class Solution24T3 {
 public class JavaTest15 {
     public static void main(String[] args) {
 
-        Solution24 s1 = new Solution24();
-        int[] result1 = s1.solution24(10, 3);
+        Solution15 s1 = new Solution15();
+        int[] result1 = s1.solution15(10, 3);
         System.out.print("Solution24 결과: ");
         for (int n : result1) {
             System.out.print(n + " ");
         }
         System.out.println();
 
-        Solution24T2 s2 = new Solution24T2();
-        int[] result2 = s2.solution24T2(5, 555);
+        Solution15T2 s2 = new Solution15T2();
+        int[] result2 = s2.solution15T2(5, 555);
         System.out.print("Solution24T2 결과: ");
         for (int n : result2) {
             System.out.print(n + " ");
         }
         System.out.println();
 
-        Solution24T3 s3 = new Solution24T3();
+        Solution15T3 s3 = new Solution15T3();
         int[] arr = {1, 2, 3, 4, 5};
         int[][] intervals = {{1, 3}, {0, 4}};
-        int[] result3 = s3.solution24T3(arr, intervals);
+        int[] result3 = s3.solution15T3(arr, intervals);
         System.out.print("Solution24T3 결과: ");
         for (int n : result3) {
             System.out.print(n + " ");

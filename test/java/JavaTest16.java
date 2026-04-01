@@ -18,11 +18,10 @@ stk의 마지막 원소를 stk에서 제거합니다.
 위 작업을 마친 후 만들어진 stk를 return 하는 solution 함수 만들기
 
 입출력 예
-arr	result
-[1, 4, 2, 5, 3]	[1, 2, 3]
+arr	                 result
+[1, 4, 2, 5, 3] 	[1, 2, 3]
 
 각 작업을 마친 후에 배열의 변화를 나타내면 다음 표와 같습니다.
-
     i	    arr[i]	    stk
     -------------------------
     0	    1   	[]
@@ -35,7 +34,60 @@ arr	result
     -	    -	    [1, 2, 3]
 따라서 [1, 2, 3]을 return 합니다.
 
- */
+/*
+
+입력값 변수: 정수배열 arr
+상태값 변수: 변수 i, stk배열
+출력값 변수: 새로운 정수배열 stk (= result)
+
+행위: 반복문while로 판별, if-else if-else로 3가지 조건 진행
+
+로직:
+1. 변수 i = 0 초기값 설정하기
+2. i가 arr[i]보다 작으면 반복문while진행
+ㄴ 반복되는과정(if-else if-else)
+3. stk가 빈 배열이면 - stk배열에 arr[i]추가, i+1
+   stk 원소가 있으면 - stk[n2] < arr[i]
+                        - stk[n1, n2,att[i]], i+1
+                    - stk[n2]>=arr[i]
+                        - stk[n1]
+*/
+
+
+import java.util.Arrays;
+
+class Solution16 {
+    public int[] solution16(int[] arr) {
+        int i = 0;
+        int[] stk = new int[0];
+
+        while (i < arr.length) {
+            if (stk.length == 0) {
+
+                //  배열크기 변경하려면 Arrays.copyOf 정적 메소드 사용
+                // Arrays.copyOf는 새로운 크기만큼의 새로운 배열 만들고 - 복사하고 -
+                // 복사한 새 배열의 주소값을 돌려주는 거라 정확히는 복붙..수정?느낌임
+                stk = Arrays.copyOf(arr, arr.length+1);
+                stk[stk.length-1] = arr[i];
+                i++;
+
+            } else if (stk[stk.length - 1] < arr[i]) {
+                stk = Arrays.copyOf(arr, arr.length+1);
+                stk[stk.length-1] = arr[i];
+                i++;
+
+            } else {
+                stk = Arrays.copyOf(arr, arr.length-1);
+            }
+
+        }
+    return stk;
+    }
+}
+
+
+//==========================================================================================
+
 
 
 // 5.
@@ -61,6 +113,11 @@ idx에 따라 잘라낸 문자열과 그에 따른 ret의 변화를 표시하면
 따라서 [56789, 99999]를 return 합니다.
 
  */
+
+
+//==========================================================================================
+
+
 
 // 6.
 /*
@@ -109,6 +166,10 @@ arr	                  result
 따라서 [0, 1, 0, 1, 0]을 return 합니다.
 
  */
+
+//==========================================================================================
+
+
 public class JavaTest16 {
     public JavaTest16() {
     }
