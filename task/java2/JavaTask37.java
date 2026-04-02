@@ -36,60 +36,24 @@ class Solution37 {
     // 배열+반복문
     public static boolean checkJumin(String jumin) {
         int total = 0;
-//        int total2 = 0;
-        int n = 2;
-
-        // 체크용 번호
-        String index = jumin.substring(12, 13);
-        Integer id = Integer.parseInt(index);
-
-        String j1 = jumin.substring(0, 9);
-        String j2 = jumin.substring(9, 12);
-
-        String[] jumin1 = j1.split("");
-        String[] jumin2 = j2.split("");
-
-//        Integer jumin1 = Integer.parseInt(jumin.substring(0,9));
-//        Integer jumin2 = Integer.parseInt(jumin.substring(9,12));
-
-        // 인덱스는 0~11 체크. 123456 12  3456 7에서 7은 체크용 번호
-        // 인덱스 8까지는 n=9 이후는 n=2초기화
-         /*
-            total = (jumin[0]*2)
-            total = (jumin[1]*3)
-            total = (jumin[2]*4)
-            ...
-            total = (jumin[9]*2)
-            total = (jumin[11]*5)
-        */
-
+        // 가중치
         int[] r = {2, 3, 4, 5, 6, 7, 8, 9, 2, 3, 4, 5};
-        for (int i = 0; i <= 11; i++) {
+
+        for (int i = 0; i < 12; i++) {
             total += Integer.parseInt(jumin.substring(i, i + 1)) * r[i];
         }
 
-//        int sum = total + total2;
+        int remainder = total % 11;
+        int result = 11 - remainder;
 
-        // 몫
-//        int num1 = sum / 11;
-        // 나머지
-        total = total % 11;
-
-        int total2 = 11 - total;
-
-        if (total2 >= 10) {
-            total2 = total2 % 10;
-        }
-        if (total2 == Integer.parseInt(jumin.substring(12,13))) {
-            return true;
-        } else {
-            return false;
+        if (result >= 10) {
+            result %= 10;
         }
 
+        int lastDigit = Integer.parseInt(jumin.substring(12, 13));
+        return result == lastDigit;
     }
 
-
-    // 이후 체크
     public void solution37() {
         Scanner sc = new Scanner(System.in);
         System.out.println("주민번호를 입력하시오. (예: 9901011234567)");
@@ -100,7 +64,6 @@ class Solution37 {
             System.out.println("주민번호 뒷자리를 입력하세요");
             String jumin2 = sc.nextLine();
 
-            // 유효성 검사
             if (jumin1.equals("")) {
                 System.out.println("주민번호 앞자리가 입력되지 않았습니다. 주민번호 앞자리를 입력하세요.");
             } else if (jumin1.length() != 6) {
@@ -118,9 +81,59 @@ class Solution37 {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+}
 
+class Solution37T2 {
+    public static boolean checkJumin(String j1, String j2) {
+        int total = 0;
+        int weight = 2;
+
+        // 1. 앞자리 계산 (weight: 2 ~ 7)
+        for (int i = 0; i < j1.length(); i++) {
+            total += Character.getNumericValue(j1.charAt(i)) * weight++;
+        }
+
+        // 2. 뒷자리 계산 (weight: 8 ~ 9 -> 다시 2 ~ 5)
+        // 마지막 숫자는 체크용이므로 j2.length() - 1 까지만 반복
+        for (int i = 0; i < j2.length() - 1; i++) {
+            if (weight > 9) weight = 2;
+            total += Character.getNumericValue(j2.charAt(i)) * weight++;
+        }
+
+        int checkNum = (11 - (total % 11)) % 10;
+
+        // 입력받은 마지막 자리와 비교
+        int lastDigit = Character.getNumericValue(j2.charAt(6));
+
+        return checkNum == lastDigit;
     }
 
+    public void solution37T2() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("주민번호를 입력하시오. (예: 9901011234567)");
+
+        try {
+            System.out.println("주민번호 앞자리를 입력하세요:");
+            String j1 = sc.nextLine();
+            System.out.println("주민번호 뒷자리를 입력하세요:");
+            String j2 = sc.nextLine();
+
+            // 유효성 체크
+            if (j1.length() == 6 && j2.length() == 7) {
+                if (checkJumin(j1, j2)) {
+                    System.out.println("올바른 주민번호 입니다.");
+                } else {
+                    System.out.println("잘못된 주민번호 (타당성 검사 실패)");
+                }
+            } else {
+                System.out.println("주민번호 자릿수가 올바르지 않습니다.");
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException("예상치 못한 오류 발생", e);
+        }
+    }
 }
 
 
@@ -128,5 +141,8 @@ public class JavaTask37 {
     public static void main(String[] args) {
         Solution37 solution37 = new Solution37();
         solution37.solution37();
+
+        Solution37T2 solution37T2 = new Solution37T2();
+        solution37T2.solution37T2();
     }
 }
