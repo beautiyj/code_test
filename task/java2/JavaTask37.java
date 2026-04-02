@@ -31,7 +31,6 @@ package task.java2;
 import java.util.Scanner;
 
 class Solution37 {
-
     // 주민번호 유효 여부를 먼저 메소드로 구분하고 (boolean)
     // 배열+반복문
     public static boolean checkJumin(String jumin) {
@@ -41,6 +40,17 @@ class Solution37 {
 
         for (int i = 0; i < 12; i++) {
             total += Integer.parseInt(jumin.substring(i, i + 1)) * r[i];
+            /*
+            total += Integer.parseInt(jumin.substring(0, 1)) * 2;
+            total += Integer.parseInt(jumin.substring(1, 2)) * 3;
+            total += Integer.parseInt(jumin.substring(2, 3)) * 4;
+            ...
+            total += Integer.parseInt(jumin.substring(7, 8)) * 9;
+            total += Integer.parseInt(jumin.substring(8, 9)) * 2;
+            ...
+            total += Integer.parseInt(jumin.substring(10, 11)) * 4;
+            total += Integer.parseInt(jumin.substring(11, 12)) * 5;
+            */
         }
 
         int remainder = total % 11;
@@ -84,6 +94,7 @@ class Solution37 {
     }
 }
 
+// 앞,뒤 나눠서 하는 경우
 class Solution37T2 {
     public static boolean checkJumin(String j1, String j2) {
         int total = 0;
@@ -136,6 +147,55 @@ class Solution37T2 {
     }
 }
 
+// 더 간결하게
+class Solution37T3 {
+    public static boolean checkJumin(String fullJumin) {
+        // 숫자만 남기면서 전처리하기. 숫자 체크 메소드를 따로 넣어도 상관 없음
+        // 전처리는 사용자 친화적이고 숫자 체크 메소드로 체크는 정확한 데이터 포맷에 좋음.
+        /*  // 숫자 체크 메소드는  이런 느낌
+        private boolean isNumeric(String str) {
+        return str != null && str.matches("^[0-9]*$");
+         */
+        fullJumin = fullJumin.replaceAll("[^0-9]", "");
+        if (fullJumin.length() != 13) return false;
+
+        int total = 0;
+        // 가중치 배열(상수 선언해서 재사용해도 상관없음)
+        int[] weights = {2, 3, 4, 5, 6, 7, 8, 9, 2, 3, 4, 5};
+
+        // charAt()을 이용한 숫자 변환 및 합산(메모리 절약)
+        // 0을 빼는 이유 - ASCII 코드 값을 이용하여 문자 숫자를 실제 정수로 바꾸기 위함
+        for (int i = 0; i < 12; i++) {
+            total += (fullJumin.charAt(i) - '0') * weights[i];
+        }
+
+        // 타당성 검사 공식 (한 줄로 처리)
+        int checkSum = (11 - (total % 11)) % 10;
+
+        // 마지막 자리 추출 및 비교
+        int lastDigit = fullJumin.charAt(12) - '0';
+
+        return checkSum == lastDigit;
+    }
+
+    public void solution37T3() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("주민번호 판별 프로그램 (Optimized)");
+        try {
+            System.out.println("주민번호를 입력하세요 (예: 990101-1234567):");
+            String input = sc.nextLine();
+
+            if (checkJumin(input)) {
+                System.out.println("결과: 올바른 주민번호입니다.");
+            } else {
+                System.out.println("결과: 유효하지 않은 주민번호입니다. 자릿수나 번호를 확인하세요.");
+            }
+
+        } catch (Exception e) {
+            System.out.println("예상치 못한 오류가 발생했습니다.");
+        }
+    }
+}
 
 public class JavaTask37 {
     public static void main(String[] args) {
@@ -144,5 +204,8 @@ public class JavaTask37 {
 
         Solution37T2 solution37T2 = new Solution37T2();
         solution37T2.solution37T2();
+
+        Solution37T3 solution37T3 = new Solution37T3();
+        solution37T3.solution37T3();
     }
 }

@@ -49,10 +49,19 @@
 29. 클래스6: 정적필드와 정적메소드 static(코틀린은 컴패니언객체), 그 외 자바의 정적메소드(=내장함수같은 거) Math 등
 30. 로또: 로또 프로그램 만들기
 31. Singleton: 싱글톤 객체
-32. API 클래스: Date(날짜), Timestamp(DB시간), Calendar(날짜계산), LocalDateTime(신형날짜), SimpleDateFormat/DateTimeFormatter(포맷팅), InputStream/Scanner(입력), Random(난수)
+32. API 클래스: Date(날짜), Timestamp(DB시간), Calendar(날짜계산), LocalDateTime(신형날짜),
+SimpleDateFormat/DateTimeFormatter(포맷팅), InputStream/Scanner(입력), Random(난수)
 33. 패키지: 같은 패키지와 다른 패키지의 메소드 호출하기
 34. final: final 메소드, 클래스, 상속 불가 예제
-35. 
+35. API 클래스 String: toUpperCase(대문자), toLowerCase(소문자), charAt(인덱스반환), indexOf(인덱스번호구하기),
+trim(공백제거), substring(잘라내기붙여넣기), replace(대체), replaceFirst replaceAll, split(조건 분리)
+36. 주민번호 판별: 남녀 성별 판별하기 & 유효성 검사
+37. 주민번호 판별: 주민번호 유효성 판별 공식 활용하기 & 유효성 검사
+38. StringBuffer: 스트링버퍼 클래스
+39. StringTokenizer: 스트링토크나이저 클래스 및 split로 푸는 방법(split을 더 많이 써서)
+40. ㄹ
+41. ㄹ
+42. ㄹ
 
 # test
 1. 역순출력: 학생들의 점수 배열을 뒤에서부터 하나씩 출력하는 프로그램
@@ -72,3 +81,4 @@
 15. 배열 & 2차원 배열 예제3: k배수 오름차순 구하기, 조건에 맞는 배열 구하기, 조건에 맞게 배열 이어붙여서 새로운 배열 만들기
 16. 배열 & 2차원 배열 예제4:
 17. d
+18. ㄹ
