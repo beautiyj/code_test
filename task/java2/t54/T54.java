@@ -1,4 +1,4 @@
-package task.java2.t53;
+package task.java2.t54;
 
 import task.java2.JavaTask54;
 

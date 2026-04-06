@@ -38,7 +38,7 @@ class Parent {                                 // 부모 클래스
     }
 }
 
-class Child extends Parent51 {                   // 자식 클래스
+class Child extends Parent52 {                   // 자식 클래스
     public void parentPrn() {                  // 메서드 오버라이딩
         System.out.println("자식 클래스 : ParentPrn 메서드");
     }
@@ -50,11 +50,11 @@ class Child extends Parent51 {                   // 자식 클래스
 
 public class JavaTask52 {
     public static void main(String[] args) {
-        Child51 c = new Child51();
+        Child52 c = new Child52();
         c.parentPrn();                         // 재정의된 자식 클래스의 메서드 호출
         c.childPrn();
 
-        Parent51 p = new Parent51();
+        Parent52 p = new Parent52();
         p.parentPrn();                         // 부모 클래스 자기 자신의 메서드 호출
 
         System.out.println("----------------------------------------------------------------");
