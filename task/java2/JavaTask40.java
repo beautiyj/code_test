@@ -97,6 +97,7 @@ class WrapperTest4 {
 
         int result = obj + 100;
         System.out.println("auto-unboxing (result) " + result);
+        System.out.println();
 
     }
 }
@@ -130,6 +131,28 @@ class WrapperTest5 {
         // valueOf는 객체 생성, parseDouble는 기본형 생성.
         // 문자열 숫자를 만났을 때
         // 객체타입이면 valueOf로 수동박싱을, 기본형타입이면 parseInt로 파싱을!
+        System.out.println();
+
+    }
+}
+
+class WrapperTest6 {
+    public void wrapperTest6() {
+        int value1 = Integer.parseInt("10");
+        double value2 = Double.parseDouble("3.14");
+        boolean value3 = Boolean.parseBoolean("true");
+        boolean value4 = Boolean.parseBoolean("TRUE");  // 대문자 넣어도 출력 true
+
+        // 논리값 아닌 걸 넣으면 false로 변환돼서 출력됨.
+        boolean value5 = Boolean.parseBoolean("test");
+
+        System.out.println("value1 = " + value1);
+        System.out.println("value2 = " + value2);
+        System.out.println("value3 = " + value3);
+        System.out.println("value4 = " + value4);
+        System.out.println("value5 = " + value5);
+
+        System.out.println();
     }
 }
 
@@ -149,5 +172,8 @@ public class JavaTask40 {
 
         WrapperTest5 w5 = new WrapperTest5();
         w5.wrapperTest5();
+
+        WrapperTest6 w6 = new WrapperTest6();
+        w6.wrapperTest6();
     }
 }

@@ -60,8 +60,14 @@ trim(공백제거), substring(잘라내기붙여넣기), replace(대체), replac
 38. StringBuffer: 스트링버퍼 클래스
 39. StringTokenizer: 스트링토크나이저 클래스 및 split로 푸는 방법(split을 더 많이 써서)
 40. Wrapper: boxing unboxing Auto-boxing Auto-unboxing 박싱 언박싱 자동박싱 자동언박싱 etc & 2진수 8진수 16진수 변환
-41. ㄹ
-42. ㄹ
+41. Wrapper2: 기본형에서의 박싱과 언박싱, Object 객체에서의 박싱과 언박싱(범용성 확인용) 예제
+42. Wrapper2-1: Task41의 Lombok 롬복 라이브러리 활용 버전
+43. Wrapper 예제: DecimalFormat 클래스를 활용하여 원주/원면적/구표면적/구부피 구하기
+44. . 4/3부분 오후에 문제추가할것
+45. .
+46. .
+47. .
+48. 4/6시작: 
 
 # test
 1. 역순출력: 학생들의 점수 배열을 뒤에서부터 하나씩 출력하는 프로그램
