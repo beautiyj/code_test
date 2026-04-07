@@ -59,15 +59,15 @@ trim(공백제거), substring(잘라내기붙여넣기), replace(대체), replac
 37. 주민번호 판별: 주민번호 유효성 판별 공식 활용하기 & 유효성 검사
 38. StringBuffer: 스트링버퍼 클래스
 39. StringTokenizer: 스트링토크나이저 클래스 및 split로 푸는 방법(split을 더 많이 써서)
-40. Wrapper: boxing unboxing Auto-boxing Auto-unboxing 박싱 언박싱 자동박싱 자동언박싱 etc & 2진수 8진수 16진수 변환
+40. Wrapper: boxing unboxing Auto-boxing Aucdto-unboxing 박싱 언박싱 자동박싱 자동언박싱 etc & 2진수 8진수 16진수 변환
 41. Wrapper2: 기본형에서의 박싱과 언박싱, Object 객체에서의 박싱과 언박싱(범용성 확인용) 예제
 42. Wrapper2-1: Task41의 Lombok 롬복 라이브러리 활용 버전
 43. Wrapper 예제: DecimalFormat 클래스를 활용하여 원주/원면적/구표면적/구부피 구하기
 44. 예제: 윤년 평년 판별하는 프로그램
-45. AWT 상속 방식: 버튼을 클릭하면 창의 배경색이 바뀌는 간단한 이벤트 처리 프로그램
+45. AWT 상속 방식: 버튼을 클릭하면 창의 배경색이 바뀌는 간단한 이벤트 처리 프로그램(gui)
 46. 상속: 상속, super, 생성자 호출 순서
 47. 상속: 상속, super()
-48. AWT 포함 방식: 45 예제의 Has-a 포함 형태 예제
+48. AWT 포함 방식: 45 예제의 Has-a 포함 형태 예제(gui)
 49. 상속 + Getter/Setter
 50. 상속: 상속에서의 필드, 은닉변수, super 등
 51. 상속: 상속의 방향성 (상속에서의 메소드)
@@ -75,7 +75,7 @@ trim(공백제거), substring(잘라내기붙여넣기), replace(대체), replac
 53. 메소드 오버라이딩 예제2: p341~342
 54. 상속: 상속에서의 접근 제한자 : 부모 클래스 & 자식클래스는 package task.java2.t54; 위치
 55. 추상클래스: 추상클래스를 활용한 예제 - 상속, 다형성, 다중 상속 불가, 계층적 상속
-56. 인터페이스: 상수와 추상메소드만 가질 수 있는 인터페이스
+56. 인터페이스: 상수와 추상메소드만 가질 수 있는 인터페이스, 인터페이스 다중 상속, implements
 57. GregorianCalendar: GregorianCalendar 활용하여 44번 예제 풀기(윤년 평년 판별하는 프로그램)
 58. 
 

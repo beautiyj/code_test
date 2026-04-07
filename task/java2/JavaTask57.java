@@ -29,8 +29,13 @@ public class JavaTask57 {
         // 레퍼런스 형변환 활용
 
         // 자동형변환(업캐스팅)  : 레퍼런스 형변환 필요 없으면 업캐스팅만 활용해도 상관없음
+        // 업캐스팅 목적은 공통 관리(유연성)
+        // 부모클래스 캘린더가 상속해준 메소드만 사용 가능
+        // 보통 개념의 크기는 부모>자식 이지만 기능,지식면에서는 부모<자식
         Calendar cal = new GregorianCalendar();
+
         // 강제형변환(다운캐스팅)
+        // 다운캐스팅의 목적은 자식만의 특수 기능 호출(확장성(다형성))
         GregorianCalendar gcal = (GregorianCalendar) cal;
 
         // isLeapYear() - 그레고리캘린더 클래스의 윤년 평년 구분 로직
