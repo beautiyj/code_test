@@ -1,6 +1,6 @@
 package task.java3;
 
-// 컬렉션 인터페이스 - set 인터페이스
+// 컬렉션 인터페이스 - Collection set 인터페이스
 // 중복을 허가하지 않아서 데이터 중복 판별에 쓰는 인터페이스
 
 import java.util.Date;

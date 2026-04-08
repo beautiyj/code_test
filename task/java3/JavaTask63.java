@@ -29,7 +29,7 @@ public class JavaTask63 {
         System.out.println("요소의 갯수->" + set.size());        // 요소의 갯수->6
         System.out.println(set);                         // [2, 6, 넷, 하나, 3.42, five]
 
-        // Iterator 반복자
+        // Iterator 이터레이터 반복자
         Iterator elements = set.iterator();
         while (elements.hasNext()) {
             System.out.println("\t\t" + elements.next());
