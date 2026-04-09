@@ -1,9 +1,6 @@
 package task.java3;
 
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 // Map 예제 p599-600
 
@@ -38,9 +35,33 @@ class HashtableEx {
                 System.out.println("입력하신 아이디가 존재하지 않습니다");
             }
         }
-        sc.close();
     }
 }
+
+class HashTableTest02{
+    public void hashTableTest02() {
+        Hashtable<String, String> ht= new Hashtable</* 생략해도 됨 어차피 자동으로 문자열처리됨! String, String*/>( );
+        ht.put("사과", "Apple");
+        ht.put("딸기", "StrawBerry");
+        ht.put("포도", "Grapes");
+
+        // 키 알고 있을 때는 해쉬 테이블의 값을 키 이용하여 얻는다.
+        String Val = ht.get("포도");
+        if(Val != null) {
+            System.out.println("포도-> " + Val);
+        }
+
+        // 키 값을 모를 때 열거
+        // keys()는 Hashtable 해시테이블에서, keySet()은 HashMap 해시맵에서 사용
+        Enumeration<String> Enum = ht.keys();  //해쉬 테이블의 키 요소들에 대한 Enumeration 객체 반환
+        while(Enum.hasMoreElements()){
+            String  k = Enum.nextElement();
+            String  v = ht.get(k);
+            System.out.println(k + " : "+ v );
+        }
+    }
+}
+
 
 // 잘 쓰는 건 HashMap
 class HashMapKeyValue {
@@ -58,22 +79,24 @@ class HashMapKeyValue {
     }
 }
 
+// --------------------------------------------------------------------------------------------
+
 public class JavaTask70 {
     public static void main(String[] args) {
+        // 1. Hashtable 예제 실행
         System.out.println("Hashtable 사용 예제");
-
         HashtableEx hashtableEx = new HashtableEx();
         hashtableEx.HashtableMethod();
 
-//--------------------------------------------------------------------------------------
+        System.out.println("------------------------------------------------------");
 
+        // 2. HashMap 예제 실행
         System.out.println("HashMap 사용 예제");
-
         HashMapKeyValue hashMapEx = new HashMapKeyValue();
 
-        // try-with-resources 구문 사용하면 알아서 스캐너 닫아줌
         try (Scanner scanner = new Scanner(System.in)) {
             while (true) {
+                System.out.println("[HashMap 로그인]");
                 System.out.println("아이디와 비밀번호를 입력해주세요");
                 System.out.print("아이디: ");
                 String userId = scanner.nextLine();
@@ -92,5 +115,11 @@ public class JavaTask70 {
                 }
             }
         }
+
+        System.out.println("------------------------------------------------------");
+
+        // 3. HashTable 열거형 예제 실행
+        HashTableTest02 hashTableTest02 = new HashTableTest02();
+        hashTableTest02.hashTableTest02();
     }
 }

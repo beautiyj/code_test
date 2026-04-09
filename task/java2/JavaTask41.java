@@ -38,7 +38,6 @@ public class JavaTask41 {
 
     // 두 번째 예제 실행 메소드
     public void runGenericTest02() {
-        // 오류 수정: Task42Class2 -> TestClass2로 변경
         TestClass2 obj01 = new TestClass2();
 
         // Object value = new Integer(3);      업캐스팅 + 박싱이 이루어지고
