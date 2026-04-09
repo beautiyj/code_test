@@ -85,8 +85,17 @@ trim(공백제거), substring(잘라내기붙여넣기), replace(대체), replac
 63. Collection - HashSet: 해시셋 예제 & Iterator 이터레이터 반복자
 64. Collection - TreeSet: 트리셋 예제. 데이터를 오픔차순으로 정렬해서 저장하고 출력하는 기능 제공
 65. Set 예제(+제네릭 버전): set 자료구조를 사용한 중복방지 오름차순 정렬 로또 프로그램
-66. .
-67. 
+66. Collection - List, ArrayList: 리스트 인터페이스는 인덱스 번호(입력순) 자료형 저장, 중복저장 가능, 동적으로 크기 조절.
+67. Generic 제네릭 <> + ArrayList 예제: 제네릭은 컬렉션 프레임워크에 속하는 거의 모든 인터페이스 & 클래스에서 사용 가능함. 어레이리스트 활용 예제
+68. Vector 벡터 클래스: 동기화된 메소드로 구성되어 있어서 스레드에 안전, 하지만 전부 동기화 되어있어서 무거움. 잘 안쓴다. 요즘은 멀티스레드 방식으로 Collections.synchronizedList()나 CopyOnWriteArrayList 씀
+69. Collection - Map: HashMap 해시맵 가장 많이 씀, Hashtable 해시테이블 잘 안씀, TreeMap Properties는 트리맵 프로퍼티는 툭수 상황 매핑
+70. Hashtable HashMap 예제: 해시테이블과 해시맵을 활용해서 아이디 비밀번호 일치 프로그램 만들기
+71. 큐(Queue) 인터페이스: FIFO(First Input First Output) 구조. 먼저 입력된 자료가 먼저 출력되는 구조, offer() 넣고 poll() 뺀다. LinkedList PriorityQueue ArrayBlockingQueue LinkedBlockingQueue
+72. 스택(Stack) 클래스: LIFO(Last Input First Output) 구조. 마지막으로 입력된 자료가 가장 먼저 출력되는 구조. 기능 자체는 중요한데 무거워서 잘 안쓰고 요즘은 큐&스택 양방향 ArrayDeque 씀
+73. 클래스와 setter메소드 초기화, List: 회원정보를 입력받고 새로운 클래스의 멤버변수에 저장, List 자료구조를 이용해서 출력하기
+74. ㅇ
+75. ㅇ
+76. ㅇ
 
 # test
 1. 역순출력: 학생들의 점수 배열을 뒤에서부터 하나씩 출력하는 프로그램
