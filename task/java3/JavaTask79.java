@@ -37,9 +37,6 @@ class MultiExceptionHandling1 {
     }
 }
 
-
-
-
 public class JavaTask79 {
     public static void main(String[] args) {
         MultiExceptionHandling1.excute();

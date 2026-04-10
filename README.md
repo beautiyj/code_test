@@ -93,9 +93,15 @@ trim(공백제거), substring(잘라내기붙여넣기), replace(대체), replac
 71. 큐(Queue) 인터페이스: FIFO(First Input First Output) 구조. 먼저 입력된 자료가 먼저 출력되는 구조, offer() 넣고 poll() 뺀다. LinkedList PriorityQueue ArrayBlockingQueue LinkedBlockingQueue
 72. 스택(Stack) 클래스: LIFO(Last Input First Output) 구조. 마지막으로 입력된 자료가 가장 먼저 출력되는 구조. 기능 자체는 중요한데 무거워서 잘 안쓰고 요즘은 큐&스택 양방향 ArrayDeque 씀
 73. 클래스와 setter메소드 초기화, List: 회원정보를 입력받고 새로운 클래스의 멤버변수에 저장, List 자료구조를 이용해서 출력하기
-74. ㅇ
-75. ㅇ
-76. ㅇ
+74. 콘솔로 게시판 만들기 예제: ArrayList, DTO 등 활용
+75. 콘솔로 게시판 만들기 예제2: lombok 롬복 활용한 버전 + builder 빌더 패턴 활용
+76. 제네릭: 제네릭 관련 예제(연습용)
+77. 예외처리 try-catch 구문: try-catch 구문을 활용한 예외처리들 예제
+78. 예외처리2 try-catch-catch 구문 (멀티처리): try-catch-catch 구문을 활용한 예외 멀티처리 예제
+79. 예외처리3 try-catch-finally 구문: try-catch-finally 구문을 활용한 예외처리 예제
+80. 예외처리4 throws: throws 키워드를 활용한 예외 떠넘기기 예제
+81. 예외처리5 throw: throw 키워드를 활용한 예외 발생시키기 예제
+82. 
 
 # test
 1. 역순출력: 학생들의 점수 배열을 뒤에서부터 하나씩 출력하는 프로그램

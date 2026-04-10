@@ -46,6 +46,7 @@ class ThrowsException {
     // 나눗셈을 구하는 메소드
     public void occurException() {
 //        int result = 3/0;     // 이것만 있으면 예외처리없어서 터짐 트라이캐치문 추가해야함
+
         try {
             int result = 3/0;
             System.out.println("result : " + result);
