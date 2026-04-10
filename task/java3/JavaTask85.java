@@ -3,6 +3,7 @@ package task.java3;
 // 스레드 상태 제어
 class ThreadSleep implements Runnable {
 
+    @Override
     public void run() {
         for (int i = 1; i < 10; i++) {
             // 현재 CPU를 점유한 Thread 출력
