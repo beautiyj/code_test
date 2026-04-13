@@ -87,3 +87,14 @@ fun main(args: Array<String>) {
 //  ThrowsException.execute()
 //  ThrowsExceptionHandling1.executeMain()
 }
+
+/*
+
+| Java 코드                          | Kotlin 대체                        | 이유                                                    |
+|------------------------------------|------------------------------------|---------------------------------------------------------|
+| throws NumberFormatException       | 선언 불필요                         | 코틀린은 checked exception 없음, 모든 예외가 unchecked   |
+| Integer.parseInt(n)                | n.toInt()                          | 코틀린 확장함수, 실패 시 동일하게 NumberFormatException 발생 |
+| public void throws XxxException    | @Throws(XxxException::class)       | 순수 코틀린에선 생략 가능, Java 코드와 혼용 시에만 필요   |
+| static void execute()              | companion object { fun execute() } | 코틀린 정적 메서드 표현                                  |
+
+ */

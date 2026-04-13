@@ -84,3 +84,15 @@ if __name__ == "__main__":
     ThrowsEx1.execute(sys.argv[1:])
     # ThrowsException.execute()
     # ThrowsExceptionHandling1.execute_main()
+
+
+"""
+| Java 코드                          | Python 대체                        | 이유                                                              |
+|------------------------------------|------------------------------------|-------------------------------------------------------------------|
+| throws NumberFormatException       | 선언 불필요 / 독스트링 :raises 명시  | 파이썬은 throws 선언 없음, 독스트링으로 예외 명시가 실무 관례      |
+| throw new XxxException()           | raise XxxException()               | 파이썬 예외 발생 키워드                                            |
+| Integer.parseInt(n)                | int(n)                             | 실패 시 ValueError 발생 (NumberFormatException 대응)               |
+| 3 / 0                              | 3 // 0                             | 파이썬 정수 나눗셈은 //, /는 float 반환                            |
+| e.toString()                       | repr(e)                            | 에러종류 + 이유 출력                                               |
+| args[0] (main 인수)                | sys.argv[1:]                       | 파이썬 커맨드라인 인수                                             |
+"""
