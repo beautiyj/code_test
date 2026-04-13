@@ -1,5 +1,7 @@
 package task.kotlin2
 
+/*
+
 // 인터페이스 간의 상속 (Interface Inheritance)
 // 인터페이스끼리는 다중 상속(: A, B)이 가능합니다.
 interface InterfaceHello59 {
@@ -91,3 +93,5 @@ fun main() {
        3. 코틀린 인터페이스 상수: Java의 'int a = 10'과 달리 companion object { const val }로 선언
     */
 }
+
+ */

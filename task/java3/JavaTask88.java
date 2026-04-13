@@ -16,7 +16,7 @@ class BufferedReaderTest {
         InputStreamReader isr = new InputStreamReader(is);
         BufferedReader br = new BufferedReader(isr);
         /*
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));   // 한줄가능
         */
         System.out.print("Input Data : ");
 
@@ -38,6 +38,8 @@ class BufferedReaderEx {
         InputStreamReader isr = new InputStreamReader(is);
         BufferedReader br = new BufferedReader(isr);
 
+//        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));   // 한줄가능
+
         try {
             System.out.print("Input data 숫자: ");
             String inputString = br.readLine();
@@ -47,8 +49,8 @@ class BufferedReaderEx {
 //                System.out.println( dan + " x " + i + " = " + (dan*i) );
                 System.out.printf("%d x %d = %d\n", dan, i + 1, dan * (i + 1));
             }
-        } catch (IOException io) {
-            System.out.println(io.getMessage());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
 
     }
@@ -56,7 +58,7 @@ class BufferedReaderEx {
 
 public class JavaTask88 {
     public static void main(String[] args) {
-//        BufferedReaderTest.excute( args );
+//        BufferedReaderTest.execute( args );
         BufferedReaderEx.excute(args);
     }
 }

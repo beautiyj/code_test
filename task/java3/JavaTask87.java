@@ -87,8 +87,8 @@ class InputStreamReaderTest2 {
 // 3개의 테스트를 순서대로 실행하는 메인 클래스
 public class JavaTask87 {
     public static void main( String[] args ) {
-//        InputStreamTest.excute();
-//        InputStreamReaderTest.excute();
+//        InputStreamTest.execute();
+//        InputStreamReaderTest.execute();
         InputStreamReaderTest2.excute();
     }
 }

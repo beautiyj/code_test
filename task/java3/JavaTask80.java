@@ -84,7 +84,7 @@ class ThrowsExceptionHandling1 {
 public class JavaTask80 {
     public static void main(String[] args) {
          ThrowsEx1.excute(args);
-        // ThrowsException.excute();
+        // ThrowsException.execute();
 //        ThrowsExceptionHandling1.executeMain();
     }
 }

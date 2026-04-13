@@ -65,8 +65,8 @@ class ThrowsEx{
 
 public class JavaTask81 {
     public static void main(String[] args) {
-//        ThrowException.excute(args);
-//        CatchOrderEx.excute(args);
+//        ThrowException.execute(args);
+//        CatchOrderEx.execute(args);
         ThrowsEx.excute();
     }
 }
