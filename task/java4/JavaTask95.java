@@ -2,6 +2,7 @@ package task.java4;
 
 // 4/13 과제
 // 키보드로 입력한 문장을 파일 result.txt에 저장하는 프로그램을 작성하시오.
+// 키보드 입력은 BufferedReader, 파일 출력은 FileWriter 클래스
 
 import java.io.*;
 

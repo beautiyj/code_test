@@ -101,7 +101,9 @@ trim(공백제거), substring(잘라내기붙여넣기), replace(대체), replac
 79. 예외처리3 try-catch-finally 구문: try-catch-finally 구문을 활용한 예외처리 예제
 80. 예외처리4 throws: throws 키워드를 활용한 예외 떠넘기기 예제
 81. 예외처리5 throw: throw 키워드를 활용한 예외 발생시키기 예제
-82. 
+82. d
+83. ...
+95. BufferedReader,FileWriter,InputStreamReader: 키보드로 입력한 문장을 파일 result.txt에 저장하는 프로그램
 
 # test
 1. 역순출력: 학생들의 점수 배열을 뒤에서부터 하나씩 출력하는 프로그램
