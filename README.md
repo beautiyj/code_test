@@ -105,7 +105,10 @@ trim(공백제거), substring(잘라내기붙여넣기), replace(대체), replac
 83. ...
 95. BufferedReader,FileWriter,InputStreamReader: 키보드로 입력한 문장을 파일 result.txt에 저장하는 프로그램
 96. 데이터베이스 연동: JDBC 드라이버, MySQL, Oracle 등 데이터베이스 연동 예제
-97. 
+97. g
+107. 중간 시험
+108. MVC 게시판 :
+109. 
 
 # test
 1. 역순출력: 학생들의 점수 배열을 뒤에서부터 하나씩 출력하는 프로그램

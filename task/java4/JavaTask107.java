@@ -53,28 +53,19 @@ class Task107T4 {
 
 // 최대공약수 구하기
 // 60과 24의 최대 공약수 구하는 프로그램
-// 최대공약수는 60을 최대로 나눌 수 있는 약수 2,3,5,7,11,13 등등
-// 문제에서 60과 24의 최대공약수를 구하라고 지정했기 때문에
-// 60까지 루프 돌리지 않고 해당 범위 내의 약수만 하드코딩으로 진행
 class Task107T5 {
     public static void main(String[] args) {
-        System.out.println("60 혹은 24 두 숫자 중 하나만 입력하기.");
-        int[] num = {2,3,5,7,11,13};
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
+        int a = 60;
+        int b = 24;
+        int maxResult = 1;
 
-        int result=0;
-        int maxResult =0;
-
-        for (int i=0; i<num.length; i++) {
-            result = n % num[i];
-            if (result == 0) {
-                maxResult = Math.max(num[i],1);
+        // 두 수 중 작은 수까지 반복
+        for (int i = 2; i <= Math.min(a, b); i++) {
+            if (a % i == 0 && b % i == 0) {  // 두 수 모두 나누어 떨어지면
+                maxResult = i;                 // 최대공약수 갱신
             }
         }
-        System.out.println(maxResult);
-
-        sc.close();
+        System.out.println("최대공약수: " + maxResult);  // 12
     }
 }
 
