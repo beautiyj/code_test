@@ -1,6 +1,7 @@
 DESC dept;
 DESC emp;
 
+SELECT * FROM emp ORDER BY sal ASC;
 
 -- 대소문자 구분은 없지만 관례상 키워드, 명령어는 대문자/컬럼, 테이블명 소문자.
 SELECT * FROM TAB;
