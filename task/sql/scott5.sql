@@ -150,5 +150,15 @@ SELECT deptno, ROUND(AVG(sal)) FROM emp GROUP BY deptno ORDER BY AVG(sal);
 SELECT deptno, ROUND(AVG(sal)) FROM emp GROUP BY deptno HAVING ROUND(AVG(sal)) >= 2000;
 SELECT deptno, MAX(sal) FROM emp GROUP BY deptno HAVING MAX(sal) >= 2900;
 
+-- 260422 SQL 과제
+-- 사원 테이블에서 입사일을 4자리 연도로 출력하기 (0000/00/00)
+SELECT ename, hiredate, TO_CHAR(hiredate, 'YYYY/MM/DD') FROM emp;
+-- 사원 테이블에서 MGR 컬럼의 값이 NULL인 데이터의 MGR의 값을 CEO로 출력하기
+SELECT job, ename,      -- 이건 컬럼 값을 CEO로 바꾸는 거고
+    mgr AS CEO
+    FROM emp WHERE NVL(mgr,0) = 0;
+SELECT ename, NVL(TO_CHAR(mgr,'9999'), 'CEO') FROM emp WHERE mgr IS NULL;   -- 이건 데이터 값을 CEO로 바꾸는 거
+SELECT ename, DECODE(mgr, NULL, 'CEO') FROM emp WHERE mgr IS NULL;          -- DECODE 활용하면 간단 변환 가능
+
 SELECT * FROM DUAL;
 SELECT * FROM emp;
