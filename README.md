@@ -102,8 +102,19 @@ trim(공백제거), substring(잘라내기붙여넣기), replace(대체), replac
 79. 예외처리3 try-catch-finally 구문: try-catch-finally 구문을 활용한 예외처리 예제
 80. 예외처리4 throws: throws 키워드를 활용한 예외 떠넘기기 예제
 81. 예외처리5 throw: throw 키워드를 활용한 예외 발생시키기 예제
-82. d
-83. ...
+82. Thread: 스레드 클래스 상속, Runnable 인터페이스 구현, 멀티스레드 등
+83. Thread: 스레드 생명주기
+84. Thread: 스레드의 우선순위
+85. Thread: 스레드 상태 제어
+86. Thread: 스레드 동기화 - synchronized 동기화 메소드
+87. 입출력스트림: InputStream read InputStreamReader
+88. 입출력스트림: BufferedReader 
+89. 스레드 예제: 스레드를 이용해서 현재 시간을 1초에 1번씩 출력하는 프로그램
+90. 입출력스트림: read() reader() FileReader FileInputStream BufferedReader
+91. 입출력스트림: writer() OutputStream() FileInputStream FileOutputStream FileReader FileWriter BufferedWriter
+92. 입출력스트림 예제: 기본 타입 입출력 스트림 DataInputStream, DataOutputStream 클래스를 이용, 기본 데이터 타입을 유지 하면서 입.출력을 처리하는 스트림
+93. 입출력스트림 File 클래스: 디렉토리 생성이나 파일 & 디렉터리 삭제 기능이 있는 파일 클래스
+94. 입출력스트림
 95. BufferedReader,FileWriter,InputStreamReader: 키보드로 입력한 문장을 파일 result.txt에 저장하는 프로그램
 96. 데이터베이스 연동: JDBC 드라이버, MySQL, Oracle 등 데이터베이스 연동 예제
 97. g

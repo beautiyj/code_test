@@ -1,6 +1,6 @@
 package task.java4;
 
-// 입출력스트림 writer() OutputStrea()
+// 입출력스트림 writer() OutputStream()
 
 import java.io.*;
 
