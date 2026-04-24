@@ -1,5 +1,8 @@
 SELECT * FROM emp;
 SELECT * FROM dept;
+DESC dept;
+DESC emp;
+--DROP TABLE 테이블명 PURGE;  -- 테이블 완전삭제용 코드
 
 -- 서브쿼리
 SELECT dname        -- 이건 메인쿼리
