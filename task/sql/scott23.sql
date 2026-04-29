@@ -34,6 +34,11 @@ CREATE USER user1 IDENTIFIED BY tiger;
 
 -- Q3
 -- DBA 계정에서 실행
-CREATE ROLE mrole;
+CREATE ROLE mrole;      -- 커넥트, 리소스, 세션, 테이블만 부여해도 무방함(롤안써도)
 GRANT CREATE TABLE TO mrole;
 GRANT mrole TO user1;
+
+
+
+
+
