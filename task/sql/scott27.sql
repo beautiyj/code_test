@@ -37,7 +37,7 @@ BEGIN
     FROM emp
     WHERE empno = v_empno;
     
-    RETURN v_sal * 2;
+    RETURN v_sal * 2;       -- 200% 되도록. 만약 더하기 수치면 인상분이 200%니까 * 3
 END;
 /
 
@@ -90,7 +90,9 @@ END;
 /
 
 SELECT * FROM USER_SOURCE;
+
 VARIABLE var_job VARCHAR2;
+
 EXECUTE :var_job := job_emp('SCOTT');
 EXECUTE :var_job := job_emp('KING');
 PRINT var_job;

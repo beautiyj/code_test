@@ -4,9 +4,9 @@
 
 /*  저장 프로시저를 생성하기 위한 CREATE PROCEDURE의 형식
 
-    CREATE [OR REPLACE ] PROCEDURE prcedure_name 
-    ( argument1 [mode] data_taye, 
-      argument2 [mode] data_taye . . .
+    CREATE [OR REPLACE ] PROCEDURE procedure_name 
+    ( argument1 [mode] data_type, 
+      argument2 [mode] data_type . . .
     )
     IS 
     local_variable declaration

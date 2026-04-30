@@ -1,0 +1,6 @@
+CREATE OR REPLACE TRIGGER trig_01
+    AFTER INSERT ON emp01
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('신입사원이 입사했습니다.');
+END;
+/
