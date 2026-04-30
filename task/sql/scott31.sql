@@ -100,3 +100,21 @@ SELECT * FROM emp01 e INNER JOIN sal01 s ON e.empno = s.empno;
 -- 트리거 삭제하기
 DROP TRIGGER trig_02;
 
+
+
+-- 예제3. 사원테이블에 사원 정보가 삭제되면 급여 테이블의 삭제된 사원 급여 정보를 자동으로 삭제하는 트리거 작성하기
+-- 현재는 참조하는 외래키가 있어서 dml론 삭제불가. 트리거로 생성한다면 dml로 삭제 가능함.
+--DELETE FROM emp01 WHERE empno = 1111;
+-- :old.컬럼명 : DELETE문을 이용해서 이벤트가 발생한 경우에 사용
+
+--CREATE OR REPLACE TRIGGER trig_03
+--    AFTER DELETE ON emp01           -- 이벤트 발생
+--    FOR EACH ROW                    -- 행레벨 트리거
+--BEGIN
+--    DELETE FROM sal01 WHERE empno = :old.empno;
+--END;
+
+SELECT * FROM USER_TRIGGERS;
+DELETE FROM emp01 WHERE empno = 1111;       -- 트리거 생성 후 dml 사용하면 데이터 삭제됨
+SELECT * FROM emp01 e INNER JOIN sal01 s ON e.empno = s.empno;
+
