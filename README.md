@@ -141,3 +141,9 @@ trim(공백제거), substring(잘라내기붙여넣기), replace(대체), replac
 16. 배열 & 2차원 배열 예제4:
 17. d
 18. ㄹ
+
+# html test
+1. 기본 html 태그 br p hr font(style) img
+2. 이미지 정렬 p align, a href 앵커 태그를 활용한 하이퍼링크 및 파일 다운로드/이미지 링크 등
+3. ol, ul 순서 목록, 순서 없는 목록 만들기 & table 테이블 표 생성
+4. 테이블 표 생성 : colspan 열 합치기 콜스팬 속성 & rowspan 행 합치기 로우스팬 속성
