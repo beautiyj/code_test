@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Document</title>
+    <!-- css 선택자 예시-->
+    <style>
+        h2,
+        p {
+          font-family: "arial black";
+          font-size: 18pt;
+          color: gold;
+        }
+        h5 em {
+          font-family: "Times New Roman", Times, serif;
+          color: chocolate;
+        }
+    </style>
+</head>
+<body bgcolor="#990099">
+<center>
+    <h2>
+        css 예제
+        <hr/>
+        선택자가 , 로 분리되어있으면 해당 선택자 2가지 모두 동일한 스타일 시트가 적용됨
+    </h2>
+    <!--&nbsp;는 줄바꿈 없는 공백. html 엔티티(특수문자) -->
+    <h2>The &nbsp; Fun &nbsp;&nbsp; Corner</h2>
+    <p>The &nbsp; Street&nbsp;Fair</p>
+    <h4>h4태그는 선택자에 없으니 &nbsp;스타일적용안됨</h4>
+</center>
+
+<h3>
+    h5 em에서, h5태그 안에 있는 em태그만 css 적용받음.
+    <em>이건 h3이라 예외임. em태그적용하면 기본 인텔리체 적용되긴 함</em>
+</h3>
+<h5>
+    h5 em에서, h5태그 안에 있는 em태그만 css 적용받음.
+    <em>
+        이건 h5라 적용됨, 폰트설정도 적용됨. 인텔리 해제하려면 em스타일의 폰트스타일
+        노멀로 설정하면 됨
+        만약 h5 > em 으로 되어있을 경우 스타일은 em(자손)만 적용됨
+        이 경우 h5는 부모선택자
+    </em>
+</h5>
+</body>
+</html>

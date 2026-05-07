@@ -1,0 +1,85 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>게시판 폼</title>
+</head>
+
+<body>
+<form action="borad.jsp" method="post">
+    <table align="center" border="1" width="600">
+        <caption>
+            게시판
+        </caption>
+        <tr>
+            <th><label for="writer">작성자</label></th>
+            <td>
+                <input
+                        autofocus
+                        class="hint-gray"
+                        id="writer"
+                        name="writer"
+                        placeholder="작성자명 입력"
+                        required
+                        size="10"
+                        type="text"/>
+            </td>
+        </tr>
+
+        <tr>
+            <th><label for="password">비밀번호</label></th>
+            <td>
+                <input
+                        class="hint-gray"
+                        id="password"
+                        name="password"
+                        placeholder="비밀번호"
+                        required
+                        size="10"
+                        type="password"/>
+            </td>
+        </tr>
+
+        <tr>
+            <th><label for="title">제목</label></th>
+            <td>
+                <input
+                        class="hint-gray"
+                        id="title"
+                        name="title"
+                        placeholder="20자 이내로 입력"
+                        required
+                        size="20"
+                        type="text"/>
+            </td>
+        </tr>
+
+        <tr>
+            <th><label for="content">내용</label></th>
+            <td>
+            <textarea
+                    class="hint-gray"
+                    cols="50"
+                    id="content"
+                    name="content"
+                    placeholder="내용 입력(textarea의 placeholder는 컬러나 스타일이 다름)"
+                    required
+                    rows="10"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <th>파일첨부</th>
+            <td><input id="myfile" name="myfile" type="file"/></td>
+        </tr>
+
+        <tr>
+            <td align="center" colspan="2">
+                <input type="submit" value="글작성"/>
+                <input type="button" value="글작성 버튼형식"/>
+                <input type="reset" value="취소"/>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Document</title>
+
+    <!-- css 서식
+
+    h1 { color: red; }
+    선택자  스타일속성 : 스타일값
+    {:} 부분은 선언부, 각 선언은 항상 ;로 종료
+    선택자는 대표적으로 태그들.
+
+    1. 내부 스타일시트로 css 적용(임베딩방식, 내장형 방식)
+    2. 외부 스타일시트 적용은 test14.html & mystyle.css 참고
+    -->
+
+    <style>
+        h2 {                    /* 모든 h2태그는 해당 스타일이 적용된다 */
+          font-family: 굴림;    /* 글꼴 설정 */
+          font-size: 18pt;     /* 글자 크기 */
+          color: red;        /* 글자 색상 */
+        }
+
+        h3 {
+          font-family: 명조;
+          font-size: 12pt;
+          color: green;
+        }
+    </style>
+</head>
+
+<body>
+<h1>css에 대한 예제</h1>
+<h2>18pt 크기의 빨간색 굴림체</h2>
+<h3>12pt 크기의 초록색 명조체</h3>
+<h3>h3의 모든 태그가 스타일 적용됨</h3>
+<h4>h4는 스타일 적용 안했으니 h1처럼 기본</h4>
+
+<!-- 3. 인라인 스타일시트는 특정 태그 1개에 대해서 css 적용하는 방식으로
+특정 태그에 style="속성:속성값"으로 적용 가능함/ -->
+<span style="font-style: italic;">인라인 스타일시트는 범위 안에서 </span>
+<div style="color: cadetblue;">스타일 지정 가능</div>
+<div style="color: darkgoldenrod; font-size: large;">맞춤제작 개념. 매 태그마다 다르게 설정 가능</div>
+<h6 style="color: darkgoldenrod;">h6으로도 가능</h6>
+
+<!-- css 스타일시트가 여러가지라면
+인라인 스타일시트가 우선 적용됨, 그다음 내부, 마지막으로 외부. -->
+<h6 style="color: darkgoldenrod; font-size: larger;">
+    h6과 폰트사이즈를 동시 지정하면 인라인 스타일시트가 우선적용됨</h6>
+
+
+<!--
+css 선택자 종류는 다양한데,
+* 같은 전체선택자부터
+ #아이디 같은 아이디선택자,
+ .클래스 로 사용하는 클래스 선택자,
+ 선택자[속성=값] 은 ~= |= ^= $= *= 속성선택자 여럿 존재(잘안씀),
+ 선택자 선택자 서식으로 header h1 태그2개 연달아서 쓰는 후손선택자
+ 선택자>선택자 서식인 자손선택자 등등 존재
+ 그 외엔 글케 중요하진 않아서 생략
+ -->
+
+
+</body>
+</html>

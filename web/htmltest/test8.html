@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>회원가입 폼</title>
+</head>
+<body>
+<form action="member.jsp" method="post">
+    <table align="center" border="1" width="600">
+        <caption>
+            회원가입 폼
+        </caption>
+
+        <tr>
+            <th><label for="id">ID</label></th>
+            <td>
+                <input autofocus id="id" name="id" required size="10" type="text" />
+                <input type="button" value="ID 중복검사" />
+            </td>
+        </tr>
+
+        <tr>
+            <th><label for="passwoad">비밀번호</label></th>
+            <td>
+                <input id="password" name="password" required type="password" />
+            </td>
+        </tr>
+
+        <tr>
+            <th><label for="name">성명</label></th>
+            <td>
+                <input id="name" name="name" type="text" />
+            </td>
+        </tr>
+
+        <tr>
+            <th><label for="rrn1">주민번호</label></th>
+            <td>
+                <input
+                        id="rrn1"
+                        maxlength="6"
+                        name="rrn1"
+                        placeholder="앞 6자리"
+                        required
+                        size="6"
+                        type="text" />
+                -
+                <input
+                        id="rrn2"
+                        maxlength="7"
+                        name="rrn2"
+                        placeholder="뒤 7자리"
+                        required
+                        size="7"
+                        type="password" />
+            </td>
+        </tr>
+
+        <tr>
+            <th><label for="email">email</label></th>
+            <td>
+                <input id="mailid" name="mailid" size="10" type="text" />
+                @
+                <input id="domain" name="domain" size="15" type="text" />
+                <select id="email">
+                    <option value="">직접입력</option>
+                    <option value="naver.com">네이버</option>
+                    <option value="daum.net">다음</option>
+                    <option value="gmail.com">구글</option>
+                    <option value="nate.com">네이트</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <th><label for="tel">전화번호</label></th>
+            <td>
+                <input id="tel1" maxlength="4" name="tel1" size="4" type="text" />
+                -
+                <input id="tel2" maxlength="4" name="tel2" size="4" type="text" />
+                -
+                <input id="tel3" maxlength="4" name="tel3" size="4" type="text" />
+            </td>
+        </tr>
+
+        <tr>
+            <th><label for="phone">휴대폰</label></th>
+            <td>
+                <select id="phone1">
+                    <option selected value="010">010</option>
+                    <option value="011">011</option>
+                    <option value="016">016</option>
+                    <option value="018">018</option>
+                    <option value="019">019</option>
+                </select>
+                -
+                <input id="phone2" maxlength="4" name="phone2" size="4" type="text" />
+                -
+                <input id="phone3" maxlength="4" name="phone3" size="4" type="text" />
+            </td>
+        </tr>
+
+        <tr>
+            <th><label for="post">우편번호</label></th>
+            <td>
+                <input id="post" maxlength="5" name="post" size="5" type="number" />
+                <input type="button" value="우편검색" />
+            </td>
+        </tr>
+
+        <tr>
+            <th><label for="address">주소</label></th>
+            <td>
+                <input id="address" name="address" size="70" type="text" />
+            </td>
+        </tr>
+
+        <tr>
+            <th><label for="gender">성별</label></th>
+            <td>
+                <input checked id="gender" name="gender" type="radio" /> 남자
+                <input checked id="gender" name="gender" type="radio" /> 여자
+                <input checked id="gender" name="gender" type="radio" />
+                checked 모든 항목에 넣으면 가장 마지막 선택지가 체크됨
+            </td>
+        </tr>
+
+        <tr>
+            <th><label for="hobby">취미</label></th>
+            <td>
+                <input id="hobby" name="hobby" type="checkbox" />공부
+                <input id="hobby" name="hobby" type="checkbox" />등산
+                <input id="hobby" name="hobby" type="checkbox" />게임
+                <input id="hobby" name="hobby" type="checkbox" />낚시
+                <input id="hobby" name="hobby" type="checkbox" />쇼핑
+            </td>
+        </tr>
+
+        <tr>
+            <th><label for="content">자기소개</label></th>
+            <td>
+            <textarea
+                    class="hint-gray"
+                    cols="50"
+                    id="content"
+                    maxlength="100"
+                    name="content"
+                    placeholder="자기소개를 100자 이내로 입력하세요."
+                    required
+                    rows="10"></textarea>
+            </td>
+        </tr>
+
+        <tr>
+            <td align="center" colspan="2">
+                <input type="submit" value="회원가입" />
+                <input type="reset" value="취소" />
+
+                <!-- 이미지 버튼 만들기 -->
+                <input src="img/clock.jpg" type="image" width="30" />
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
+
+<!--
+최신 버전으로 작성하면
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입</title>
+    <style>
+      /* 색상 스타일 CSS로 관리 */
+      .hint-gray::placeholder {
+        color: #a9a9a9;
+      }
+      /* 라벨의 텍스트가 너무 붙지 않도록 여백 설정 */
+      th {
+        background-color: #f2f2f2;
+        padding: 10px;
+      }
+      td {
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <form method="post" action="member.jsp">
+      <table border="1" width="800" align="center" style="border-collapse: collapse;">
+        <caption>
+          <h2>회원가입</h2>
+        </caption>
+
+        <colgroup>
+          <col style="width: 150px;" />
+          <col style="width: auto;" />
+        </colgroup>
+
+        <tr>
+          <th><label for="user_id">아이디</label></th>
+          <td>
+            <input type="text" id="user_id" name="user_id" size="15" required autofocus />
+            <button type="button">중복확인</button>
+          </td>
+        </tr>
+
+        <tr>
+          <th><label for="password">비밀번호</label></th>
+          <td>
+            <input type="password" id="password" name="password" required />
+          </td>
+        </tr>
+
+        <tr>
+          <th><label for="user_name">성명</label></th>
+          <td>
+            <input type="text" id="user_name" name="user_name" required />
+          </td>
+        </tr>
+
+        <tr>
+          <th>주민등록번호</th>
+          <td>
+            <input type="text" id="rrn_front" name="rrn_front" size="6" maxlength="6" title="주민번호 앞자리" required />
+            -
+            <input type="password" id="rrn_back" name="rrn_back" size="7" maxlength="7" title="주민번호 뒷자리" required />
+          </td>
+        </tr>
+
+        <tr>
+          <th>이메일</th>
+          <td>
+            <input type="text" name="email_id" size="10" title="이메일 아이디" />
+            @
+            <input type="text" name="email_domain" size="15" title="이메일 도메인" />
+            <select name="email_select" onchange="this.form.email_domain.value=this.value">
+              <option value="">직접입력</option>
+              <option value="naver.com">네이버</option>
+              <option value="daum.net">다음</option>
+              <option value="gmail.com">구글</option>
+            </select>
+          </td>
+        </tr>
+
+        <tr>
+          <th>휴대폰 번호</th>
+          <td>
+            <select name="phone_1">
+              <option value="010">010</option>
+              <option value="011">011</option>
+            </select>
+            -
+            <input type="text" name="phone_2" size="4" maxlength="4" required />
+            -
+            <input type="text" name="phone_3" size="4" maxlength="4" required />
+          </td>
+        </tr>
+
+        <tr>
+          <th>우편번호</th>
+          <td>
+            <input type="text" name="zip_code" id="zip_code" size="5" readonly />
+            <button type="button">주소검색</button>
+          </td>
+        </tr>
+        <tr>
+          <th>주소</th>
+          <td>
+            <input type="text" name="address_main" style="width: 90%;" placeholder="기본 주소" /><br />
+            <input type="text" name="address_detail" style="width: 90%; margin-top: 5px;" placeholder="상세 주소" />
+          </td>
+        </tr>
+
+        <tr>
+          <th>성별</th>
+          <td>
+            <input type="radio" id="gender_m" name="gender" value="M" checked />
+            <label for="gender_m">남자</label>
+            <input type="radio" id="gender_f" name="gender" value="F" />
+            <label for="gender_f">여자</label>
+          </td>
+        </tr>
+
+        <tr>
+          <th>취미</th>
+          <td>
+            <input type="checkbox" id="hobby_study" name="hobbies" value="study" />
+            <label for="hobby_study">공부</label>
+            <input type="checkbox" id="hobby_game" name="hobbies" value="game" />
+            <label for="hobby_game">게임</label>
+            <input type="checkbox" id="hobby_shopping" name="hobbies" value="shopping" />
+            <label for="hobby_shopping">쇼핑</label>
+          </td>
+        </tr>
+
+        <tr>
+          <th><label for="intro">자기소개</label></th>
+          <td>
+            <textarea
+              id="intro"
+              name="intro"
+              cols="50"
+              rows="5"
+              placeholder="100자 이내로 입력해주세요."
+              style="resize: none;"></textarea>
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="2" align="center" style="padding: 20px;">
+            <button type="submit">회원가입</button>
+            <button type="reset">작성취소</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>
+
+
+
+-->
