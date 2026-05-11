@@ -6,9 +6,9 @@
 </head>
 <body>
     <%
-        // vs코드 test6.html 폼에서 보낸 name="id"와 name="password" 값을 자바 변수로 받습니다.
+        // vs코드 test6.html 폼에서 보낸 name="id"와 name="passwd" 값을 자바 변수로 받습니다.
         String userId = request.getParameter("id");
-        String userPw = request.getParameter("password");
+        String userPw = request.getParameter("passwd");
     %>
 
     <h2>로그인 시도 결과</h2>
