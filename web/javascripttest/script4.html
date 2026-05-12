@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 산술연산자 -->
+    <script>
+      var num1 = 15;
+      var num2 = 2;
+      var result;
+
+      result = num1 + num2; // 덧셈
+      document.write("덧셈: num1 + num2= " + result + "<br>");
+      result = num1 - num2; // 뺄셈
+      document.write("뺄셈: num1 - num2= " + result + "<br>");
+      result = num1 * num2; // 곱셈
+      document.write("곱셈: num1 * num2= " + result + "<br>");
+      result = num1 / num2; // 나눗셈
+      document.write("나눗셈: num1 / num2= " + result + "<br>"); // 7.5
+      result = num1 % num2; // 나머지
+      document.write("나머지: num1 % num2= " + result + "<br>");
+    </script>
+
+    <script>
+      var t1 = "학교종이";
+      var t2 = "땡땡땡";
+      var t3 = 8282;
+      var t4 = "어서 모이자";
+      var result;
+      result = t1 + t2 + t3 + t4; // 문자열 연결
+      document.write("문자열 연결: " + result + "<br><br>");
+    </script>
+
+    <!-- 확장 대입 연산자 += -= *= /= %= -->
+    <script>
+      var num1 = 10;
+      var num2 = 3;
+
+      num1 += num2; // num1 = num1 + num2
+      document.write("num1 += num2: " + num1 + "<br>"); //13
+      num1 -= num2; // num1 = num1 - num2
+      document.write("num1 -= num2: " + num1 + "<br>"); //10
+      num1 *= num2; // num1 = num1 * num2
+      document.write("num1 *= num2: " + num1 + "<br>"); //30
+      num1 /= num2; // num1 = num1 / num2
+      document.write("num1 /= num2: " + num1 + "<br>"); //10
+      num1 %= num2; // num1 = num1 % num2
+      document.write("num1 %= num2: " + num1 + "<br><br>"); //1
+    </script>
+
+    <!-- 증감 연산자 ++, -- -->
+    <script>
+      var num1 = 10;
+      var num2 = 20;
+
+      num1--; // 후행 연산
+      document.write("num1--: " + num1 + "<br>"); //9
+      num1++; // 후행 연산
+      document.write("num1++: " + num1 + "<br>"); //10
+
+      result = num2++; // 후행 연산
+      document.write("num2: " + result + "<br>"); //21
+      document.write("result: " + num2 + "<br>"); //20  현재20값 저장 후 1 증가되는 num2
+
+      result = ++num2; // 선행 연산
+      document.write("num2: " + result + "<br>"); //22
+      document.write("result: " + num2 + "<br><br>"); //22
+    </script>
+
+    <!-- 조건 연산자 -->
+    <script>
+      var n1 = prompt("정수 1을 입력하세요");
+      var n2 = prompt("정수 2를 입력하세요");
+      alert(typeof n1); // string
+      alert(typeof n2); // string
+
+      var max = n1 > n2 ? n1 : n2; // 조건식 ? 참일 때 값 : 거짓일 때 값
+      var min = n1 < n2 ? n1 : n2;
+
+      document.write("max: " + max + "<br>");
+      document.write("min: " + min + "<br><br>");
+    </script>
+
+    <!-- 비교 연산자 -->
+    <script>
+      var a = 10;
+      var b = 20;
+      var c = 10;
+      var f = "20";
+      var result;
+
+      result = a > b; // false
+      document.write("a > b: " + result + "<br>");
+      result = a < b; // true
+      document.write("a < b: " + result + "<br>");
+      result = b == f; // true
+      document.write("b == f: " + result + "<br><br>");
+      result = a != b; // true
+      document.write("a != b: " + result + "<br>");
+      result = b != f; // false
+      document.write("b != f: " + result + "<br>");
+
+      document.write("k" > "z"); // false
+      document.write("<br><br>");
+    </script>
+
+    <script>
+      var n1 = prompt("정수 1을 입력하세요");
+      var n2 = prompt("정수 2를 입력하세요");
+      alert(typeof n1); // string
+      alert(typeof n2); // string
+      var max, min;
+
+      if (n1 > n2) {
+        // 문자형 변수끼리 비교연산 가능(입력받으면 문자열 자료형태니까)
+        max = n1;
+        min = n2;
+      } else {
+        max = n2;
+        min = n1;
+      }
+
+      document.write("max: " + max + "<br>");
+      document.write("min: " + min + "<br><br>");
+    </script>
+
+    <!-- 논리 연산자 && || ! and or not임 -->
+    <script>
+      /*
+            5과목의 점수를 입력받아서 합격, 불합격을 판별하는 프로그램 작성
+            단, 과목당 과락은 40점이고, 평균 60점 이상을 받아야 합격
+
+            Number() : 문자를 숫자로 변환해주는 함수 (형변환함수)
+            */
+
+      // 합이 구해지지 않는 경우
+      var kor = prompt("국어 점수를 입력하세요");
+      var eng = prompt("영어 점수를 입력하세요");
+      var math = prompt("수학 점수를 입력하세요");
+      var sci = prompt("과학 점수를 입력하세요");
+      var hist = prompt("역사 점수를 입력하세요");
+      // var total = kor + eng + math + sci + hist;   // 합이 구해지지 않는다
+      // console.log(total);
+      var total = Number(kor) + Number(eng) + Number(math) + Number(sci) + Number(hist); // 형변환해야 합 구해짐
+
+      var kor = Number(prompt("국어 점수를 입력하세요"));
+      var eng = Number(prompt("영어 점수를 입력하세요"));
+      var math = Number(prompt("수학 점수를 입력하세요"));
+      var sci = Number(prompt("과학 점수를 입력하세요"));
+      var hist = Number(prompt("역사 점수를 입력하세요"));
+
+      var total = kor + eng + math + sci + hist; // 합 구하기 가능
+      console.log("total", total);
+      document.write("총점: " + total + "<br>");
+      var avg = total / 5; // 평균 구하기
+      console.log("avg", avg);
+      document.write("평균: " + avg + "<br>");
+
+      if (kor >= 40 && eng >= 40 && math >= 40 && sci >= 40 && hist >= 40 && avg >= 60) {
+        document.write("합격입니다.");
+      } else {
+        document.write("불합격입니다.");
+      }
+    </script>
+  </body>
+</html>

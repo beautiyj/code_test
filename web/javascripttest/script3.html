@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 내장함수
+      // alert( ): 메시지 박스 출력할 때 사용하는 함수
+      window.alert("경고장 출력");
+      alert("이름을 입력하세요");
+
+      // confirm( ): 확인과 취소 버튼이 있는 메시지 박스 출력할 때 사용하는 함수(중요한 결정을 물어볼 때)
+      // 사용자가 확인 버튼을 클릭하면 true, 취소 버튼을 클릭하면 false를 반환함
+      var result = confirm("삭제하시겠습니까?");
+      alert(result); // 확인 클릭하면 true, 취소 클릭하면 false 출력됨
+      if (result) {
+        alert("삭제되었습니다.");
+      } else {
+        alert("삭제가 취소되었습니다.");
+      }
+
+      // prompt( ): 사용자로부터 입력을 받을 때 사용하는 함수 인풋이나 스캐너같은 함수
+      // 입력된 값은 문자열로 반환됨 (숫자 입력해도 문자열로 반환됨)
+      var name = prompt("이름을 입력하세요"); // 사용자에게 이름 입력하라는 메시지 박스가 나타남
+      alert(name); // 사용자가 입력한 값 출력됨
+      document.write("당신의 이름은 " + name + "입니다<br>"); // 웹 페이지에 인사말 출력됨
+      document.write(typeof name + "<br>"); // 입력된 값의 자료형 확인, 항상 string으로 출력됨
+    </script>
+
+    <!-- prompt('메시지', '초기값'); 형태의 경우 -->
+    <script>
+      var age = prompt("나이를 입력하세요", "");
+      alert(typeof age);
+      if (age >= 20) {                      // 문자인데도 숫자처럼 비교됨!
+        alert("당신은 성인입니다");
+      } else {
+        alert("당신은 미성년자입니다");
+      }
+    </script>
+  </body>
+</html>

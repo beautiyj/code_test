@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!--
+    자바스크립트 제어문 - 자바와 동일함
+    조건문(=선택문): if문, switch ~ case문
+    반복문: for문, while문, do ~ while문
+    보조제어문: break문, continue문
+    -->
+
+    <script>
+        var min = prompt("당신의 하루 통화량은 몇분인가요?");
+        if (min>=60) {
+            alert("많이 사용하는 편이네요.");
+        }
+    </script>
+
+
+    <script>
+        var num = Number(prompt("당신이 좋아하는 숫자는?","0"));
+        alert(typeof num);
+
+        if (num%2==0) {
+            alert("당신이 좋아하는 숫자는 짝수");
+        } else {
+            alert("당신이 좋아하는 숫자는 홀수");
+        }
+    </script>
+
+
+    <script>
+        // 키보드로 1~100점 사이의 점수를 입력 받아서 학점을 출력하는 프로그램 작성
+        // A학점 : 90 ~ 100
+        // B학점 : 80 ~ 89
+        // C학점 : 70 ~ 79
+        // D학점 : 60 ~ 69
+        // F학점 : 60 미만
+
+        var s = prompt("0~100점 사이의 점수를 입력하세요");
+        if (s>=90) {
+            alert("A학점");
+        } else if (s>=80) {
+            alert("B학점");
+        } else if (s>=70) {
+            alert("C학점");
+        } else if (s>=60) {
+            alert("D학점");
+        } else {
+            alert("F학점");
+        }
+    </script>
+
+
+    <script>
+        // 키보드로 1~100점 사이의 점수를 입력 받아서 학점을 출력하는 프로그램 작성
+        // A학점 : 90 ~ 100
+        // B학점 : 80 ~ 89
+        // C학점 : 70 ~ 79
+        // D학점 : 60 ~ 69
+        // F학점 : 60 미만
+        // switch ~ case문으로 작성할 경우
+
+        var s = prompt("0~100점 사이의 점수를 입력하세요");
+        switch (parseInt(s/10)) {
+            case 10:
+            case 9:
+                alert("A학점");
+                break;
+            case 8:
+                alert("B학점");
+                break;
+            case 7:
+                alert("C학점");
+                break;
+            case 6:
+                alert("D학점");
+                break;
+            default:
+                alert("F학점");
+        }
+
+    </script>
+    
+</body>
+</html>
