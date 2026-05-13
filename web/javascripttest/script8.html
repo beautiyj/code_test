@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- 자바스크립트 함수 (함수는 헤드에, 호출은 바디에서 하는 게 일반적) -->
+
+    <script>
+        // check();        // 함수 호이스팅도 가능(같은 스크립트 안이면 함수 선언 먼저 해도 무방함)
+        function check() {
+            alert("함수 check() 호출 성공");
+        }
+        // check();
+
+        // 매개변수가 있는 함수 - confirm활용한 찬반 구하기
+        function ask(question) {
+            var result = confirm(question);
+            if (result) {
+            return "찬성";
+            } else {
+            return "반대";
+            }
+        }
+
+        // 매개변수가 있는 함수 - 최대 최소 구하기
+        function max(a, b) {
+            if (a > b) {
+            return a;
+            } else {
+            return b;
+            }
+        }
+        function min(a, b) {
+            if (a < b) {
+            return a;
+            } else {
+            return b;
+            }
+        }
+
+        // 클릭이벤트로 사칙연산 함수 호출
+        var n1 = Number(prompt("첫 번째 숫자를 입력하세요", ""));
+        var n2 = Number(prompt("두 번째 숫자를 입력하세요", ""));
+        function plus(a, b) {
+            alert(a + b);
+        }
+        function minus(a, b) {
+            alert(a - b);
+        }
+        function multiply(a, b) {
+            alert(a * b);
+        }
+        function divide(a, b) {
+            alert(a / b);
+        }
+    </script>
+  </head>
+
+  <body>
+    <script>
+      check(); // 일반적으로 함수 호출은 바디에서 진행(선언+호출 동시에도 가능하긴 함)
+      var result = ask("찬성한다면 확인 버튼을, 반대한다면 취소 버튼을 클릭하세요");
+      alert(result);
+    </script>
+
+    <input type="button" value="함수 호출" onclick="check()" />
+    <!-- 이벤트 방식으로 함수 호출도 가능함 -->
+
+    <script>
+      var a = parseInt(prompt("첫 번째 숫자를 입력하세요"));
+      var b = parseInt(prompt("두 번째 숫자를 입력하세요"));
+      var max = max(a, b);
+      var min = min(a, b);
+      document.write("최대값: " + max + "<br>");
+      document.write("최소값: " + min + "<br>");
+    </script>
+
+    <form>
+        <input type="button" value="더하기" onclick="plus(n1, n2)" />
+        <input type="button" value="빼기" onclick="minus(n1, n2)" />
+        <input type="button" value="곱하기" onclick="multiply(n1, n2)" />
+        <input type="button" value="나누기" onclick="divide(n1, n2)" />
+    </form>
+  </body>
+</html>

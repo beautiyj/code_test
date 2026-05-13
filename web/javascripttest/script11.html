@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<!-- 과제: 테이블 태그를 활용하려 구구단을 열 방향(세로)으로 연달아 붙여서 출력하는 프로그램 작성하기
+           단, 구구단이 나오는 칸은 하나다 & 구구단이 나오는 칸 끼리 나란히 붙어있게 출력하기 -->
+
+<body>
+    <script>
+        document.write("<table border='1' width='600'><tr>");
+
+        // 헤더
+        for (let dan = 2; dan <= 9; dan++) {
+            document.write("<th>" + dan + " 단</th>");
+        }
+        document.write("</tr><tr>");
+
+        // 내용
+        for (let dan = 2; dan <= 9; dan++) {
+            document.write("<td>");
+            for (let i = 1; i <= 9; i++) {
+                document.write(dan + "*" + i + "=" + (dan*i) + "<br>");
+            }
+            document.write("</td>");
+        }
+
+        document.write("</tr></table>");
+    </script>
+
+</body>
+</html>

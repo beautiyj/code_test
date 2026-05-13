@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+      <!-- 반복문: for문, while문, do ~ while문 -->
+
+    <script>
+        // while문으로 1~100까지의 정수 중 홀수, 짝수의 누적합계 구하기
+        var oddSum = 0, evenSum = 0, i = 1;         // i 반복문 변수 초기값 + 변수 초기화
+        while (i <= 100) {
+            if (i % 2 == 0) {
+                evenSum += i;
+            } else {
+                oddSum += i;
+            }
+            i++;
+        }
+        document.write("1~100까지의 홀수 누적합계: " + oddSum + "<br>");
+        document.write("1~100까지의 짝수 누적합계: " + evenSum + "<br>");
+    </script>
+
+    <script>
+        // 구구단 출력
+        let dan = 2;
+        while (dan <= 9) {
+            document.write("[" + dan + "단]<br>");
+            let i = 1;
+            while (i <= 9) {
+                document.write(dan + " x " + i + " = " + (dan*i) + "<br>");
+                i++;
+            }
+            dan++;
+            document.write("<hr>");
+        }
+    </script>
+
+
+    <script>
+        // do-while문으로 메시지 반복출력
+        var i = 1;
+        do {
+            document.write(i + "사랑해요<br>");
+            i++;
+        } while (i <= 10);
+    </script>
+
+
+    <script>
+        // do-while문으로 키보드 수식 받아서 연산 결과 출력하기
+        do {
+            var str = prompt("수식을 입력하세요(종료하려면 0을 입력)", "");
+            if (str == "0") {
+                break;
+            }
+            var result = eval(str); // eval() 함수: 문자열로 된 수식/표현식 계산 후 결과 반환해주는 함수
+            alert(str + " = " + result);
+        } while (true);
+
+
+        /*
+        var output = "";
+        do {
+            var str = prompt("수식을 입력하세요(종료하려면 0을 입력)", "");
+            if (str == "0") {
+                break;
+            }
+            var result = eval(str);
+            output += str + " = " + result + "<br>";
+        } while (true);
+        document.write(output);  // 0 입력 후 한번에 출력도 가능함
+        */
+    </script>
+
+
+</body>
+</html>
