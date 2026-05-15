@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>브라우저 내장 객체 location (자바스크립트에서 페이지 이동하는 방식), 새로고침</title>
+
+    <!-- location 객체 속성
+    자주쓰는중요한
+    href : 전체 URL 주소를 설정하거나 검색
+
+    알긴해야
+    hostname : 호스트 이름을 설정하거나 검색
+    pathname : 웹 문서의 경로를 설정하거나 검색
+    protocol : 프로토콜의 종류를 설정하거나 검색
+    search : 검색 엔진을 호출할 때 사용
+
+    잘안씀
+    host : 호스트 이름과 포트 번호를 설정하거나 검색
+    port : 포트 번호를 설정하거나 검색
+    hash : 표식 이름을 설정하거나 검색
+    
+    -->
+
+    <!-- location 객체 메소드 
+    자주쓰는중요한
+    reload() : 문서를 새로 고치거나 다시 읽게 해주는 메소드
+    replace("URL") : 현재 문서를 URL문서로 대체해 주는 메소드
+
+    잘안씀
+    toString() : location.href를 반환해 주는 메소드
+    assign() : location.href를 설정해 주는 메소드
+
+    -->
+
+    <script>
+      let hobby = prompt("당신의 취미를 입력하세요");
+      alert(hobby);
+      
+      function call() {
+        alert("호출");
+        location.reload(); // 새로고침
+      }
+
+    </script>
+  </head>
+  <body>
+    <script>
+      //   alert("페이지 이동");
+      //   // location.href="http://www.naver.com";    // 브라우저는 무조건 앞에 http 붙여줘야함
+      //   location.href = "script15.html"; // html로도 이동 가능함!
+
+      // //   // 3초 후 이동
+      // //   setTimeout(function () {
+      // //     location.href = "http://www.naver.com";
+      // //   }, 3000);
+
+      //     /*  html의 메타태그 이동은 조건부 이동이 불가능하지만
+      //     자바스크립트에선 조건부 이동도 가능함. 실제로 이 방식을 많이 씀
+
+
+      //     // 로그인 했을 때만 이동
+      //     if (로그인 == true) {
+      //         location.href = "main.html";    // 메인으로 이동
+      //     } else {
+      //         alert("로그인 하세요!");         // 이동 안 함
+      //     }
+
+
+      //     // 관리자만 이동
+      //     if (user == "admin") {
+      //         location.href = "admin.html";   // 관리자 페이지로 이동
+      //     } else {
+      //         alert("권한이 없습니다!");
+      //     }
+      //     */
+
+    </script>
+
+    <input type="button" value="호출" onClick="call()";>
+  </body>
+</html>

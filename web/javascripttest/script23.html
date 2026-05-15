@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>브라우저 내장 객체 window</title>
+
+    <!-- open 사용해서 상대경로 html 오픈하기(절대경로도 가능하지만 실제론 상대경로 위주로 쓰니까) -->
+    <script>
+      let w1, w2; // 전역변수
+      function winopen() {
+        // open("팝업창에 실행될 문서명","윈도우 이름","옵션");
+        // 윈도우이름을 중복으로 쓰면 새 창을 열지 않고 기존 창에 덮어씀
+        w1 = window.open("script15.html", "mywin03", "width=400, height=400, left=1000");
+        w2 = window.open("script16.html", "mywin04", "width=200, height=500, left=1500");
+      }
+      function winclose() {
+        w1.close();
+        w2.close();
+      }
+    </script>
+
+
+  </head>
+  <body>
+    <!-- open 사용해서 윈도우 브라우저 오픈하기 -->
+    <script>
+      //     open("팝업창에 실행될 문서명", "윈도우 이름", "옵션");. 옵션 따로 안주면 기본위치는 좌측 상단.
+      // 옵션을 똑같이 하면 창이 겹친 상태로 뜸 + 옵션에서 오,바텀은 없고 왼, 탑 둘만 있음
+      window.open("http://www.naver.com", "mywin01", "width=200, height=400, left=300, top=100");
+      window.open("http://www.nate.com", "mywin02", "width=200, height=400, left=500, top=100");
+    </script>
+
+
+<!-- ================================================================================= -->
+    
+    <!-- 함수 호출-->
+    <input type="button" value="창열기" onClick="winopen()" />
+    <input type="button" value="창닫기" onClick="winclose()" />
+
+  </body>
+</html>

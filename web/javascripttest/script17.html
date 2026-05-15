@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- 자바스크립트 주요 이벤트
+
+    Click Event
+        <input type="button" value="전송" onClick="check()">
+    
+    Focus Event, Blur Event
+        <input type="text" onFocus="id_focus()" onBlur="id_blur()">
+    
+    KeyUp Event
+        <input type="text" id="jumin1" onKeyup="move()">
+    
+    Submit Event
+        <form method="post" action="send.jsp" onSubmit="return check()">
+            <input type="submit" value="전송">
+        </form> 
+        
+    -->
+
+    <script>
+        // Click Event 클릭 이벤트 예제
+
+        function check() {
+            let id = document.getElementById("id");
+            let name = document.getElementById("name");
+            let myform = document.getElementById("myform");
+            
+            if (id.value == "") {
+            alert("ID를 입력 하세요.");
+            id.focus();                   // 해당 칸에 포커싱(커서)
+            return false;                 // check() 함수를 빠져 나옴.
+            }
+
+            if (name.value == "") {
+            alert("이름을 입력 하세요.");
+            name.focus();
+            return false;                 // check() 함수를 빠져 나옴.
+            }
+            myform.submit();              // send.jsp 페이지로 전송
+        }
+    </script>
+    
+  </head>
+  <body>
+    <!--          get 쓰면 링크에 id랑 name속성 다 보임 -->
+    <!-- 리액트에선 이벤트온클릭 대소문자 구분하는데 자바스크립트에선 대소문자 구분 안함 ONCLICK도 가능 -->
+    <form method="post" id="myform" action="send.jsp">
+        ID : <input type="text" id="id" name="id" /><br />
+        이름 : <input type="text" id="name" name="name" /><br />
+        <input type="button" value="전송" onClick="check()" />
+    </form>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>브라우저 내장 객체 document</title>
+
+    <!-- document 객체 속성
+        자주 쓰는 + 중요 속성(bgColor fgColor는 요즘 CSS로 대체하는 편이지만 알아두긴 해야함)
+        bgColor : 문서의 배경색을 설정하는 속성
+        fgColor : 글자색을 설정하는 속성
+        cookie : 쿠키 명령을 전달하는 속성
+        forms : 문서에 들어있는 이미지 입력양식을 참조하는 속성
+        images : 문서에 들어있는 이미지 객체를 참조하는 속성
+        
+        잘안씀
+        alinkColor : 누르고 있는 동안 링크 문자열의 색 설정하는 속성
+        anchors : HTML 문서안에 있는 form 태그에 관한 정보를 배열로 보유
+        applet : 자바 애플릿을 참조하는 속성
+        applets : 자바 애플릿의 모든 객체들을 참조하는 속성
+        linkColor : 문서에서 하이퍼 텍스트의 링크의 색상을 설정하는 속성
+        vlinkColor : 이전에 방문했던 링크를 나타내는 색상 속성
+    
+    -->
+    <script>
+      function red() {
+        document.bgColor = "FireBrick"; // 배경색 설정
+        document.fgColor = "BlanchedAlmond"; // 글자색 설정
+      }
+      function blue() {
+        document.bgColor = "CornflowerBlue"; // 배경색 설정
+        document.fgColor = "Lavender"; // 글자색 설정
+      }
+      function yellow() {
+        document.bgColor = "Khaki"; // 배경색 설정
+        document.fgColor = "Chocolate"; // 글자색 설정
+      }
+    </script>
+
+    <!-- document 객체 메소드
+        자주 쓰는 + 중요 속성
+        write() : HTML 태그 및 문자열을 출력해 주는 메소드
+        writeln() : 줄바꾸기를 포함한 HTML태그 및 문자열 출력해 주는 메소드
+        
+        알아두긴해야
+        open() : 문서의 데이터 정보를 나타내기 위한 메소드
+        close() : open() 메소드를 이용해 열었던 문서를 닫아주는 메소드
+
+        잘안씀
+        clear() : 문서의 모든 내용을 삭제시키는 메소드
+        selection() : 마우스로 드래그한 문자열을 반환하는 메소드
+    -->
+  </head>
+  <body>
+    <h3>document 객체 연습</h3>
+    <input type="button" value="배경 FireBrick 글씨 BlanchedAlmond" onClick="red()" />
+    <input type="button" value="배경 CornflowerBlue 글씨 Lavender" onClick="blue()" />
+    <input type="button" value="배경 Khaki 글씨 Chocolate" onClick="yellow()" />
+  </body>
+</html>

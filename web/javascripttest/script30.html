@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>입력양식 객체 form</title>
+
+    <!--
+    폼 객체에선 두루두루 거의 다 씀
+    form 객체 : <form> 태그가 HTML 문서에 삽입되어 있을 때 생성되는 객체
+    text 객체 : <input type="text">가 HTML 문서에 삽입되어 있을 때 생성되는 객체
+    password 객체 : <input type="password">가 HTML 문서에 있을 때 생성되는 객체
+    radio 객체 : <input type="radio">가 HTML 문서에 있을 때 생성되는 객체
+    checkbox 객체 : <input type="checkbox">가 HTML 문서에 있을 때 생성되는 객체
+    button 객체 : <input type="button">가 HTML 문서에 있을 때 생성되는 객체
+    submit 객체 : <input type="submit">가 HTML 문서에 있을 때 생성되는 객체
+    textarea 객체 : <textarea>가 HTML 문서에 있을 때 생성되는 객체
+    select 객체 : <select>가 HTML 문서에 있을 때 생성되는 객체
+        
+    얘네는 잘 안씀. 파일 업로드는 파일 업로드 특수 케이스에만 사용하고
+    리셋은 요즘 리셋 버튼 잘 안 만들고 JS로 직접 초기화해서 잘 안쓰는 편.
+    file upload 객체 : <input type="file">가 HTML 문서에 있을 때 생성되는 객체
+    reset 객체 : <input type="reset">가 HTML 문서에 있을 때 생성되는 객체
+
+
+    이벤트 처리 순서
+    1. 각 컴퍼넌트에 발생한 이벤트 종류를 파악한다.
+        Click, Focus, Blur, Load, MouseOver, MouseOut …
+    2. 각 이벤트명에다 on을 붙여서 이벤트 핸들러를 생성한다.
+        onClick,  onFocus, onBlur, onload ...
+    3. 이벤트 핸들러를 이용해서 함수를 호출한다.
+        <input type=button value="회원가입"  onClick="check()">
+    
+    form 폼 객체:  <form  name="myform"  method="post"   action="send.jsp">
+        form 객체의 속성
+            name : form객체의 name을 설정하는 속성
+            method : 값을 전달하는 방식을 설정하는 속성( get  or  post)
+            action : 값이 전달될 url 주소를 설정하는 속성
+
+        form 객체의 메소드
+            submit() : action값으로 설정된 url로 값을 전달하는 메소드
+                document.form_name.submit();
+            reset() : 입력 양식의 값을 초기화 시켜주는 메소드
+                document.form_name.reset();
+    -->
+
+    <!-- radio 라디오 객체 속성
+    checked : radio 버튼의 선택 유무를 판별하는 속성. radio버튼이 선택되면 true를 리턴한다.
+    length : radio 버튼의 개수를 구하는 속성
+    -->
+    <script>
+      function check() {
+        var r = document.getElementById("r");
+        var b = document.getElementById("b");
+        var y = document.getElementById("y");
+
+        if (r.checked) document.bgColor = r.value;
+        if (b.checked) document.bgColor = b.value;
+        if (y.checked) document.bgColor = y.value;
+      }
+
+      function check2() {
+        var s1 = document.getElementById("s1");
+        var s2 = document.getElementById("s2");
+        var s3 = document.getElementById("s3");
+        var s4 = document.getElementById("s4");
+
+        if (s1.checked) alert(s1.value + "를 좋아하는군요");
+        if (s2.checked) alert(s2.value + "를 좋아하는군요");
+        if (s3.checked) alert(s3.value + "를 좋아하는군요");
+        if (s4.checked) alert(s4.value + "를 좋아하는군요");
+      }
+    </script>
+  </head>
+  <body>
+    <form>
+      <input type="radio" id="r" name="color" value="IndianRed" onClick="check()" />빨강색
+      <input type="radio" id="b" name="color" value="MediumTurquoise" onClick="check()" />파랑색
+      <input type="radio" id="y" name="color" value="PaleGoldenRod" onClick="check()" />노랑색
+
+      <h1>좋아하는 운동은?</h1>
+      <input type="radio" id="s1" name="sports" value="축구" />축구
+      <input type="radio" id="s2" name="sports" value="야구" />야구
+      <input type="radio" id="s3" name="sports" value="농구" />농구
+      <input type="radio" id="s4" name="sports" value="배구" />배구 <br /><br />
+      <input type="button" value="확인" onClick="check2()" />
+    </form>
+  </body>
+</html>

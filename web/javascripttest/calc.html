@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계산기</title>
+    <script>
+        // 버튼 클릭 시 입력창에 값 추가
+        function input(val) {
+            document.getElementById("display").value += val;
+        }
+
+        // = 버튼 클릭 시 계산
+        function calc() {
+            let display = document.getElementById("display");
+            try {
+                display.value = eval(display.value);
+            } catch (e) {
+                alert("잘못된 수식입니다.");
+                display.value = "";
+            }
+        }
+
+        // sqrt 버튼 클릭 시 제곱근 계산
+        function sqrt() {
+            let display = document.getElementById("display");
+            display.value = Math.sqrt(display.value);
+        }
+
+        // Clear 버튼 클릭 시 초기화
+        function clear() {
+            document.getElementById("display").value = "";
+        }
+    </script>
+</head>
+<body>
+<form>
+    <table border="1">
+        <tr>
+            <!-- 입력창 -->
+            <td colspan="4">
+                <input type="text" id="display" size="26">
+            </td>
+        </tr>
+        <tr>
+            <td><input type="button" value="7" onClick="input('7')"></td>
+            <td><input type="button" value="8" onClick="input('8')"></td>
+            <td><input type="button" value="9" onClick="input('9')"></td>
+            <td><input type="button" value="/" onClick="input('/')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="4" onClick="input('4')"></td>
+            <td><input type="button" value="5" onClick="input('5')"></td>
+            <td><input type="button" value="6" onClick="input('6')"></td>
+            <td><input type="button" value="*" onClick="input('*')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="1" onClick="input('1')"></td>
+            <td><input type="button" value="2" onClick="input('2')"></td>
+            <td><input type="button" value="3" onClick="input('3')"></td>
+            <td><input type="button" value="-" onClick="input('-')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="0" onClick="input('0')"></td>
+            <td><input type="button" value="." onClick="input('.')"></td>
+            <td><input type="button" value="sqrt" onClick="sqrt()"></td>
+            <td><input type="button" value="+" onClick="input('+')"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="button" value="=" onClick="calc()"></td>
+            <td colspan="2"><input type="button" value="Clear" onClick="clear()"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
