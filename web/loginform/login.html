@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- 외부 자바스크립트 파일 불러오는 예제 -->
+
+    <!-- 로그인 양식 유효성 검사
+    순서대로
+    autofocus 오토포커스는 자동 포커스 기능,
+    maxlength 맥스랭스는 최대 길이 제한,
+    required는 html에서의 alert같은 역할. 대신 브라우저 기본 메시지라 커스텀 불가함
+    id 아이디속성은 각 양식 태그 구분용,
+    name 네임속성은 값 전달을 위한 변수 역할 
+    
+    -->
+    <script>
+      // 이 유효성검사 js코드를 login.js로 분리함
+      // function check() {
+      //     let id = document.getElementById("id");
+      //     if (id.value == "") {
+      //         alert("아이디를 입력하세요");
+      //         id.focus();
+      //         return false;
+      //     }
+      //     let passwd = document.getElementById("passwd");
+      //     if (passwd.value == "") {
+      //         alert("비밀번호를 입력하세요");
+      //         passwd.focus();
+      //         return false;
+      //     }
+      //     return true;
+      // }
+    </script>
+  </head>
+  <body>
+    <!-- vs코드에선 jsp불가라서 인텔리제이에 스마트탐캣 연동한 거 htmp+jsp 동시에 두고 실행하거나
+     이클립스에서 실행하거나(무료) -->
+    <form method="post" action="login.jsp">
+      <table border="1" width="350" align="center">
+        <caption>
+          로그인 양식
+        </caption>
+        <!-- required 빼고 JS로만 유효성 검사 -->
+        <tr>
+          <th><label for="id">ID</label></th>
+          <td>
+            <input type="text" size="10" autofocus maxlength="10" id="id" name="id" />
+          </td>
+        </tr>
+        <tr>
+          <!-- <th>PW</th>는 말그대로 글자만 보임, 라벨링은 글자 누르면 칸 이동됨 -->
+          <th><label for="password">PW</label></th>
+          <td>
+            <input type="password" placeholder="비밀번호 입력" class="hint-gray" id="passwd" name="passwd" />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center">
+            <input type="submit" value="로그인" onclick="return check();" />
+            <input type="reset" value="취소" />
+          </td>
+        </tr>
+      </table>
+    </form>
+
+    <!-- 외부 자바스크립트 파일 불러오기 -->
+    <script src="login.js"></script>
+  </body>
+</html>

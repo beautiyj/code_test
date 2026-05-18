@@ -26,8 +26,8 @@
     String hobbyList = (hobbies != null) ? String.join(", ", hobbies) : "취미 없음";
 
     // 4. 자기소개 (textarea 줄바꿈 처리)
-    String content = request.getParameter("content");
-    String formattedContent = (content != null) ? content.replace("\n", "<br>") : "";
+    String intro = request.getParameter("intro");
+    String formattedIntro = (intro != null) ? intro.replace("\n", "<br>") : "";
 
     // 5. 이미지 버튼 좌표 수신 (name="submitBtn"인 경우)
     // 클릭한 지점의 X, Y 좌표가 자동으로 .x, .y로 붙어서 넘어옵니다.
@@ -84,7 +84,7 @@
         </tr>
         <tr>
             <th>자기소개</th>
-            <td><%= formattedContent %></td>
+            <td><%= formattedIntro %></td>
         </tr>
     </table>
 
