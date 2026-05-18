@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>우편검색</title>
+	<!-- VS Code 내장 미리보기 = iframe 기반 → 팝업 띄우는 기능 자체가 제한됨
+		→ about:blank 뜨는 거(alt+b 브라우저로는 접속 가능하긴 함) 
+
+		https://postcode.map.kakao.com/guide
+		공식가이드 홈페이지 주소 바뀐 기준으로 진행하기
+		-->
+    <script src="https://t1.kakaocdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+      function openDaumPostcode() {
+        new daum.Postcode({
+          oncomplete: function (data) {
+            // 콜백함수
+            document.getElementById("join_zip").value = data.zonecode; //우편번호
+            document.getElementById("join_addr").value = data.address; //주소
+          },
+        }).open();
+      }
+    </script>
+  </head>
+  <body>
+    <form>
+      우편번호 :
+      <input type="text" size="5" maxlength="5" id="join_zip" />
+      <input type="button" value=" 우편검색" onClick="openDaumPostcode()" /><br />
+      주소 : <input type="text" size="60" id="join_addr" />
+    </form>
+  </body>
+</html>

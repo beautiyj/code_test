@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>주민등록번호 타당성 검사법 과제</title>
+
+    <!--
+    ■ 주민 등록 번호 타당성 검사법
+
+        주민 번호 각 자리에 해당 숫자를 곱한다.
+        111111 - 1111118
+
+        예) 9 5 0 1 0 1 - 1 2 3 4 5 6 7
+        체크용 번호
+        X) 2 3 4 5 6 7   8 9 2 3 4 5
+
+        (92)+(93)+(04)+(15)+(06)+(17)+(18)+(29)+(32)+(43)+
+        (54)+(65) = 151
+
+        1번의 연산 결과를 11로 나누어서 나머지를 구한다.
+
+        151 / 11 = 13 ........... 8
+        (몫)      (나머지)
+
+        11에서 나머지 값을 뺀후 “체크용 번호와”와 비교해서
+        같으면 올바른 주민번호, 그렇지 않으면 틀린 주민 번호
+
+        11 - 8 = 3   ≠   7
+        (연산결과)   (체크용 번호)
+
+        만약, 연산결과가 10이상이면, 다시 10으로 나누어서 그 나머지를 체크용 번호와 비교한다.
+        10 / 10 = 1 ......... 0   ≠   7
+        (몫)  (나머지)   (체크용 번호)
+        ∴ 위 주민번호는 틀린 주민 번호임.
+            
+        과제.
+
+        키보드를 통해서 주민번호를 입력 했을때 유효한 주민번호인지 판별하는 프로그램을 작성
+        (단, 유효하지 않은 주민번호의 경우에는 메시지를 출력)
+        주민번호 앞자리 6자리가 아니면 메시지 출력
+        주민번호 뒷자리 7자리가 아니면 메시지 출력
+        유효한 주민번호 아니면 메시지 출력
+
+    -->
+
+    <script>
+      function autoTab(current, next) {
+        if (current.value.length == current.maxLength) {
+          next.focus();
+        }
+      }
+
+      function check() {
+        let rrn1 = document.getElementById("rrn1");
+        let rrn2 = document.getElementById("rrn2");
+
+        if (rrn1.value.length !== 6) {
+          alert("주민번호 앞자리 6자리 오류");
+          rrn1.focus();
+          return false;
+        }
+
+        if (rrn2.value.length !== 7) {
+          alert("주민번호 뒷자리 7자리 오류");
+          rrn2.focus();
+          return false;
+        }
+
+        let rrnStr = (rrn1.value + rrn2.value).replace(/[^0-9]/g, "");
+
+        if (rrnStr.length !== 13) {
+          alert("숫자 13자리만 입력");
+          return false;
+        }
+
+        let total = 0;
+        let weights = [2, 3, 4, 5, 6, 7, 8, 9, 2, 3, 4, 5];
+
+        // 자바에서 쓴 것처럼 charAt()활용해서 숫자 변환 및 합산 그대로 가능
+        // 메모리 절약 용도(아스키코드값을 이용해서 문자 숫자->실제 정수 변환)
+        for (let i = 0; i < 12; i++) {
+          total += (rrnStr.charAt(i) - "0") * weights[i];
+        }
+
+        let checkNum = (11 - (total % 11)) % 10;
+
+        let lastDigit = rrnStr.charAt(12) - "0";
+
+        if (checkNum === lastDigit) {
+          alert("유효한 주민번호입니다.");
+          return true;
+        } else {
+          alert("유효한 주민번호가 아닙니다.");
+          return false;
+        }
+      }
+
+      //   function c() {
+
+      //     // 마지막번호는 체크용
+      //     let arr1 = new Array[8];
+      //     let arr2 = new Array[5];
+      //     let total = arr[0]*2 + arr[1]*3 + ... arr[7]*9 + arr[8]*2 +... arr[11]*5
+      //     let a = total % 11
+      //     11-a = arr[12] true
+      //     11-a != arr[12] false
+
+      //   }
+    </script>
+  </head>
+  <body>
+    <form>
+      <tr>
+        <th><label for="rrn1">주민번호</label></th>
+        <td>
+          <input type="text" id="rrn1" name="rrn1" size="6" maxlength="6" />
+          -
+          <input type="text" id="rrn2" name="rrn2" size="7" maxlength="7" />
+        </td>
+      </tr>
+
+      <input type="button" value="검사" onclick="return check();" />
+      <input type="reset" value="취소" />
+    </form>
+  </body>
+</html>
