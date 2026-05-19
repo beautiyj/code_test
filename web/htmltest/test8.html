@@ -58,7 +58,7 @@
         </tr>
 
         <tr>
-            <th><label for="email">email</label></th>
+            <th><label for="mailid">email</label></th>
             <td>
                 <input id="mailid" name="mailid" size="10" type="text" />
                 @
@@ -74,7 +74,7 @@
         </tr>
 
         <tr>
-            <th><label for="tel">전화번호</label></th>
+            <th><label for="tel1">전화번호</label></th>
             <td>
                 <input id="tel1" maxlength="4" name="tel1" size="4" type="text" />
                 -
@@ -85,9 +85,9 @@
         </tr>
 
         <tr>
-            <th><label for="phone">휴대폰</label></th>
+            <th><label for="phone1">휴대폰</label></th>
             <td>
-                <select id="phone1">
+                <select id="phone1" name="phone1">
                     <option selected value="010">010</option>
                     <option value="011">011</option>
                     <option value="016">016</option>
@@ -117,23 +117,23 @@
         </tr>
 
         <tr>
-            <th><label for="gender">성별</label></th>
+            <th><label for="male">성별</label></th>
             <td>
-                <input checked id="gender" name="gender" type="radio" /> 남자
-                <input checked id="gender" name="gender" type="radio" /> 여자
-                <input checked id="gender" name="gender" type="radio" />
+                <input checked id="male" name="gender" type="radio" value="남자" /> 남자
+                <input id="female" name="gender" type="radio" value="여자" /> 여자
+                <input id="genderNone" name="gender" type="radio" value="선택안함" />
                 checked 모든 항목에 넣으면 가장 마지막 선택지가 체크됨
             </td>
         </tr>
 
         <tr>
-            <th><label for="hobby">취미</label></th>
+            <th><label for="hobby1">취미</label></th>
             <td>
-                <input id="hobby" name="hobby" type="checkbox" />공부
-                <input id="hobby" name="hobby" type="checkbox" />등산
-                <input id="hobby" name="hobby" type="checkbox" />게임
-                <input id="hobby" name="hobby" type="checkbox" />낚시
-                <input id="hobby" name="hobby" type="checkbox" />쇼핑
+                <input id="hobby1" name="hobby" type="checkbox" value="공부" />공부
+                <input id="hobby2" name="hobby" type="checkbox" value="등산" />등산
+                <input id="hobby3" name="hobby" type="checkbox" value="게임" />게임
+                <input id="hobby4" name="hobby" type="checkbox" value="낚시" />낚시
+                <input id="hobby5" name="hobby" type="checkbox" value="쇼핑" />쇼핑
             </td>
         </tr>
 

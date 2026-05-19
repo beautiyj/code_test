@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table, td {
+        border: 1px solid gray;
+      }
+    </style>
+    <script>
+      async function fetchData() {
+        try {
+          const response = await fetch('item.json');
+          const data = await response.json();
+          const treeData = document.getElementById('treeData');
+          
+          treeData.innerHTML += '<tr><td>id</td><td>name</td>' + '<td>price</td><td>description</td></tr>';
+          
+          data.forEach(function(item) {
+            treeData.innerHTML +=
+              '<tr><td>' + item.id + '</td>' +
+              '<td>' + item.name + '</td>' +
+              '<td>' + item.price + '</td>' +
+              '<td>' + item.description + '</td></tr>';
+          });
+          
+        } catch (error) {
+          console.error('에러 발생:', error);
+        }
+      }
+      
+      fetchData();
+      // 함수 호출
+    </script>
+  </head>
+  <body>
+    <table id="treeData"></table>
+  </body>
+</html>

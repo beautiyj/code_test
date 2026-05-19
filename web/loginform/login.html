@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Document</title>
 
     <!-- 외부 자바스크립트 파일 불러오는 예제 -->
@@ -38,8 +38,8 @@
   <body>
     <!-- vs코드에선 jsp불가라서 인텔리제이에 스마트탐캣 연동한 거 htmp+jsp 동시에 두고 실행하거나
      이클립스에서 실행하거나(무료) -->
-    <form method="post" action="login.jsp">
-      <table border="1" width="350" align="center">
+    <form action="login.jsp" method="post">
+      <table align="center" border="1" width="350">
         <caption>
           로그인 양식
         </caption>
@@ -47,19 +47,19 @@
         <tr>
           <th><label for="id">ID</label></th>
           <td>
-            <input type="text" size="10" autofocus maxlength="10" id="id" name="id" />
+            <input autofocus id="id" maxlength="10" name="id" size="10" type="text" />
           </td>
         </tr>
         <tr>
           <!-- <th>PW</th>는 말그대로 글자만 보임, 라벨링은 글자 누르면 칸 이동됨 -->
-          <th><label for="password">PW</label></th>
+          <th><label for="passwd">PW</label></th>
           <td>
-            <input type="password" placeholder="비밀번호 입력" class="hint-gray" id="passwd" name="passwd" />
+            <input class="hint-gray" id="passwd" name="passwd" placeholder="비밀번호 입력" type="password" />
           </td>
         </tr>
         <tr>
-          <td colspan="2" align="center">
-            <input type="submit" value="로그인" onclick="return check();" />
+          <td align="center" colspan="2">
+            <input onclick="return check();" type="submit" value="로그인" />
             <input type="reset" value="취소" />
           </td>
         </tr>
