@@ -1,322 +1,322 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>회원가입 폼</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>회원가입 폼</title>
 
-    <script src="https://t1.kakaocdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script>
-      function openDaumPostcode() {
-        new daum.Postcode({
-          oncomplete: function (data) {
-            // 콜백함수
-            document.getElementById("post").value = data.zonecode;
-            document.getElementById("address").value = data.address;
-          },
-        }).open();
+  <script src="https://t1.kakaocdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  <script>
+    function openDaumPostcode() {
+      new daum.Postcode({
+        oncomplete: function (data) {
+          // 콜백함수
+          document.getElementById("post").value = data.zonecode;
+          document.getElementById("address").value = data.address;
+        },
+      }).open();
+    }
+
+    function idCheck() {
+      let id = document.getElementById("id");
+      if (id.value == "") {
+        alert("아이디를 입력하세요");
+        id.focus();
+        return false;
+      } else {
+        let ref = "idCheck.jsp?ip=" + id.value;
+        window.open(ref, "idCheck", "width=300, height=200");
       }
+    }
 
-      function idCheck() {
-        let id = document.getElementById("id");
-        if (id.value == "") {
-          alert("아이디를 입력하세요");
-          id.focus();
-          return false;
-        } else {
-          let ref = "idCheck.jsp?ip=" + id.value;
-          window.open(ref, "idCheck", "width=300, height=200");
-        }
+    function autoTab(current, next) {
+      if (current.value.length == current.maxLength) {
+        next.focus();
       }
-
-      function autoTab(current, next) {
-        if (current.value.length == current.maxLength) {
-          next.focus();
-        }
+    }
+    /* 이렇게 하고 키업 적용도 가능하나 재사용성을 위해 오토랩()으로 적용함./
+    function move() {
+      let rrn1 = document.getElementById("rrn1");
+      let rrn2 = document.getElementById("rrn2");
+      if (rrn1.value.length == 6) {
+          rrn1.focus()
       }
-      /* 이렇게 하고 키업 적용도 가능하나 재사용성을 위해 오토랩()으로 적용함./
-      function move() {
-        let rrn1 = document.getElementById("rrn1");
-        let rrn2 = document.getElementById("rrn2");
-        if (rrn1.value.length == 6) {
-            rrn1.focus()
-        }
-      }
-      */
+    }
+    */
 
-      function domain1() {
-        let domain1 = document.getElementById("domain");
-        let email = document.getElementById("email");
+    function domain1() {
+      let domain1 = document.getElementById("domain");
+      let email = document.getElementById("email");
 
-        if (email.value == "") {        // 직접입력
-            domain.value = "";
-            domain.focus();
-            return false
-        } else {                        // 도메인선택
-            domain.value = email.value;
-        }
-
-      }
-
-      function check() {
-        let id = document.getElementById("id");
-        let password = document.getElementById("password");
-        let name = document.getElementById("name");
-        let rrn1 = document.getElementById("rrn1");
-        let rrn2 = document.getElementById("rrn2");
-        let mailid = document.getElementById("mailid");
-        let domain = document.getElementById("domain");
-        let phone2 = document.getElementById("phone2");
-        let phone3 = document.getElementById("phone3");
-        let address = document.getElementById("address");
-        let content = document.getElementById("content");
-
-        if (id.value == "") {
-          alert("아이디를 입력하세요");
-          id.focus();
-          return false;
-        }
-
-        if (password.value == "") {
-          alert("비밀번호를 입력하세요");
-          password.focus();
-          return false;
-        }
-        if (password.value.length < 2 || password.value.length > 8) {
-          alert("비밀번호는 2~8자 이내로 입력하세요");
-          password.value = "";
-          password.focus();
-          return false;
-        }
-
-        if (name.value == "") {
-          alert("성명을 입력하세요");
-          name.focus();
-          return false;
-        }
-
-        if (rrn1.value == "") {
-          alert("주민번호 앞자리를 입력하세요");
-          rrn1.focus();
-          return false;
-        }
-        if (rrn2.value == "") {
-          alert("주민번호 뒷자리를 입력하세요");
-          rrn2.focus();
-          return false;
-        }
-
-        if (mailid.value == "") {
-          alert("이메일 아이디를 입력하세요");
-          mailid.focus();
-          return false;
-        }
-        if (domain.value == "") {
-          alert("이메일 도메인을 입력하세요");
+      if (email.value == "") {        // 직접입력
+          domain.value = "";
           domain.focus();
-          return false;
-        }
-
-        if (phone2.value == "") {
-          alert("휴대폰 번호를 입력하세요");
-          phone2.focus();
-          return false;
-        }
-        if (phone3.value == "") {
-          alert("휴대폰 번호를 입력하세요");
-          phone3.focus();
-          return false;
-        }
-
-        if (address.value == "") {
-          alert("주소를 입력하세요");
-          address.focus();
-          return false;
-        }
-
-        if (content.value == "") {
-          alert("자기소개를 입력하세요");
-          content.focus();
-          return false;
-        }
-        if (content.value.length > 100) {
-          alert("자기소개는 100자 이내로 입력하세요");
-          content.focus();
-          return false;
-        }
-
-        return true;
+          return false
+      } else {                        // 도메인선택
+          domain.value = email.value;
       }
-    </script>
-  </head>
-  <body>
-    <form method="post" action="member.jsp">
-      <table border="1" width="600" align="center">
-        <caption>
-          회원가입 폼
-        </caption>
 
-        <tr>
-          <th><label for="id">ID</label></th>
-          <td>
-            <input type="text" id="id" name="id" size="10" autofocus />
-            <input type="button" value="ID 중복검사" onclick="idCheck()" />
-          </td>
-        </tr>
+    }
 
-        <tr>
-          <th><label for="passwoad">비밀번호</label></th>
-          <td>
-            <input type="password" id="password" name="password" />
-          </td>
-        </tr>
+    function check() {
+      let id = document.getElementById("id");
+      let password = document.getElementById("password");
+      let name = document.getElementById("name");
+      let rrn1 = document.getElementById("rrn1");
+      let rrn2 = document.getElementById("rrn2");
+      let mailid = document.getElementById("mailid");
+      let domain = document.getElementById("domain");
+      let phone2 = document.getElementById("phone2");
+      let phone3 = document.getElementById("phone3");
+      let address = document.getElementById("address");
+      let content = document.getElementById("content");
 
-        <tr>
-          <th><label for="name">성명</label></th>
-          <td>
-            <input type="text" id="name" name="name" />
-          </td>
-        </tr>
+      if (id.value == "") {
+        alert("아이디를 입력하세요");
+        id.focus();
+        return false;
+      }
 
-        <tr>
-          <th><label for="rrn1">주민번호</label></th>
-          <td>
-            <input
-              type="text"
-              id="rrn1"
-              name="rrn1"
-              size="6"
-              maxlength="6"
-              oninput="autoTab(this, document.getElementById('rrn2'))"
-            />
-            -
-            <input type="password" id="rrn2" name="rrn2" size="7" maxlength="7" />
-          </td>
-        </tr>
+      if (password.value == "") {
+        alert("비밀번호를 입력하세요");
+        password.focus();
+        return false;
+      }
+      if (password.value.length < 2 || password.value.length > 8) {
+        alert("비밀번호는 2~8자 이내로 입력하세요");
+        password.value = "";
+        password.focus();
+        return false;
+      }
 
-        <tr>
-          <th><label for="email">email</label></th>
-          <td>
-            <input type="text" id="mailid" name="mailid" size="10" />
-            @
-            <input type="text" id="domain" name="domain" size="15" />
-            <select id="email" onchange="domain1()">
-              <option value="">직접입력</option>
-              <option value="naver.com">네이버</option>
-              <option value="daum.net">다음</option>
-              <option value="gmail.com">구글</option>
-              <option value="nate.com">네이트</option>
-            </select>
-          </td>
-        </tr>
+      if (name.value == "") {
+        alert("성명을 입력하세요");
+        name.focus();
+        return false;
+      }
 
-        <tr>
-          <th><label for="tel">전화번호</label></th>
-          <td>
-            <input
-              type="text"
-              id="tel1"
-              name="tel1"
-              size="4"
-              maxlength="4"
-              oninput="autoTab(this, document.getElementById('tel2'))"
-            />
-            -
-            <input
-              type="text"
-              id="tel2"
-              name="tel2"
-              size="4"
-              maxlength="4"
-              oninput="autoTab(this, document.getElementById('tel3'))"
-            />
-            -
-            <input type="text" id="tel3" name="tel3" size="4" maxlength="4" />
-          </td>
-        </tr>
+      if (rrn1.value == "") {
+        alert("주민번호 앞자리를 입력하세요");
+        rrn1.focus();
+        return false;
+      }
+      if (rrn2.value == "") {
+        alert("주민번호 뒷자리를 입력하세요");
+        rrn2.focus();
+        return false;
+      }
 
-        <tr>
-          <th><label for="phone">휴대폰</label></th>
-          <td>
-            <select id="phone1" name="phone1">
-              <option value="">번호 선택</option>
-              <option value="010">010</option>
-              <option value="011">011</option>
-              <option value="016">016</option>
-              <option value="018">018</option>
-              <option value="019">019</option>
-            </select>
-            -
-            <input
-              type="text"
-              id="phone2"
-              name="phone2"
-              size="4"
-              maxlength="4"
-              oninput="autoTab(this, document.getElementById('phone3'))"
-            />
-            -
-            <input type="text" id="phone3" name="phone3" size="4" maxlength="4" />
-          </td>
-        </tr>
+      if (mailid.value == "") {
+        alert("이메일 아이디를 입력하세요");
+        mailid.focus();
+        return false;
+      }
+      if (domain.value == "") {
+        alert("이메일 도메인을 입력하세요");
+        domain.focus();
+        return false;
+      }
 
-        <tr>
-          <th><label for="post">우편번호</label></th>
-          <td>
-            <input type="number" id="post" name="post" size="5" maxlength="5" />
-            <input type="button" value="우편검색" onclick="openDaumPostcode()" />
-          </td>
-        </tr>
+      if (phone2.value == "") {
+        alert("휴대폰 번호를 입력하세요");
+        phone2.focus();
+        return false;
+      }
+      if (phone3.value == "") {
+        alert("휴대폰 번호를 입력하세요");
+        phone3.focus();
+        return false;
+      }
 
-        <tr>
-          <th><label for="address">주소</label></th>
-          <td>
-            <input type="text" id="address" name="address" size="70" />
-          </td>
-        </tr>
+      if (address.value == "") {
+        alert("주소를 입력하세요");
+        address.focus();
+        return false;
+      }
 
-        <tr>
-          <th><label for="gender">성별</label></th>
-          <td>
-            <input type="radio" id="gender" name="gender" value="남자" /> 남자
-            <input type="radio" id="gender" name="gender" value="여자" /> 여자
-            <input type="radio" id="gender" name="gender" value="선택안함" /> 선택안함
-          </td>
-        </tr>
+      if (content.value == "") {
+        alert("자기소개를 입력하세요");
+        content.focus();
+        return false;
+      }
+      if (content.value.length > 100) {
+        alert("자기소개는 100자 이내로 입력하세요");
+        content.focus();
+        return false;
+      }
 
-        <tr>
-          <th><label for="hobby">취미</label></th>
-          <td>
-            <input type="checkbox" id="hobby" name="hobby" value="공부" />공부
-            <input type="checkbox" id="hobby" name="hobby" value="등산" />등산
-            <input type="checkbox" id="hobby" name="hobby" value="게임" />게임
-            <input type="checkbox" id="hobby" name="hobby" value="낚시" />낚시
-            <input type="checkbox" id="hobby" name="hobby" value="쇼핑" />쇼핑
-          </td>
-        </tr>
+      return true;
+    }
+  </script>
+</head>
+<body>
+<form action="member.jsp" method="post">
+  <table align="center" border="1" width="600">
+    <caption>
+      회원가입 폼
+    </caption>
 
-        <tr>
-          <th><label for="content">자기소개</label></th>
-          <td>
+    <tr>
+      <th><label for="id">ID</label></th>
+      <td>
+        <input autofocus id="id" name="id" size="10" type="text" />
+        <input onclick="idCheck()" type="button" value="ID 중복검사" />
+      </td>
+    </tr>
+
+    <tr>
+      <th><label for="password">비밀번호</label></th>
+      <td>
+        <input id="password" name="password" type="password" />
+      </td>
+    </tr>
+
+    <tr>
+      <th><label for="name">성명</label></th>
+      <td>
+        <input id="name" name="name" type="text" />
+      </td>
+    </tr>
+
+    <tr>
+      <th><label for="rrn1">주민번호</label></th>
+      <td>
+        <input
+                id="rrn1"
+                maxlength="6"
+                name="rrn1"
+                oninput="autoTab(this, document.getElementById('rrn2'))"
+                size="6"
+                type="text"
+        />
+        -
+        <input id="rrn2" maxlength="7" name="rrn2" size="7" type="password" />
+      </td>
+    </tr>
+
+    <tr>
+      <th><label for="email">email</label></th>
+      <td>
+        <input id="mailid" name="mailid" size="10" type="text" />
+        @
+        <input id="domain" name="domain" size="15" type="text" />
+        <select id="email" onchange="domain1()">
+          <option value="">직접입력</option>
+          <option value="naver.com">네이버</option>
+          <option value="daum.net">다음</option>
+          <option value="gmail.com">구글</option>
+          <option value="nate.com">네이트</option>
+        </select>
+      </td>
+    </tr>
+
+    <tr>
+      <th><label for="tel">전화번호</label></th>
+      <td>
+        <input
+                id="tel1"
+                maxlength="4"
+                name="tel1"
+                oninput="autoTab(this, document.getElementById('tel2'))"
+                size="4"
+                type="text"
+        />
+        -
+        <input
+                id="tel2"
+                maxlength="4"
+                name="tel2"
+                oninput="autoTab(this, document.getElementById('tel3'))"
+                size="4"
+                type="text"
+        />
+        -
+        <input id="tel3" maxlength="4" name="tel3" size="4" type="text" />
+      </td>
+    </tr>
+
+    <tr>
+      <th><label for="phone">휴대폰</label></th>
+      <td>
+        <select id="phone1" name="phone1">
+          <option value="">번호 선택</option>
+          <option value="010">010</option>
+          <option value="011">011</option>
+          <option value="016">016</option>
+          <option value="018">018</option>
+          <option value="019">019</option>
+        </select>
+        -
+        <input
+                id="phone2"
+                maxlength="4"
+                name="phone2"
+                oninput="autoTab(this, document.getElementById('phone3'))"
+                size="4"
+                type="text"
+        />
+        -
+        <input id="phone3" maxlength="4" name="phone3" size="4" type="text" />
+      </td>
+    </tr>
+
+    <tr>
+      <th><label for="post">우편번호</label></th>
+      <td>
+        <input id="post" maxlength="5" name="post" size="5" type="number" />
+        <input onclick="openDaumPostcode()" type="button" value="우편검색" />
+      </td>
+    </tr>
+
+    <tr>
+      <th><label for="address">주소</label></th>
+      <td>
+        <input id="address" name="address" size="70" type="text" />
+      </td>
+    </tr>
+
+    <tr>
+      <th><label for="gender">성별</label></th>
+      <td>
+        <input id="gender" name="gender" type="radio" value="남자" /> 남자
+        <input id="gender" name="gender" type="radio" value="여자" /> 여자
+        <input id="gender" name="gender" type="radio" value="선택안함" /> 선택안함
+      </td>
+    </tr>
+
+    <tr>
+      <th><label for="hobby">취미</label></th>
+      <td>
+        <input id="hobby" name="hobby" type="checkbox" value="공부" />공부
+        <input id="hobby" name="hobby" type="checkbox" value="등산" />등산
+        <input id="hobby" name="hobby" type="checkbox" value="게임" />게임
+        <input id="hobby" name="hobby" type="checkbox" value="낚시" />낚시
+        <input id="hobby" name="hobby" type="checkbox" value="쇼핑" />쇼핑
+      </td>
+    </tr>
+
+    <tr>
+      <th><label for="content">자기소개</label></th>
+      <td>
             <textarea
-              id="content"
-              name="content"
-              cols="50"
-              rows="10"
-              maxlength="100"
-              class="hint-gray"
-              placeholder="자기소개를 100자 이내로 입력하세요."
+                    class="hint-gray"
+                    cols="50"
+                    id="content"
+                    maxlength="100"
+                    name="content"
+                    placeholder="자기소개를 100자 이내로 입력하세요."
+                    rows="10"
             ></textarea>
-          </td>
-        </tr>
+      </td>
+    </tr>
 
-        <tr>
-          <td colspan="2" align="center">
-            <input type="submit" value="회원가입" onclick="return check();" />
-            <input type="reset" value="취소" />
-          </td>
-        </tr>
-      </table>
-    </form>
-  </body>
+    <tr>
+      <td align="center" colspan="2">
+        <input onclick="return check();" type="submit" value="회원가입" />
+        <input type="reset" value="취소" />
+      </td>
+    </tr>
+  </table>
+</form>
+</body>
 </html>
