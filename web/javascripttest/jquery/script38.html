@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+    <style>
+      a {
+        text-decoration: none;
+      }
+
+      /* CSS에서 각 클래스명(name)별로 컬러를 따로 지정 */
+      a.naver {
+        color: #88ce70;
+      }
+      a.kakao {
+        color: #e2d982;
+      }
+      a.google {
+        color: #78a2e6;
+      }
+      a.apple {
+        color: #b3adcc;
+      }
+
+      /* 호버 컬러 */
+      a:hover {
+        color: aqua;
+      }
+
+      /* a 태그 내부의 h1 태그들이 한 줄 전체를 차지하지 못하도록 막기 */
+      a h1 {
+        display: inline-block;
+      }
+    </style>
+
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+      $(document).ready(function () {
+        var array = [
+          {name: "naver", link: "http://www.naver.com"},
+          {name: "kakao", link: "http://www.kakao.com"},
+          {name: "google", link: "http://www.google.com"},
+          {name: "apple", link: "http://www.apple.com"},
+        ];
+
+        var output = "";
+
+        $.each(array, function (index, item) {
+          output += '<a href="' + item.link + '" class="' + item.name + '">';
+          output += "    <h1>" + item.name + " </h1>";
+          output += " </a>";
+        });
+
+        $("div").html(output); // output 변수의 값을 div태그 사이에 출력함
+      });
+    </script>
+  </head>
+  <body>
+    <div></div>
+  </body>
+</html>

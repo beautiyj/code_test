@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+      $(function () {
+        // 도메인 선택
+        $("#email").change(function () {
+          if ($("#email").val() == "") {
+            // '직접입력' 선택
+            $("#domain").val("").focus(); // 사용자가 입력한 데이터를 넣음
+            //  $("#domain").attr("readonly", false);     // 읽기 전용해제
+            $("#domain").removeAttr("readonly"); // 읽기 전용해제
+          } else {
+            // '도메인' 선택
+            $("#domain").val($("#email").val()); // ID가 이메일인 셀렉트에서 밸루 값 중 선택된 걸 넣음
+            //  $("#domain").attr("readonly","readonly"); //읽기 전용
+            $("#domain").attr("readonly", true); //읽기 전용
+          }
+        });
+      });
+
+      // submit 제출 이벤트 - 폼을 통해 전송하니까 폼 하나에 제출은 하나만 있어야함
+      $(function () {
+        $("form").submit(function () {
+          if ($("#name").val() == "") {
+            alert("이름을 입력 하세요.");
+            $("#name").focus();
+            return false;
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    change 이벤트 예제
+    <br>
+    E-Mail: <input type="text" size="10" name="mailid" id="mailid" />@
+    <input type="text" size="15" name="domain" id="domain" />
+    <select id="email">
+      <option value="">직접입력</option>
+      <option value="naver.com">네이버</option>
+      <option value="daum.net">다음</option>
+      <option value="nate.com">네이트</option>
+      <option value="gmail.com">구글</option>
+    </select>
+
+    <br><br>
+
+    submit 이벤트 예제
+    <br>
+    <form method="post" action="send.jsp">
+      이름 : <input type="text" size="20" name="name" id="name" />
+      E-Mail : <input type="text" size="20" name="email" id="email" />
+      
+      <input type="submit" value="전송" id="sub" />
+    </form>
+  </body>
+</html>

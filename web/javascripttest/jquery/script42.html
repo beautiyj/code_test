@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+      // mouseover 이미지에 마우스를 대면 사진+배경색 변경됨
+      // mouseout 마우스오버 후 이미지에서 마우스를 떼면 사진+배경색 변경됨
+      $(function () {
+        $("img")
+          .mouseover(function () {
+            $(this).attr("src", "img/src/amélie.jpeg").attr("title", "amélie");
+            $("body").css("background", "BurlyWood");
+          })
+          .mouseout(function () {
+            $(this).attr("src", "img/src/moodindigo.jpeg").attr("title", "mood indigo");
+            $("body").css("background", "MistyRose");
+          });
+      });
+
+      // 키업 이벤트
+      $(function(){
+            // 주민번호 뒷자리로 포커스 이동
+            $("#jumin1").keyup(function(){
+                if($("#jumin1").val().length == 6)
+                    $("#jumin2").focus();
+            });
+        });
+
+    </script>
+  </head>
+  <body>
+    <img src="img/src/toy.jpeg" title="토이스토리" width="250" />
+
+    주민번호 : 
+    <input type="text" size="6" maxlength="6" name="jumin1" id="jumin1">-
+    <input type="text" size="7" maxlength="7" name="jumin2" id="jumin2">
+  </body>
+</html>
