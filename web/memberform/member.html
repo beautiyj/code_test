@@ -1,405 +1,411 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>회원가입 폼</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입 폼</title>
 
-  <script src="https://t1.kakaocdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-  <script>
-    // 엘리멘트(요소)는 id속성부분을, name은 서버전송 - 데이터베이스기준 데이블 컬럼명st
-    // tel1 tel2 처럼 여러 개로 id속성을 나눈 경우, label부분은 보통 첫 번째 id속성으로 넣어주는 게 일반적.
+    <script src="https://t1.kakaocdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+      // 엘리멘트(요소)는 id속성부분을, name은 서버전송 - 데이터베이스기준 데이블 컬럼명st
+      // tel1 tel2 처럼 여러 개로 id속성을 나눈 경우, label부분은 보통 첫 번째 id속성으로 넣어주는 게 일반적.
 
-    // 1. 우편번호 체크
-    function openDaumPostcode() {
-      new daum.Postcode({
-        oncomplete: function (data) {
-          // 콜백함수
-          document.getElementById("post").value = data.zonecode;
-          document.getElementById("address").value = data.address;
-        },
-      }).open();
-    }
-  </script>
+      // 1. 우편번호 체크
+      function openDaumPostcode() {
+        new daum.Postcode({
+          oncomplete: function (data) {
+            // 콜백함수
+            document.getElementById("post").value = data.zonecode;
+            document.getElementById("address").value = data.address;
+          },
+        }).open();
+      }
+    </script>
 
-  <script>
-    //   let isIdChecked = false; // 중복검사 확인 후 회원가입 가능하도록 변수 설정
-    //   // 2. 아이디 중복검사 넣기(jsp없어서 코드만 작성해보기)
-    //   function idCheck() {
-    //     let id = document.getElementById("id");
-    //     if (id.value == "") {
-    //       alert("아이디를 입력하세요");
-    //       id.focus();
-    //       return false;
-    //     }
-    //     // 빈칸 아니면 바로 팝업
-    //     let ref = "idCheck.jsp?ip=" + id.value;
-    //     window.open(ref, "idCheck", "width=300, height=200");
+    <!-- 제이쿼리 형식 -->
+    <!-- <script src="https://code.jquery.com/jquery-latest.js"></script> -->
 
-    //     isIdChecked = true; // 전역변수 변경
-    //   }
+    <script src="member.js"></script>
 
-    //   // 3. 자릿수 채워지면 자동으로 다음 칸 넘어가기 - 재사용가능한 코드
-    //   function autoTab(current, next) {
-    //     if (current.value.length == current.maxLength) {
-    //       next.focus();
-    //     }
-    //   }
-    //   /* 이렇게 하고 키업 적용도 가능하나 재사용성을 위해 오토랩()으로 적용함./
-    // function move() {
-    //   let rrn1 = document.getElementById("rrn1");
-    //   let rrn2 = document.getElementById("rrn2");
-    //   if (rrn1.value.length == 6) {
-    //       rrn1.focus()
-    //   }
-    // }
-    // */
+    <script>
+      //   let isIdChecked = false; // 중복검사 확인 후 회원가입 가능하도록 변수 설정
+      //   // 2. 아이디 중복검사 넣기(jsp없어서 코드만 작성해보기)
+      //   function idCheck() {
+      //     let id = document.getElementById("id");
+      //     if (id.value == "") {
+      //       alert("아이디를 입력하세요");
+      //       id.focus();
+      //       return false;
+      //     }
+      //     // 빈칸 아니면 바로 팝업
+      //     let ref = "idCheck.jsp?ip=" + id.value;
+      //     window.open(ref, "idCheck", "width=300, height=200");
 
-    //   // 4. 도메인 채우기
-    //   function domain1() {
-    //     let domain1 = document.getElementById("domain");
-    //     let email = document.getElementById("email");
+      //     isIdChecked = true; // 전역변수 변경
+      //   }
 
-    //     if (email.value == "") {
-    //       // 직접입력
-    //       domain1.value = "";
-    //       domain1.focus();
-    //       domain1.readOnly = false;
-    //       return false;
-    //     } else {
-    //       // 도메인선택
-    //       domain1.value = email.value;
-    //       domain1.readOnly = true; // 읽기 전용 설정
-    //     }
-    //   }
+      //   // 3. 자릿수 채워지면 자동으로 다음 칸 넘어가기 - 재사용가능한 코드
+      //   function autoTab(current, next) {
+      //     if (current.value.length == current.maxLength) {
+      //       next.focus();
+      //     }
+      //   }
+      //   /* 이렇게 하고 키업 적용도 가능하나 재사용성을 위해 오토랩()으로 적용함./
+      // function move() {
+      //   let rrn1 = document.getElementById("rrn1");
+      //   let rrn2 = document.getElementById("rrn2");
+      //   if (rrn1.value.length == 6) {
+      //       rrn1.focus()
+      //   }
+      // }
+      // */
 
-    //   // 5. 유효성 검사
-    //   function check() {
-    //     let id = document.getElementById("id");
-    //     let password = document.getElementById("password");
-    //     let name = document.getElementById("name");
-    //     let rrn1 = document.getElementById("rrn1");
-    //     let rrn2 = document.getElementById("rrn2");
-    //     let mailid = document.getElementById("mailid");
-    //     let domain = document.getElementById("domain");
-    //     let phone1 = document.getElementById("phone1");
-    //     let phone2 = document.getElementById("phone2");
-    //     let phone3 = document.getElementById("phone3");
-    //     let address = document.getElementById("address");
-    //     // radio, checkbox 라디오 체크박스 타입 유효성검사는 querySelector(':checked') == null로!
-    //     // id가 여러개라 getElementById 못씀. name="gender" 로 묶여있으니까 name으로 찾는 것
-    //     let genderChecked = document.querySelector('input[name="gender"]:checked');
-    //     // 취미는 여러 개 체크하는 걸로 설정할 거라 querySelectorAll로 지정
-    //     let hobbyChecked = document.querySelectorAll('input[name="hobby"]:checked');
-    //     let content = document.getElementById("content");
+      //   // 4. 도메인 채우기
+      //   function domain1() {
+      //     let domain1 = document.getElementById("domain");
+      //     let email = document.getElementById("email");
 
-    //     if (id.value == "") {
-    //       alert("아이디를 입력하세요");
-    //       id.focus();
-    //       return false;
-    //     }
-    //     if (!isIdChecked) {
-    //       alert("아이디 중복검사를 해주세요");
-    //       return false;
-    //     }
+      //     if (email.value == "") {
+      //       // 직접입력
+      //       domain.value = "";
+      //       domain.focus();
+      //       domain.readOnly = false;
+      //       return false;
+      //     } else {
+      //       // 도메인선택
+      //       domain.value = email.value;
+      //       domain.readOnly = true; // 읽기 전용 설정
+      //     }
+      //   }
 
-    //     if (password.value == "") {
-    //       alert("비밀번호를 입력하세요");
-    //       password.focus();
-    //       return false;
-    //     }
-    //     if (password.value.length < 2 || password.value.length > 8) {
-    //       alert("비밀번호는 2~8자 이내로 입력하세요");
-    //       password.value = "";
-    //       password.focus();
-    //       return false;
-    //     }
+      //   // 5. 유효성 검사
+      //   function check() {
+      //     let id = document.getElementById("id");
+      //     let password = document.getElementById("password");
+      //     let name = document.getElementById("name");
+      //     let rrn1 = document.getElementById("rrn1");
+      //     let rrn2 = document.getElementById("rrn2");
+      //     let mailid = document.getElementById("mailid");
+      //     let domain = document.getElementById("domain");
+      //     let phone1 = document.getElementById("phone1");
+      //     let phone2 = document.getElementById("phone2");
+      //     let phone3 = document.getElementById("phone3");
+      //     let address = document.getElementById("address");
+      //     // radio, checkbox 라디오 체크박스 타입 유효성검사는 querySelector(':checked') == null로!
+      //     // id가 여러개라 getElementById 못씀. name="gender" 로 묶여있으니까 name으로 찾는 것
+      //     let genderChecked = document.querySelector('input[name="gender"]:checked');
+      //     // 취미는 여러 개 체크하는 걸로 설정할 거라 querySelectorAll로 지정
+      //     let hobbyChecked = document.querySelectorAll('input[name="hobby"]:checked');
+      //     let content = document.getElementById("content");
 
-    //     if (name.value == "") {
-    //       alert("성명을 입력하세요");
-    //       name.focus();
-    //       return false;
-    //     }
+      //     if (id.value == "") {
+      //       alert("아이디를 입력하세요");
+      //       id.focus();
+      //       return false;
+      //     }
+      //     if (!isIdChecked) {
+      //       alert("아이디 중복검사를 해주세요");
+      //       return false;
+      //     }
 
-    //     if (rrn1.value == "") {
-    //       alert("주민번호 앞자리를 입력하세요");
-    //       rrn1.focus();
-    //       return false;
-    //     }
-    //     if (rrn2.value == "") {
-    //       alert("주민번호 뒷자리를 입력하세요");
-    //       rrn2.focus();
-    //       return false;
-    //     }
+      //     if (password.value == "") {
+      //       alert("비밀번호를 입력하세요");
+      //       password.focus();
+      //       return false;
+      //     }
+      //     if (password.value.length < 2 || password.value.length > 8) {
+      //       alert("비밀번호는 2~8자 이내로 입력하세요");
+      //       password.value = "";
+      //       password.focus();
+      //       return false;
+      //     }
 
-    //     if (mailid.value == "") {
-    //       alert("이메일 아이디를 입력하세요");
-    //       mailid.focus();
-    //       return false;
-    //     }
-    //     if (domain.value == "") {
-    //       alert("이메일 도메인을 입력하세요");
-    //       domain.focus();
-    //       return false;
-    //     }
+      //     if (name.value == "") {
+      //       alert("성명을 입력하세요");
+      //       name.focus();
+      //       return false;
+      //     }
 
-    //     if (phone1.value == "") {
-    //       alert("휴대폰 앞자리를 선택하세요");
-    //       phone1.focus();
-    //       return false;
-    //     }
-    //     if (phone2.value == "") {
-    //       alert("휴대폰 번호를 입력하세요");
-    //       phone2.focus();
-    //       return false;
-    //     }
-    //     /* JS isNaN으로 숫자만 넣기 처리는 가능한데, 이것보단 HTML 정규식인 pattern 속성 위주로 사용함.
-    //       [0-9]    → 0~9 숫자 한 글자
-    //       [0-9]*   → 숫자 0개 이상
-    //       [0-9]{4} → 숫자 딱 4자리
-    //       [a-z]    → 소문자 영문
+      //     if (rrn1.value == "") {
+      //       alert("주민번호 앞자리를 입력하세요");
+      //       rrn1.focus();
+      //       return false;
+      //     }
+      //     if (rrn2.value == "") {
+      //       alert("주민번호 뒷자리를 입력하세요");
+      //       rrn2.focus();
+      //       return false;
+      //     }
 
-    //       숫자만 4자리
-    //       <input type="text" pattern="[0-9]{4}" title="숫자 4자리만 입력" />
-    //       숫자만 (자릿수 상관없이)
-    //       <input type="text" pattern="[0-9]*" title="숫자만 입력" />
+      //     if (mailid.value == "") {
+      //       alert("이메일 아이디를 입력하세요");
+      //       mailid.focus();
+      //       return false;
+      //     }
+      //     if (domain.value == "") {
+      //       alert("이메일 도메인을 입력하세요");
+      //       domain.focus();
+      //       return false;
+      //     }
 
-    //     if (isNaN(phone2.value)) {
-    //       alert("휴대폰 번호는 숫자만 입력하세요");
-    //       phone2.value = "";
-    //       phone2.focus();
-    //       return false;
-    //     }
-    //     */
+      //     if (phone1.value == "") {
+      //       alert("휴대폰 앞자리를 선택하세요");
+      //       phone1.focus();
+      //       return false;
+      //     }
+      //     if (phone2.value == "") {
+      //       alert("휴대폰 번호를 입력하세요");
+      //       phone2.focus();
+      //       return false;
+      //     }
+      //     /* JS isNaN으로 숫자만 넣기 처리는 가능한데, 이것보단 HTML 정규식인 pattern 속성 위주로 사용함.
+      //       [0-9]    → 0~9 숫자 한 글자
+      //       [0-9]*   → 숫자 0개 이상
+      //       [0-9]{4} → 숫자 딱 4자리
+      //       [a-z]    → 소문자 영문
 
-    //     if (phone3.value == "") {
-    //       alert("휴대폰 번호를 입력하세요");
-    //       phone3.focus();
-    //       return false;
-    //     }
+      //       숫자만 4자리
+      //       <input type="text" pattern="[0-9]{4}" title="숫자 4자리만 입력" />
+      //       숫자만 (자릿수 상관없이)
+      //       <input type="text" pattern="[0-9]*" title="숫자만 입력" />
 
-    //     if (address.value == "") {
-    //       alert("주소를 입력하세요");
-    //       address.focus();
-    //       return false;
-    //     }
+      //     if (isNaN(phone2.value)) {
+      //       alert("휴대폰 번호는 숫자만 입력하세요");
+      //       phone2.value = "";
+      //       phone2.focus();
+      //       return false;
+      //     }
+      //     */
 
-    //     if (genderChecked == null) {
-    //       alert("성별을 선택하세요");
-    //       return false;
-    //     }
+      //     if (phone3.value == "") {
+      //       alert("휴대폰 번호를 입력하세요");
+      //       phone3.focus();
+      //       return false;
+      //     }
 
-    //     if (hobbyChecked == null) {
-    //       alert("취미를 선택하세요");
-    //       return false;
-    //     }
-    //     if (checkedHobbies.length < 2) {
-    //       alert("취미를 2개 이상 선택하세요");
-    //       return false;
-    //     }
+      //     if (address.value == "") {
+      //       alert("주소를 입력하세요");
+      //       address.focus();
+      //       return false;
+      //     }
 
-    //     // 취미를 2개 이상 선택하도록 설정하기
-    //     // let hobbyCount = 0;
-    //     // if (hobby1.checked) count++
-    //     // if (hobby2.checked) count++
-    //     // if (hobby3.checked) count++
-    //     // if (hobby4.checked) count++
-    //     // if (hobby5.checked) count++
+      //     if (genderChecked == null) {
+      //       alert("성별을 선택하세요");
+      //       return false;
+      //     }
 
-    //     // if (hobbyCount <2) {
-    //     //   alert("취미 2개 이상 선택");
-    //     //   return false;
-    //     // }
+      //     if (hobbyChecked == null) {
+      //       alert("취미를 선택하세요");
+      //       return false;
+      //     }
+      //     if (checkedHobbies.length < 2) {
+      //       alert("취미를 2개 이상 선택하세요");
+      //       return false;
+      //     }
 
-    //     if (content.value == "") {
-    //       alert("자기소개를 입력하세요");
-    //       content.focus();
-    //       return false;
-    //     }
-    //     if (content.value.length > 100) {
-    //       alert("자기소개는 100자 이내로 입력하세요");
-    //       content.focus();
-    //       return false;
-    //     }
+      //     // 취미를 2개 이상 선택하도록 설정하기
+      //     // let hobbyCount = 0;
+      //     // if (hobby1.checked) count++
+      //     // if (hobby2.checked) count++
+      //     // if (hobby3.checked) count++
+      //     // if (hobby4.checked) count++
+      //     // if (hobby5.checked) count++
 
-    //     return true;
-    //   }
-  </script>
+      //     // if (hobbyCount <2) {
+      //     //   alert("취미 2개 이상 선택");
+      //     //   return false;
+      //     // }
 
+      //     if (content.value == "") {
+      //       alert("자기소개를 입력하세요");
+      //       content.focus();
+      //       return false;
+      //     }
+      //     if (content.value.length > 100) {
+      //       alert("자기소개는 100자 이내로 입력하세요");
+      //       content.focus();
+      //       return false;
+      //     }
 
+      //     return true;
+      //   }
+    </script>
+  </head>
+  <body>
+    <form method="post" action="member.jsp">
+      <table border="1" width="600" align="center">
+        <caption>
+          회원가입 폼
+        </caption>
 
-</head>
-<body>
-<form action="member.jsp" method="post">
-  <table align="center" border="1" width="600">
-    <caption>
-      회원가입 폼
-    </caption>
+        <tr>
+          <th><label for="id">ID</label></th>
+          <td>
+            <input type="text" id="id" name="id" size="10" autofocus />
+            <input type="button" value="ID 중복검사" onclick="idCheck()" />
+          </td>
+        </tr>
 
-    <tr>
-      <th><label for="id">ID</label></th>
-      <td>
-        <input autofocus id="id" name="id" size="10" type="text" />
-        <input onclick="idCheck()" type="button" value="ID 중복검사" />
-      </td>
-    </tr>
+        <tr>
+          <th><label for="password">비밀번호</label></th>
+          <td>
+            <input type="password" id="password" name="password" />
+          </td>
+        </tr>
 
-    <tr>
-      <th><label for="password">비밀번호</label></th>
-      <td>
-        <input id="password" name="password" type="password" />
-      </td>
-    </tr>
+        <tr>
+          <th><label for="name">성명</label></th>
+          <td>
+            <input type="text" id="name" name="name" />
+          </td>
+        </tr>
 
-    <tr>
-      <th><label for="name">성명</label></th>
-      <td>
-        <input id="name" name="name" type="text" />
-      </td>
-    </tr>
+        <tr>
+          <th><label for="rrn1">주민번호</label></th>
+          <td>
+            <input
+              type="text"
+              id="rrn1"
+              name="rrn1"
+              size="6"
+              maxlength="6"
+              oninput="autoTab(this, document.getElementById('rrn2'))"
+            />
+            -
+            <input type="password" id="rrn2" name="rrn2" size="7" maxlength="7" />
+          </td>
+        </tr>
 
-    <tr>
-      <th><label for="rrn1">주민번호</label></th>
-      <td>
-        <input
-                id="rrn1"
-                maxlength="6"
-                name="rrn1"
-                oninput="autoTab(this, document.getElementById('rrn2'))"
-                size="6"
-                type="text"
-        />
-        -
-        <input id="rrn2" maxlength="7" name="rrn2" size="7" type="password" />
-      </td>
-    </tr>
+        <tr>
+          <th><label for="email">email</label></th>
+          <td>
+            <input type="text" id="mailid" name="mailid" size="10" />
+            @
+            <input type="text" id="domain" name="domain" size="15" />
+            <!-- 제이쿼리 적용 시 -->
+            <!-- <select id="email"> -->
+            <select id="email" onchange="domain1()">
+              <option value="">직접입력</option>
+              <option value="naver.com">네이버</option>
+              <option value="daum.net">다음</option>
+              <option value="gmail.com">구글</option>
+              <option value="nate.com">네이트</option>
+            </select>
+          </td>
+        </tr>
 
-    <tr>
-      <th><label for="email">email</label></th>
-      <td>
-        <input id="mailid" name="mailid" size="10" type="text" />
-        @
-        <input id="domain" name="domain" size="15" type="text" />
-        <select id="email" onchange="domain1()">
-          <option value="">직접입력</option>
-          <option value="naver.com">네이버</option>
-          <option value="daum.net">다음</option>
-          <option value="gmail.com">구글</option>
-          <option value="nate.com">네이트</option>
-        </select>
-      </td>
-    </tr>
+        <tr>
+          <th><label for="tel1">전화번호</label></th>
+          <td>
+            <input
+              type="text"
+              id="tel1"
+              name="tel1"
+              pattern="[0-9]{4}"
+              size="4"
+              maxlength="4"
+              oninput="autoTab(this, document.getElementById('tel2'))"
+            />
+            -
+            <input
+              type="text"
+              id="tel2"
+              name="tel2"
+              pattern="[0-9]{4}"
+              size="4"
+              maxlength="4"
+              oninput="autoTab(this, document.getElementById('tel3'))"
+            />
+            -
+            <input type="text" id="tel3" name="tel3" pattern="[0-9]{4}" size="4" maxlength="4" />
+          </td>
+        </tr>
 
-    <tr>
-      <th><label for="tel1">전화번호</label></th>
-      <td>
-        <input
-                id="tel1"
-                maxlength="4"
-                name="tel1"
-                oninput="autoTab(this, document.getElementById('tel2'))"
-                pattern="[0-9]{4}"
-                size="4"
-                type="text"
-        />
-        -
-        <input
-                id="tel2"
-                maxlength="4"
-                name="tel2"
-                oninput="autoTab(this, document.getElementById('tel3'))"
-                pattern="[0-9]{4}"
-                size="4"
-                type="text"
-        />
-        -
-        <input id="tel3" maxlength="4" name="tel3" pattern="[0-9]{4}" size="4" type="text" />
-      </td>
-    </tr>
+        <tr>
+          <th><label for="phone1">휴대폰</label></th>
+          <td>
+            <select id="phone1" name="phone1">
+              <option value="">번호 선택</option>
+              <option value="010">010</option>
+              <option value="011">011</option>
+              <option value="016">016</option>
+              <option value="018">018</option>
+              <option value="019">019</option>
+            </select>
+            -
+            <input
+              type="text"
+              id="phone2"
+              name="phone2"
+              pattern="[0-9]{4}"
+              size="4"
+              maxlength="4"
+              oninput="autoTab(this, document.getElementById('phone3'))"
+            />
+            -
+            <input type="text" id="phone3" name="phone3" pattern="[0-9]{4}" size="4" maxlength="4" />
+          </td>
+        </tr>
 
-    <tr>
-      <th><label for="phone1">휴대폰</label></th>
-      <td>
-        <select id="phone1" name="phone1">
-          <option value="">번호 선택</option>
-          <option value="010">010</option>
-          <option value="011">011</option>
-          <option value="016">016</option>
-          <option value="018">018</option>
-          <option value="019">019</option>
-        </select>
-        -
-        <input
-                id="phone2"
-                maxlength="4"
-                name="phone2"
-                oninput="autoTab(this, document.getElementById('phone3'))"
-                pattern="[0-9]{4}"
-                size="4"
-                type="text"
-        />
-        -
-        <input id="phone3" maxlength="4" name="phone3" pattern="[0-9]{4}" size="4" type="text" />
-      </td>
-    </tr>
+        <tr>
+          <th><label for="post">우편번호</label></th>
+          <td>
+            <input type="number" id="post" name="post" size="5" maxlength="5" />
+            <input type="button" value="우편검색" onclick="openDaumPostcode()" />
+          </td>
+        </tr>
 
-    <tr>
-      <th><label for="post">우편번호</label></th>
-      <td>
-        <input id="post" maxlength="5" name="post" size="5" type="number" />
-        <input onclick="openDaumPostcode()" type="button" value="우편검색" />
-      </td>
-    </tr>
+        <tr>
+          <th><label for="address">주소</label></th>
+          <td>
+            <input type="text" id="address" name="address" size="70" />
+          </td>
+        </tr>
 
-    <tr>
-      <th><label for="address">주소</label></th>
-      <td>
-        <input id="address" name="address" size="70" type="text" />
-      </td>
-    </tr>
+        <tr>
+          <th><label for="gender">성별</label></th>
+          <td>
+            <input type="radio" id="male" name="gender" value="남자" /> 남자
+            <input type="radio" id="female" name="gender" value="여자" /> 여자
+            <input type="radio" id="gender" name="gender" value="선택안함" /> 선택안함
+          </td>
+        </tr>
 
-    <tr>
-      <th><label for="gender">성별</label></th>
-      <td>
-        <input id="male" name="gender" type="radio" value="남자" /> 남자
-        <input id="female" name="gender" type="radio" value="여자" /> 여자
-        <input id="gender" name="gender" type="radio" value="선택안함" /> 선택안함
-      </td>
-    </tr>
+        <tr>
+          <th><label for="hobby1">취미</label></th>
+          <td>
+            <input type="checkbox" id="hobby1" name="hobby" value="공부" />공부
+            <input type="checkbox" id="hobby2" name="hobby" value="등산" />등산
+            <input type="checkbox" id="hobby3" name="hobby" value="게임" />게임
+            <input type="checkbox" id="hobby4" name="hobby" value="낚시" />낚시
+            <input type="checkbox" id="hobby5" name="hobby" value="쇼핑" />쇼핑
+          </td>
+        </tr>
 
-    <tr>
-      <th><label for="hobby1">취미</label></th>
-      <td>
-        <input id="hobby1" name="hobby" type="checkbox" value="공부" />공부
-        <input id="hobby2" name="hobby" type="checkbox" value="등산" />등산
-        <input id="hobby3" name="hobby" type="checkbox" value="게임" />게임
-        <input id="hobby4" name="hobby" type="checkbox" value="낚시" />낚시
-        <input id="hobby5" name="hobby" type="checkbox" value="쇼핑" />쇼핑
-      </td>
-    </tr>
-
-    <tr>
-      <th><label for="content">자기소개</label></th>
-      <td>
+        <tr>
+          <th><label for="content">자기소개</label></th>
+          <td>
             <textarea
-                    class="hint-gray"
-                    cols="50"
-                    id="content"
-                    maxlength="100"
-                    name="content"
-                    placeholder="자기소개를 100자 이내로 입력하세요."
-                    rows="10"
+              id="content"
+              name="content"
+              cols="50"
+              rows="10"
+              maxlength="100"
+              class="hint-gray"
+              placeholder="자기소개를 100자 이내로 입력하세요."
             ></textarea>
-      </td>
-    </tr>
+          </td>
+        </tr>
 
-    <tr>
-      <td align="center" colspan="2">
-        <input onclick="return check();" type="submit" value="회원가입" />
-        <input type="reset" value="취소" />
-      </td>
-    </tr>
-  </table>
-</form>
-</body>
+        <tr>
+          <td colspan="2" align="center">
+            <!-- 제이쿼리에선 온클릭 삭제 -->
+            <!-- <input type="submit" value="회원가입" /> -->
+            <input type="submit" value="회원가입" onclick="return check();" />
+            <input type="reset" value="취소" />
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
 </html>

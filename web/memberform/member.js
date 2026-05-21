@@ -199,3 +199,163 @@ function check() {
 
   return true;
 }
+
+
+/*  제이쿼리 방식으로 진행할 경우
+let isIdChecked = false; // 중복검사 확인 후 회원가입 가능하도록 변수 설정
+
+function idCheck() {
+  if ($.trim($("#id").val()) == "") {
+    alert("아이디를 입력하세요");
+    $("#id").focus();
+    return false;
+  }
+  let ref = "idCheck.jsp?ip=" + $("#id").val();
+  window.open(ref, "idCheck", "width=300, height=200");
+  isIdChecked = true;
+}
+
+// 오토랩 부분은 기존 코드 그대로 가능!
+// jQuery keyup 버전 → html 인라인 이벤트 없애고 JS에서 이벤트 걸기
+// $(document).ready(function () {
+//     // 주민번호
+//     $("#rrn1").keyup(function () {
+//         if ($(this).val().length == $(this).attr("maxlength")) {
+//             $("#rrn2").focus();
+//         }
+//     });
+//     // 전화번호
+//     $("#tel1").keyup(function () {
+//         if ($(this).val().length == $(this).attr("maxlength")) {
+//             $("#tel2").focus();
+//         }
+//     });
+//     $("#tel2").keyup(function () {
+//         if ($(this).val().length == $(this).attr("maxlength")) {
+//             $("#tel3").focus();
+//         }
+//     });
+//     // 휴대폰
+//     $("#phone2").keyup(function () {
+//         if ($(this).val().length == $(this).attr("maxlength")) {
+//             $("#phone3").focus();
+//         }
+//     });
+// });
+
+$(document).ready(function () {
+
+  $("#email").change(function () {
+    if ($(this).val() == "") {
+      $("#domain").val("").focus().prop("readOnly", false);   // 잠금 해제. prop가 attr이랑 같은 역할이나 마찬가지
+    } else {
+      $("#domain").val($(this).val()).prop("readOnly", true); // 읽기 전용 ON
+    }
+  });
+
+  // 유효성검사 파트
+  $("form").submit(function () {
+    if ($.trim($("#id").val()) == "") {
+      alert("아이디를 입력하세요");
+      $("#id").focus();
+      return false;
+    }
+    if (!isIdChecked) {
+      alert("아이디 중복검사를 해주세요");
+      return false;
+    }
+    if ($.trim($("#password").val()) == "") {       // 공백제출 방지를 위해 trim 적용
+      alert("비밀번호를 입력하세요");
+      $("#password").focus();
+      return false;
+    }
+    if ($("#password").val().length < 2 || $("#password").val().length > 8) {
+      alert("비밀번호는 2~8자 이내로 입력하세요");
+      $("#password").val("").focus();
+      return false;
+    }
+    if ($.trim($("#name").val()) == "") {
+      alert("성명을 입력하세요");
+      $("#name").focus();
+      return false;
+    }
+    if ($.trim($("#rrn1").val()) == "") {
+      alert("주민번호 앞자리를 입력하세요");
+      $("#rrn1").focus();
+      return false;
+    }
+    if ($.trim($("#rrn2").val()) == "") {
+      alert("주민번호 뒷자리를 입력하세요");
+      $("#rrn2").focus();
+      return false;
+    }
+    if ($.trim($("#mailid").val()) == "") {
+      alert("이메일 아이디를 입력하세요");
+      $("#mailid").focus();
+      return false;
+    }
+    if ($.trim($("#domain").val()) == "") {
+      alert("이메일 도메인을 입력하세요");
+      $("#domain").focus();
+      return false;
+    }
+    if ($("#phone1").val() == "") {
+      alert("휴대폰 앞자리를 선택하세요");
+      $("#phone1").focus();
+      return false;
+    }
+//     isNaN 적용할 경우 제이쿼리 형태는 이렇게!
+//     if (isNaN($("#phone2").val())) {       // $(태그) 적어주고 value 대신 val 적용
+//     alert("휴대폰 번호는 숫자만 입력하세요");
+//     $("#phone2").val("");                  // .value = "" 대신 .val("")로 값을 비움
+//     $("#phone2").focus();                  // .focus()는 제이쿼리도 동일
+//     return false;
+//     }
+
+    if ($.trim($("#phone2").val()) == "") {
+      alert("휴대폰 번호를 입력하세요");
+      $("#phone2").focus();
+      return false;
+    }
+    if ($.trim($("#phone3").val()) == "") {
+      alert("휴대폰 번호를 입력하세요");
+      $("#phone3").focus();
+      return false;
+    }
+    if ($.trim($("#address").val()) == "") {
+      alert("주소를 입력하세요");
+      $("#address").focus();
+      return false;
+    }
+
+    // radio → querySelector 대신 jQuery :checked 필터 사용.
+    if ($('input[name="gender"]:checked').length == 0) {
+      alert("성별을 선택하세요");
+      return false;
+    }
+
+    // checkbox → querySelectorAll 대신 jQuery :checked 필터 사용
+    if ($('input[name="hobby"]:checked').length == 0) {
+      alert("취미를 선택하세요");
+      return false;
+    }
+    if ($('input[name="hobby"]:checked').length < 2) {    // 이렇게 개수 제한도 length로 가능!
+      alert("취미를 2개 이상 선택하세요");
+      return false;
+    }
+
+    if ($.trim($("#content").val()) == "") {
+      alert("자기소개를 입력하세요");
+      $("#content").focus();
+      return false;
+    }
+    if ($("#content").val().length > 100) {
+      alert("자기소개는 100자 이내로 입력하세요");
+      $("#content").focus();
+      return false;
+    }
+
+  }); // submit() end
+}); // ready() end
+
+*/

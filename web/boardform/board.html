@@ -4,6 +4,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>게시판 양식</title>
 
+    <!-- 제이쿼리 방식 -->
+    <!-- <script src="http://code.jquery.com/jquery-latest.js"></script> -->
+
     <!-- 게시판 양식 유효성 검사 -->
 
     <script>
@@ -120,7 +123,10 @@
               rows="10"
               class="hint-gray"
               placeholder="내용 입력"
-            ></textarea>
+              ></textarea>
+              
+              <!-- placeholder="200자 이내로 입력" -->
+
           </td>
         </tr>
         <tr>
@@ -130,6 +136,8 @@
 
         <tr>
           <td colspan="2" align="center">
+            <!-- 제이쿼리 방식 적용 시 온클릭 삭제 -->
+            <!-- <input type="submit" value="글작성" /> -->
             <input type="submit" value="글작성" onclick="return check();" />
             <input type="button" value="글작성 버튼형식" />
             <input type="reset" value="취소" />
