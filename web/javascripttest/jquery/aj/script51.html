@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- $.ajax() : 서버에 get, post 방식 모두 요청할 수 있는 함수
+        
+        $.ajax({ 
+            url : "전송 페이지",
+            type : "전송 방식(get, post방식),
+            data : "전송할 데이터",
+            dataType : "요청한 데이터 타입("html","xml","json","text"),
+            success : function(result){
+                콜백함수로  돌려 받은 후 실행될 문장;
+            }
+        });
+        
+        // 웹 브라우저에 출력되는 결과가 콜백함수로 리턴 된다
+                
+
+        script50.html의 ajax 함수 적용 버전
+    -->
+
+    <style>
+      div {
+        width: 180px;
+        height: 80px;
+        margin: 3px;
+        float: left;
+      }
+    </style>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+
+    <script>
+      $(function () {
+        $("#menu1").click(function () {
+
+          $.ajax({
+            url: "menu.html",             // 서버에 요청할 파일명
+            type: "get",                  // 전송방식 설정
+            dataType: "html",             // 요청한 데이터타입
+            success: function (data) {    // succecc가 콜백함수. 서버로부터 응답받은 데이터는 콜백함수의 매개변수로 전달된다.
+            //   alert(data);                // 콜백함수의 data 내용 확인해보고 싶으면 실행해보기
+              $("#message1").html(data);  // 콜백함수로 전달된 data를 id가 message1인 태그에 설정한다.
+            },
+          }); // $.ajax() end
+
+        });
+
+        $("#menu2").click(function () {
+
+          $.ajax({
+            url: "menu.html",
+            type: "get",                // 타입 생략하면 기본값 get으로 들어감. 그래도 명시해주는 게 좋음
+            dataType: "html",
+            success: function (data) {
+              // menu.html문서의 내용중 li엘리먼트만 읽어서 id가 message2인 태그에 설정한다.
+              $("#message2").html($(data).find("li"));      // find로 태그 찾기
+            },
+          }); // $.ajax() end
+
+        });
+
+      });
+    </script>
+  </head>
+  <body>
+    <div>
+      <a href="#" id="menu1">메뉴 보기 1</a>
+      <p>
+        <span id="message1"></span>
+      </p>
+    </div>
+    <div>
+      <a href="#" id="menu2">메뉴 보기 2</a>
+      <p>
+        <span id="message2"></span>
+      </p>
+    </div>
+  </body>
+</html>

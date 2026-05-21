@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- script53.html 의 JSON 가져오기 버전
+
+    $.getJSON(): 서버에 json 데이터를 요청할 때 사용하는 함수이다.
+        $.getJSON( "요청할 json파일명",
+            function(data, textStatus){
+                콜백함수로  돌려 받은 후 실행될 문장;
+            }
+        );
+
+        data : 콜백함수로 서버에서 돌려받는 데이터
+        textStatus : 콜백함수로 잘 돌려 받으면 ‘SUCCESS’ 리턴
+
+-->
+    <style>
+      td {
+        border: 1px solid gray;
+      }
+    </style>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+      $(function () {
+
+        $.getJSON("item.json", function (data, textStatus) {
+            $("#treeData").append(
+                "<tr><td>id</td>" + "<td>name</td>" +
+                "    <td>price</td>" + "<td>description</td></tr>"
+            );
+            $.each(data, function () {
+                $("#treeData").append(
+                "<tr><td>" +
+                    this.id +
+                    "</td><td>" +
+                    this.name +
+                    "</td><td align='right'>" +
+                    this.price +
+                    "</td><td>" +
+                    this.description +
+                    "</td></tr>",
+                );
+            }); // each() end
+        });
+    });
+    </script>
+  </head>
+  <body>
+    <table id="treeData"></table>
+  </body>
+</html>

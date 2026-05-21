@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+      $(function () {
+        $("#b1").click(function () {
+
+          $.ajax({
+            url: "welcome.jsp",
+            type: "post",                               // 데이터타입 안넣으면 제이쿼리에서 추론해서 넣어줌
+            data: {username: $("#username").val()},
+
+            success: function (msg) {
+              alert(msg);
+              $("#message").html(msg);                  // 탐캣으로 돌려보면 입력한 유저네임 적용됨
+            },
+          }); // $.ajax() end
+
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <form>
+      이름 입력 :
+      <input type="text" id="username" /><br />
+      <input type="button" id="b1" value="전송" />
+    </form>
+    <div id="message"></div>
+  </body>
+</html>

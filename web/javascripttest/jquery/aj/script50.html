@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 180px;
+        height: 80px;
+        margin: 3px;
+        float: left;  /* left로 설정하면 가로 방향으로 출력됨(1줄 형태로)*/
+      }
+    </style>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+      $(function () {
+        $("#menu1").click(function () {
+          // load()함수를 이용해서 menu.html 문서전체를 읽어와서
+          // id가 message1인 태그 사이에 추가한다.
+          $("#message1").load("menu.html");
+        });
+        $("#menu2").click(function () {
+          // load()함수를 이용해서 menu.html 문서의 내용 중 li 태그만 읽어와서
+          // id가 message2인 태그 사이에 추가한다.
+          $("#message2").load("menu.html li");
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div>
+      <a href="#" id="menu1">메뉴 보기 1</a>
+      <p>
+        <span id="message1"></span>
+      </p>
+    </div>
+
+    <div>
+      <a href="#" id="menu2">메뉴 보기 2</a>
+      <p>
+        <span id="message2"></span>
+      </p>
+    </div>
+  </body>
+</html>

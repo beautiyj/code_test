@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+
+    <!-- jQuery Ajax 메소드
+        $.ajax() : get, post 방식으로 Ajax를 수행한다.
+        $.get() : get 방식으로 Ajax을 수행한다.
+        $.post() : post 방식으로 Ajax을 수행한다.
+        $.getJSON() : get 방식으로 Ajax를 수행해 JSON 데이터를 가져온다.
+        $.getScript() : get 방식으로 Ajax를 수행해 Script 데이터를 가져온다.
+        $(selector).load() : Ajax를 수행한 후 선택한 문서 객체안에 응답받을 파일(문자열)을 불러온다. 
+    
+    -->
+
+    <script>
+      $(function () { // 그냥 "button" 넣으면 버튼 하나만 눌러도 2개 다 변경됨. 아이디속성으로 넣어주기
+        $("#btn-txt").click(function () {
+          // load함수로 sample1.txt파일 불러와서 p태그 사이에 출력하기
+          // 변경 버튼을 누르면 p태그 안의 내용이 sample1.txt 파일 내의 내용으로 변경됨
+          $("p").load("sample1.txt");
+        });
+      });
+
+      $(function() {
+        $("#btn-html").click(function() {
+            // load함수로 script35.html 파일 불러와서 div태그 사이에 출력하기
+            // 대신 로드함수는 HTML 내용만 가져오고 스크립트는 실행하지 않아서 js는 적용 안됨
+            $("#container").load("../script35.html");
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <button id="btn-txt">변경</button>
+    <p>변경 전</p>
+
+    <button id="btn-html">서버로부터 데이터 가져오기(script35.html 부르기)</button>
+    <div id="container">데이터 가져오기 전</div>
+  </body>
+</html>

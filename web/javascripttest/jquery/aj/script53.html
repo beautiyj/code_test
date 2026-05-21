@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- $.get(): 서버에 get 방식으로 요청할 때 사용하는 함수
+        $.get( "요청할 파일명",
+            function(data){
+              콜백함수로  돌려 받은 후 실행될 문장;
+            }
+        );
+        
+        웹 브라우저에 출력되는 결과가 콜백함수로 리턴 된다.
+-->
+    <style>
+      td {
+        border: 1px solid gray;
+      }
+    </style>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+      $(function () {
+
+        $.get("item.xml", function (data) {
+          $("#treeData").append(
+            "<tr><td>id</td>" + "<td>name</td>" +
+            "    <td>price</td>" + "<td>description</td></tr>"
+          );
+
+          $(data)
+            .find("item")
+            .each(function () {
+              let item = $(this);
+              $("#treeData").append(
+                "<tr><td>" +
+                  item.attr("id") +
+                  "</td><td>" +
+                  item.attr("name") +
+                  "</td><td align='right'>" +
+                  item.find("price").text() +
+                  "</td><td>" +
+                  item.find("description").text() +
+                  "</td></tr>",
+              );
+            }); // each() end
+
+        });
+
+      });
+    </script>
+  </head>
+  <body>
+    <table id="treeData"></table>
+  </body>
+</html>
