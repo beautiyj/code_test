@@ -1,16 +1,22 @@
+import Average from "./Average";
 import Counter from "./Counter";
 import Info from "./Info";
+import Say from "./Say";
 
 // useState 예제 1: 함수 컴포넌트에서 가변적인 상태를 처리해주는 훅 (하단 주석에 기존 코드 별첨)
 // useState 예제 2 : useState를 여러 번 사용하기
+// useState 예제 3 : 다중 useState & 버튼 이벤트 처리
+// useState 예제 4 : 평균을 구해주는 함수 & 배열 활용
+
 
 const App = () => {
-  // return() <Counter />
   return (
     <div>
       <h1>훅 연습</h1>
       {/* <Counter /> */}
-      <Info />
+      {/* <Info /> */}
+      {/* <Say /> */}
+      <Average />
     </div>
   );
 };
@@ -42,4 +48,22 @@ return (
     <Info />
   </>
 )
+*/
+
+
+/*
+import Info from "./Info";
+
+// useState 예제 2 : useState를 여러 번 사용하기
+
+const App = () => {
+  return (
+    <div>
+      <h1>훅 연습</h1>
+      <Info />
+    </div>
+  );
+};
+export default App;
+
 */
