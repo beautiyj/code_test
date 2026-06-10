@@ -1,0 +1,13 @@
+/* 리액트에 css 적용하는 방법
+
+1. import 방식(전역방식)
+
+    - 컴포넌트에서 CSS 파일을 직접 import하여 사용
+    - className 속성을 사용하여 외부 CSS 파일에 정의된 스타일을
+      엘리먼트에 적용할 수 있다.
+
+*/
+.nameBox {
+  color: goldenrod;
+  background-color: powderblue;
+}
