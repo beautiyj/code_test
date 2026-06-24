@@ -1,0 +1,44 @@
+package springboot_test.navermail
+
+plugins {
+	id 'java'
+	id 'war'
+	id 'org.springframework.boot' version '3.1.9'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// jsp
+	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'	
+    // jakarta jstl
+	implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl:3.0.0'
+	// email - jakarta mail 라이브러리 사용 예제
+	implementation 'org.springframework.boot:spring-boot-starter-mail:3.0.5'
+	implementation 'org.springframework:spring-context:6.0.7'
+	implementation 'org.springframework:spring-context-support:6.0.7'
+	implementation 'com.sun.mail:jakarta.mail:2.0.1'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('bootBuildImage') {
+	builder = 'paketobuildpacks/builder-jammy-base:latest'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

@@ -1,0 +1,29 @@
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+  # secret 프로필(application-secret.yml)을 자동으로 로드
+  profiles:
+    include: secret 
+
+server:
+  port: 9999
+
+# 이건 기존 코드. 자카르타 메일 라이브러리 활용할 때는 yml만 구분해서 이그노어처리하면 됨  
+#  # port 
+#  server.port=9999
+#
+#  # view resolver
+#  spring.mvc.view.prefix=/WEB-INF/views/
+#  spring.mvc.view.suffix=.jsp
+#
+#  # naver email server
+#  spring.mail.host=smtp.naver.com
+#  spring.mail.port=465
+#  spring.mail.username=실제아이디@naver.com
+#  spring.mail.password=실제비번
+#  spring.mail.properties.mail.smtp.auth=true
+#  spring.mail.properties.mail.smtp.ssl.enable=true
+#  spring.mail.properties.mail.smtp.ssl.trust=smtp.naver.com
+#  spring.mail.properties.mail.smtp.starttls.enable=true

@@ -1,0 +1,34 @@
+-- 1. 테이블 초기화(잘못 생성한 경우에만)
+DROP TABLE IF EXISTS myboard;
+
+-- 2. 다시 생성 (컬럼명을 writer로 통일)
+CREATE TABLE myboard(
+    no INT AUTO_INCREMENT PRIMARY KEY,
+    writer VARCHAR(20),
+    passwd VARCHAR(20),
+    subject VARCHAR(50),
+    content VARCHAR(100),
+    readcount INT,
+    register DATE
+);
+
+-- 3. 프로시저 실행
+DELIMITER //
+DROP PROCEDURE IF EXISTS insert_board_data //
+CREATE PROCEDURE insert_board_data()
+BEGIN
+    DECLARE i INT DEFAULT 1;
+    WHILE i <= 300 DO
+        INSERT INTO myboard (writer, passwd, subject, content, readcount, register)
+        VALUES (CONCAT('작성자', i), '1111', CONCAT('제목 ', i), CONCAT('내용 ', i), 0, NOW());
+        SET i = i + 1;
+    END WHILE;
+    COMMIT;
+END //
+DELIMITER ;
+
+-- 4. 호출
+CALL insert_board_data();
+
+-- 기본 NOW()로 설정하면 DATE타입으로 처리돼서 시간은 계속 00:00:00이 됨. DATETIME 타입 변경해줘야 시간이 보임
+ALTER TABLE myboard MODIFY register DATETIME;

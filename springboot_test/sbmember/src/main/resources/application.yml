@@ -1,0 +1,48 @@
+server:
+  tomcat:
+    deploy:
+      enabled: 'false'
+  port: '9999'
+spring:
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      enabled: 'true'
+      max-request-size: 10MB
+  datasource:
+    password: totoro123
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    username: totoro
+    url: jdbc:oracle:thin:@localhost:1521/xe
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+mybatis:
+  type-aliases-package: com.example.demo.model
+  mapper-locations: classpath:/mapper/*.xml
+
+
+## port 
+#server.port=80
+#
+## view resolver
+#spring.mvc.view.prefix=/WEB-INF/views/
+#spring.mvc.view.suffix=.jsp
+#
+## oracle
+#spring.datasource.driver-class-name=oracle.jdbc.driver.OracleDriver
+#spring.datasource.url=jdbc:oracle:thin:@localhost:1521/xe
+#spring.datasource.username=totoro
+#spring.datasource.password=totoro123
+#
+## mybatis
+#mybatis.type-aliases-package=com.example.demo.model
+#mybatis.mapper-locations=classpath:/mapper/*.xml
+#
+#server.tomcat.deploy.enabled=false
+#
+## fileupload
+#spring.servlet.multipart.enabled:true
+#spring.servlet.multipart.max-request-size:10MB
+#spring.servlet.multipart.max-file-size:20MB

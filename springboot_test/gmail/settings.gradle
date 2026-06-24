@@ -1,0 +1,3 @@
+package springboot_test.gmail
+
+rootProject.name = 'gmail'

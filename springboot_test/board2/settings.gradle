@@ -1,0 +1,3 @@
+package springboot_test.board2
+
+rootProject.name = 'board2'

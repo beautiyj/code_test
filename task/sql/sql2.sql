@@ -21,3 +21,23 @@ UPDATE member SET address='서울시 강남구'
 	WHERE id='test';
     
 DELETE FROM member WHERE id='test';
+
+ create table myboard(
+	no int auto_increment primary key,
+	writer varchar(20),
+	passwd varchar(20),
+	subject varchar(50),
+	content varchar(100),
+	readcount int,
+	register date
+);
+
+-- create table myboard(
+--     no int auto_increment primary key,
+--     writer varchar(20),
+--     passwd varchar(20),
+--     subject varchar(50),
+--     content varchar(100),
+--     readcount int default 0, -- 조회수 기본값 0 설정
+--     register datetime        -- date보다 시분초까지 저장되는 datetime 권장
+-- ) default charset=utf8mb4;   -- 이모지나 한글 처리에 유리

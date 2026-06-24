@@ -1,0 +1,87 @@
+springboot 실습
+
+개발 환경
+spring boot 3
+MyBatis
+Oracle
+jsp(jstl)
+
+프로젝트 명 : oracleboard
+
+테이블명 :  myboard2
+         create table myboard2(
+	  no number primary key,
+	  writer varchar2(20),
+              passwd varchar2(20),
+	  subject varchar2(50),
+	  content varchar2(100),
+	  readcount number,
+	  register date );
+
+시퀀스 : myboard2_seq
+       create sequence myboard2_seq
+           start with 1
+           increment by 1
+           nocache;
+
+java-com.example.demo                        
+                   controller - BoardController.java                                        
+	           service - BoardService.java
+	           dao - BoardDao.java (인터페이스)
+	           model - Board.java
+
+
+resources - application.properties  
+                mapper - board.xml
+
+webapp-WEB-INF-views
+board -    boardform.jsp (글작성 폼)	 
+             boardlist.jsp (글목록)
+             boardcontent.jsp (상세 페이지)
+             boardupdateform.jsp (글수정 폼)
+             boarddeleteform.jsp (글삭제 폼)
+
+
+환경 설정 파일 작성 순서
+1) build.gradle
+2) application.properties
+3) board.xml
+
+----------------------------------------------------------------------------------------------        
+mysql 연동
+
+개발 환경
+spring boot 3
+MyBatis
+mysql
+jsp(jstl)
+
+프로젝트 명 : mysqlboard
+
+테이블명 :  myboard
+         create table myboard(
+	  no int  auto_increment primary key,
+	  writer varchar(20),
+          passwd varchar(20),
+	  subject varchar(50),
+	  content varchar(100),
+	  readcount int,
+	  register date );
+
+
+# mysql
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:3306/jsptest?autoReconnect=true&useUnicode=true&characterEncoding=utf-8
+spring.datasource.username=jspid
+spring.datasource.password=jsppass
+
+
+# limit 연산자
+   limit    추출데이터의 인덱스 번호,    추출 데이터 갯수
+
+
+        
+
+
+
+

@@ -1,0 +1,3 @@
+package springboot_test.oracleboard
+
+rootProject.name = 'oracleboard'

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.dao.BoardDao">
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<resultMap id="boardResult" type="board">
+		<result property="num" column="num" />
+		<result property="writer" column="writer" />
+		<result property="subject" column="subject" />
+		<result property="content" column="content" />
+		<result property="email" column="email" />
+		<result property="readcount" column="readcount" />
+		<result property="passwd" column="passwd" />
+		<result property="ref" column="ref" />
+		<result property="re_step" column="re_step" />
+		<result property="re_level" column="re_level" />
+		<result property="ip" column="ip" />
+		<result property="reg_date" column="reg_date" />
+		<result property="del" column="del" />
+	</resultMap>
+
+	<!-- <select id="list" parameterType="hashMap" resultMap="boardResult"> -->
+	<!-- 		resultType 					 resultMap
+	매핑 방식		자동 매핑 (컬럼명 = 필드명일 때)  	 수동 매핑 (직접 컬럼-필드 짝을 지정)
+	사용 시점		DB 컬럼명과 자바 필드명이 일치할 때	 이름이 다를 때, 또는 복잡한 매핑(연관관계 등)이 필요할 때
+	작성 위치	   <select resultType="board">   <resultMap> 태그를 따로 선언 후 resultMap="이름"으로 참조
+				 한 줄로 끝	           -->
+	<select id="list" parameterType="board" resultMap="boardResult">
+		select * from (select a.*,rowNum rn from (
+		select * from board1
+		<where>
+		<!--  동적 메소드 where 태그 (JPA에 없고 MyBatis에만 있는 동적메소드임)
+		내부의 <if> 조건들 중 하나라도 참이면 → 자동으로 WHERE를 앞에 붙여줌
+		내부 조건이 전부 거짓이면 → WHERE 자체를 아예 안 붙임 (SQL이 멀쩡하게 동작)
+		내부 조건의 맨 앞에 AND나 OR가 불필요하게 붙어있으면 → 그것도 자동으로 깔끔하게 제거해줌 -->
+			<if test="keyword != null and search!='subcon'">
+				${search} like '%'||#{keyword}||'%'
+			</if>
+			<if test="keyword != null and search=='subcon'">
+				subject like '%'||#{keyword}||'%' or
+				content like
+				'%'||#{keyword}||'%'
+			</if>
+		</where>
+		order by ref desc,re_step) a )
+		where rn between #{startRow} and #{endRow}
+	</select>
+
+	<select id="getTotal" parameterType="board" resultType="int">
+		select count(*) from board1
+		<where>
+			<!-- 작성자, 제목, 내용으로 검색 -->
+			<if test="keyword != null and search !='subcon'">
+				${search} like '%'||#{keyword}||'%'
+			</if>
+			<!-- 서브콘은 제목+내용으로 검색 -->
+			<if test="keyword != null and search=='subcon'">
+				subject like '%'||#{keyword}||'%' or
+				content like
+				'%'||#{keyword}||'%'
+			</if>
+		</where>
+	</select>
+
+	<select id="select" parameterType="int" resultType="board">
+		select * from
+		board1 where num=#{num}
+	</select>
+
+	<!-- num 번호중 최대값 구하기 : 첫번째 글은 1번으로 설정 -->
+	<select id="getMaxNum" resultType="int">
+		select nvl(max(num),0) + 1
+		from board1
+	</select>
+
+	<insert id="insert" parameterType="board">
+		<!--<selectKey keyProperty="num" order="BEFORE" resultType="int"> select 
+			nvl(max(num),0) + 1 from board1 </selectKey> -->
+		insert into board1 values (#{num},#{writer},#{subject},
+		#{content},#{email},0,#{passwd},#{ref},
+		#{re_step},#{re_level},#{ip},sysdate,'n')
+	</insert>
+
+	<update id="selectUpdate" parameterType="int">
+		update board1 set
+		readcount = readcount+1 where num=#{num}
+	</update>
+
+	<update id="update" parameterType="board">
+		update board1 set
+		writer=#{writer},subject=#{subject},
+		content=#{content},email=#{email} where num=#{num}
+	</update>
+
+	<update id="delete" parameterType="int">
+		update board1 set del='y'
+		where num=#{num}
+	</update>
+
+	<update id="updateRe" parameterType="board">
+		update board1 set re_step =
+		re_step + 1
+		where ref=#{ref} and re_step > #{re_step}
+	</update>
+
+</mapper>

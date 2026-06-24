@@ -1,0 +1,3 @@
+package springboot_test.mysqlboard
+
+rootProject.name = 'mysqlboard'

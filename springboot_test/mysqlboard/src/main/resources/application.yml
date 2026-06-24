@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: mysqlboard
+  
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+      
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/jsptest?autoReconnect=true&useUnicode=true&characterEncoding=utf-8
+    username: jspid
+    password: jsppass
+
+mybatis:
+  type-aliases-package: com.example.demo.model
+  mapper-locations: classpath:/mapper/*.xml
+
+server:
+  port: 9999		

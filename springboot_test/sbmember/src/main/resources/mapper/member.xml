@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.dao.MemberDAOImpl">
+        
+    <!-- 회원가입 -->
+    <insert id="insertMember" parameterType="member">
+     	insert into join_member (join_id,join_pwd,join_name,join_zip,join_addr1,join_addr2,
+     	join_tel1,join_tel2,join_tel3,join_phone1,join_phone2,join_phone3,
+     	join_mailid,join_maildomain,join_profile,join_regdate,join_state) 
+     	values
+     	(#{join_id},#{join_pwd},#{join_name},#{join_zip},#{join_addr1},#{join_addr2},
+     	#{join_tel1},#{join_tel2},#{join_tel3},#{join_phone1},#{join_phone2},#{join_phone3},
+     	#{join_mailid},#{join_maildomain},#{join_profile, jdbcType=VARCHAR},SYSDATE,1)
+    </insert>
+    
+    <!-- 로그인 인증, ID중복 체크 -->
+    <select id="userCheck" parameterType="String" resultType="member">
+     	select * from join_member where join_id=#{id} and join_state=1
+    </select>
+    
+     <!-- 비번 찾기 -->
+    <select id="findpwd" resultType="member" parameterType="member">
+     	select * from join_member where join_id=#{join_id} and join_name=#{join_name}
+    </select>
+    
+    <!-- 회원수정 -->
+    <update id="updateMember" parameterType="member">
+     	update join_member set join_pwd=#{join_pwd},join_name=#{join_name},
+     	join_zip=#{join_zip},join_addr1=#{join_addr1},join_addr2=#{join_addr2},
+     	join_tel1=#{join_tel1},join_tel2=#{join_tel2},join_tel3=#{join_tel3},
+     	join_phone1=#{join_phone1},join_phone2=#{join_phone2},join_phone3=#{join_phone3},
+     	join_mailid=#{join_mailid},join_maildomain=#{join_maildomain},
+     	join_profile=#{join_profile,jdbcType=VARCHAR} 
+     	where join_id=#{join_id}
+    </update>    
+    
+    <!-- 회원삭제 -->
+    <update id="deleteMember" parameterType="member">
+      	update join_member set join_delcont=#{join_delcont}, join_state=2,
+      	join_deldate=SYSDATE where join_id=#{join_id}
+    </update>
+    
+</mapper>
+
+
+
+
+
+
+
+

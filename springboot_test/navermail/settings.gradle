@@ -1,0 +1,3 @@
+package springboot_test.navermail
+
+rootProject.name = 'navermail'

@@ -1,0 +1,12 @@
+server:
+  port: 9999
+
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+  profiles:
+    include: secret  # secret.yml에 작성해둔 프로필을 포함하도록 설정
+
+# 공통 설정이 있다면 여기에 작성

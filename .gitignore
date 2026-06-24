@@ -4,3 +4,22 @@ out/
 __pycache__/
 .venv/
 node_modules/
+
+# jsp파일 - 이클립스 파일 이그노어 추가하기
+# 이클립스 설정파일
+.classpath
+.project
+.settings/
+
+# 빌드 결과물
+build/
+target/
+
+# 이클립스 워크스페이스 메타데이터
+.metadata/
+
+# 톰캣 관련
+*.war
+
+# 로컬 환경 설정 (DB 정보 있으면 올리면 안됨!)
+src/main/webapp/META-INF/context.xml

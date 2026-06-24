@@ -1,0 +1,3 @@
+package springboot_test.mailTest
+
+rootProject.name = 'mailTest'
