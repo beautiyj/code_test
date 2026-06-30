@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>sample7</title>
+</head>
+<body>
+
+	<ul>
+		<!-- th:href 링크 걸기 -->
+		<li><a href="sample1">기존방식도 그대로 가능</a></li>		
+		<li><a th:href="@{http://localhost:9999/sample1}">sample1</a></li>
+		<li><a th:href="@{/sample2}">sample2</a></li>
+		<li><a th:href="@{~/sample3}">sample3</a></li>
+
+		<!-- 링크를 통해서 값 전달할 경우 링크로 값이 전달됨 -->
+		<!-- http://localhost:9999/sample4?p1=aaa&p2=bbb -->
+		<li><a th:href="@{/sample4(p1='aaa', p2='bbb')}">sample4</a></li>
+		<!-- http://localhost:9999/sample5?q1=ccc&q2=ddd -->
+		<li><a th:href="@{/sample5(q1='ccc', q2='ddd')}">sample5</a></li>
+		<!-- http://localhost:9999/sample6?r1=eee&r2=fff -->
+		<li><a th:href="@{~/sample6(r1='eee', r2='fff')}">sample6</a></li>
+		
+		<!-- 값 전달을 브라우저로 출력 -->
+		<!-- sample.html, 컨트롤러에선 파라미터파람으로 전달 -->
+		<li><a th:href="@{~/sample(s1='ggg', s2='hhh')}">sample</a></li>
+	</ul>
+
+
+
+</body>
+</html>

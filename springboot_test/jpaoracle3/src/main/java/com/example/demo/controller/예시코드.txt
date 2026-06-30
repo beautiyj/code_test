@@ -1,0 +1,188 @@
+package com.example.demo.controller;
+
+import java.util.List;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.example.demo.domain.Board;
+import com.example.demo.service.BoardService;
+
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+@Controller
+public class BoardController {
+
+	private final BoardService service;
+	
+	// 초기 요청
+	@RequestMapping("/")
+	public String main() {
+		return "redirect:boardlist";   // boardlist 요청
+	}	
+	
+	// 글작성 폼
+	@RequestMapping("boardform")
+	public String boardform() {
+		return "boardform";
+	}
+	
+	// 글작성
+	@RequestMapping("boardwrite")
+	public String boardwrite(@ModelAttribute Board board, Model model) {
+		
+		int result = 0;
+		Board db = service.save(board); // insert sql문 실행
+		System.out.println("db:"+ db);
+		if(db != null)  result = 1;
+		
+		model.addAttribute("result", result);
+		
+		return "insertresult";
+	}
+	
+	// 전체 글목록, 검색 글목록
+	@RequestMapping("boardlist")
+	public String boardlist(@RequestParam(value="page", defaultValue="1") int page,
+						    @RequestParam(value="search", defaultValue="") String search,	
+						    @RequestParam(value="keyword", defaultValue="") String keyword,
+						    Model model) {
+		
+		int limit = 10;		// 1페이지에 출력할 데이터 갯수
+		
+		int listcount = 0;  // 데이터 갯수
+		if(!search.equals("") && !keyword.equals("")) { // 검색 데이터 갯수 
+			listcount = service.searchcount(search, keyword);
+		}else {
+			listcount = (int) service.count();  // 총데이터 갯수
+		}		
+		System.out.println("listcount:"+ listcount);
+		
+		int start = (page-1) * limit + 1;    
+		int end = page * limit;
+		
+		List<Board> boardlist = null;
+		if(!search.equals("") && !keyword.equals("")) {
+			boardlist = service.searchList(start,end,search,keyword); // 검색 목록
+		}else {
+			boardlist = service.findAll(page);  // 전체 목록
+		}		
+		System.out.println("boardlist:"+ boardlist);
+		
+		// 총페이지
+		int pagecount=listcount/limit+((listcount%limit==0)?0:1);
+		
+		int startpage = ((page-1)/10) * limit + 1;  // 1, 11, 21..
+		int endpage = startpage + 10 - 1;			//10, 20, 30..
+		
+		if(endpage > pagecount)  endpage = pagecount;
+		
+		model.addAttribute("page", page);
+		model.addAttribute("listcount", listcount);
+		model.addAttribute("boardlist", boardlist);
+		model.addAttribute("pagecount", pagecount);
+		model.addAttribute("startpage", startpage);
+		model.addAttribute("endpage", endpage);		
+		
+		model.addAttribute("search", search);		
+		model.addAttribute("keyword", keyword);		
+
+		return "boardlist";
+	}
+	
+	// 상세 페이지
+	@RequestMapping("boardcontent")
+	public String boardcontent(@RequestParam("no") int no,
+						       @RequestParam("page") int page,
+						       Model model) {
+		
+		Board board = service.findByNo(no);  // 상세정보 구하기 
+		System.out.println("board:"+ board);
+		
+		model.addAttribute("board", board);
+		model.addAttribute("page", page);
+		
+		return "boardcontent";
+	}
+	
+	// 글수정 폼
+	@RequestMapping("updateform")
+	public String updateform(@RequestParam("no") int no,
+							 @RequestParam("page") int page,
+							 Model model) {
+		// 상세정보 구하기
+		Board board = service.findByNo(no);
+		
+		model.addAttribute("board", board);
+		model.addAttribute("page", page);
+		
+		return "updateform";
+	}
+	
+	// 글수정
+	@RequestMapping("boardupdate")
+	public String boardupdate(@ModelAttribute Board board,
+							  @RequestParam("page") int page,
+							  Model model) {
+		
+		// 비번 구하기
+		Board db = service.findByNo(board.getNo());
+		
+		int result = 0;
+		
+		// 비번 비교
+		if(db.getPasswd().equals(board.getPasswd())) { //비번일치시
+			Board board2 = service.save(board);	// update sql문 실행
+			System.out.println("board2:"+ board2);
+			result = 1;
+			
+		}else {		// 비번 불일치시
+			result = -1;
+		}		
+		model.addAttribute("result", result);
+		model.addAttribute("page", page);
+		
+		return "updateresult";
+	}
+	
+	// 글삭제 폼
+	@RequestMapping("deleteform")
+	public String deleteform(@RequestParam("no") int no,
+							 @RequestParam("page") int page,
+							 Model model) {
+		
+		model.addAttribute("no", no);
+		model.addAttribute("page", page);
+		
+		return "deleteform";
+	}
+	
+	// 글삭제
+	@RequestMapping("boarddelete")
+	public String boarddelete(@ModelAttribute Board board,
+							  @RequestParam("page") int page,
+							  Model model) {
+		int result = 0;
+		// 비번 구하기
+		Board db = service.findByNo(board.getNo());
+		
+		// 비번 비교
+		if(db.getPasswd().equals(board.getPasswd())) { //비번 일치시
+			service.delete(board);   // delete sql문 실행
+			result = 1;
+		}else {		// 비번 불일치시
+			result = -1;
+		}		
+		model.addAttribute("result", result);
+		model.addAttribute("page", page);
+		
+		return "deleteresult";
+	}
+	
+}
+
+

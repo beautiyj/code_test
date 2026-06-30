@@ -1,0 +1,3 @@
+package springboot_test.thymelef
+
+rootProject.name = 'Thymeleaf'

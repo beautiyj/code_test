@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>sample3</title>
+</head>
+<body>
+	<table border="1" align="center" width="300">
+		<tr>
+			<td>ID</td>
+			<td>NAME</td>
+			<td>REGDATE</td>
+		</tr>
+		
+		<!-- th:each="변수 : ${리스트}"
+		리스트를 불러와서 리스트 내의 데이터 출력할 때는 리스트를 each로 불러온 뒤 th:text 사용해야함 -->
+		<tr th:each="member : ${list}">
+			<td th:text="${member.id}"></td>
+			<td th:text="${member.name}"></td>
+			<!-- <td th:text="${member.register}"></td> -->
+			<td th:text="${#dates.format(member.regdate,'yyyy-MM-dd HH:mm:ss')}"></td>
+		</tr>
+		
+		<!-- status 활용해서 자동으로 카운팅되도록 만들기도 가능
+		<tr th:each="member, status : ${list}">
+		    <td th:text="${status.count}">1</td>
+		    <td th:text="${member.id}">아이디</td>
+		    <td th:text="${member.name}">이름</td>
+		</tr>
+		
+		 -->
+	</table>

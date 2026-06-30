@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>게시판 목록</title>
+</head>
+<body>
+
+	<a th:href="@{/boardform}">글작성</a>
+	<br> 글개수:
+	<span th:text="${listcount}"></span>
+
+	<table border="1" width=800 align="center">
+		<caption>
+			<h3>게시판 목록</h3>
+		</caption>
+		<tr>
+			<th>번호</th>
+			<th>제목</th>
+			<th>작성자</th>
+			<th>날짜</th>
+			<th>조회수</th>
+		</tr>
+
+		<tr th:each="b, i : ${boardlist}"
+			th:with="num=${listcount-(page-1)*10}">
+			<!-- <td th:text=${b.no}></td> -->
+			<td th:text=${num} th:with="num=${num-i.index}"></td>
+
+			<!-- <td th:text=${b.subject}></td> -->
+			<td><a th:href="@{/boardcontent(no=${b.no},page=${page})}"
+				th:text=${b.subject}></a></td>
+
+			<td th:text=${b.writer}></td>
+
+			<!-- <td th:text=${b.register}></td> 포맷팅 전-->
+			<td th:text="${#dates.format(b.register, 'yyyy-MM-dd')}"></td>
+			<td th:text=${b.readCount}></td>
+		</tr>
+	</table>
+
+	<!-- 페이지 처리 -->
+	<center>
+		<div th:if="${listcount} > 0">
+
+			<!-- 1페이지로 이동 -->
+			<a th:href="@{/boardlist(page=1)}" style="text-decoration: none">[<<]</a>
+
+			<!-- 이전 페이지로 이동 -->
+			<span th:if="${startpage > 10}"> <a
+				th:href="@{/boardlist(page=${startpage-10})}" th:text="[이전]"
+				style="text-decoration: none"></a>
+			</span>
+
+			<!-- 각 블럭에 10개의 페이지 출력 -->
+			<span th:each="a : ${#numbers.sequence(startpage, endpage)}">
+				<!-- 현재 페이지의 경우 --> <span th:if="${a == page}" th:text="${a}"></span>
+				<!-- 현재 페이지가 아닐 경우 --> <span th:if="${a != page}"> <a
+					th:href="@{/boardlist(page=${a})}" th:text="${a}"></a>
+			</span>
+
+			</span>
+
+			<!-- 다음 페이지로 이동 -->
+			<span th:if="${endpage < pagecount}"> <a
+				th:href="@{/boardlist(page=${startpage+10})}" th:text="[다음]"
+				style="text-decoration: none"></a>
+			</span>
+
+			<!-- 마지막 페이지로 이동 -->
+			<a th:href="@{/boardlist(page=${pagecount})}"
+				style="text-decoration: none">[>>]</a>
+		</div>
+</body>
+</html>

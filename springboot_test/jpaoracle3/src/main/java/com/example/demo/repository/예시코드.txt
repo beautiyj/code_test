@@ -1,0 +1,62 @@
+package com.example.demo.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import com.example.demo.domain.Board;
+
+@Repository
+public interface BoardRepository extends JpaRepository<Board, Integer> {
+
+
+	// public Board save(Board board);  // 글작성, 글수정
+	// public long count(); 			// 글 갯수
+	// public void delete(Board board); // 글삭제
+    // public Board findByNo(int no);   // 상세 정보
+	
+	Board findByNo(int no);              // 상세정보
+
+	// JPQL : 검색 데이터 갯수
+	@Query(value=""" 
+				 select count(*) from boards
+				 where
+				 	case 
+				 		when :search = 'writer' then writer
+				 		when :search = 'subject' then subject
+				 		when :search = 'content' then content
+					end
+					like '%' || :keyword || '%'			
+		   """ , nativeQuery=true)
+	int searchcount(@Param("search") String search, 
+					@Param("keyword") String keyword);
+
+	// JPQL : 전체 목록
+	@Query(value="select * from ( select rownum rnum, board.* from " +
+		             " (select * from boards order by no desc) board) " +
+				     " where rnum >= ((:page-1)*10+1) and rnum <= (:page*10)"
+				, nativeQuery=true)
+	List<Board> findAll(@Param("page") int page);
+	
+	
+	// JPQL : 검색 목록
+	@Query(value="""
+				select * from (
+					select b.*, row_number() over (order by no desc) as rn
+					from boards b
+					where
+						(:search = 'writer' and writer like '%'||:keyword||'%') or
+						(:search = 'subject' and subject like '%'||:keyword||'%') or
+						(:search = 'content' and content like '%'||:keyword||'%') 
+				)
+				where rn between :start and :end			
+			""", nativeQuery=true)
+	List<Board> searchList(@Param("start") int start, 
+						   @Param("end") int end, 
+						   @Param("search") String search, 
+						   @Param("keyword") String keyword);
+	
+}

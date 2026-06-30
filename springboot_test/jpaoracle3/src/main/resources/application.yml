@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: japoracle3
+
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521:xe
+    username: totoro
+    password: totoro123
+    driver-class-name: oracle.jdbc.OracleDriver
+
+  jpa:
+    generate-ddl: false
+    database: oracle
+    database-platform: org.hibernate.dialect.OracleDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.OracleDialect
+
+server:
+  port: 9999

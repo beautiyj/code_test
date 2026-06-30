@@ -1,0 +1,3 @@
+package springboot_test.jpamysql2
+
+rootProject.name = 'jpamysql2'

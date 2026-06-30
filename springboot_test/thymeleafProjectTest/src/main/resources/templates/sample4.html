@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>sample4</title>
+</head>
+<body>
+	<!-- 변수 정의-->
+	<!-- th:with="변수명='값' " 을 활용해서 변수를 정의할 수 있음.
+		 th:with로 정의한 변수는 지역변수로 취급함
+		 
+		 <table border="1" th:with="target='u0001', isAdmin=true, fontSize='14px'">
+		 처럼 콤마 활용하면 여러 개 변수 정의 가능하고
+		 
+		 <div th:with="isAdmin=true, fontSize='14px'">
+		    <table border="1" th:with="target='u0001'">
+		 처럼 상위/하위 태그 구조나
+		 
+		 <div th:with="target='u0001', 
+              isAdmin=true, 
+              fontSize='14px'">
+         처럼 tbody 태그 활용 혹은 별도 컨테이너 태그 활용하는 방식도 가능함
+         (변수가 많아질 경우 가독성을 위해 분리 추천)
+	-->
+	<table border="1" align="center" width="300" th:with="target='u0001'">
+		<tr>
+			<td>ID</td>
+			<td>NAME</td>
+			<td>REGDATE</td>
+		</tr>
+		<!-- member.id 값이 target인(=u0001인, 3배수+1인)회원만 삼항연산자를 이용해서 secret을 출력-->
+		<tr th:each="member : ${list}">
+			<td th:text="${member.id == target ? 'secret' : member.id}"></td>
+			<td th:text="${member.name}"></td>
+			<td th:text="${#dates.format(member.regdate,'yyyy-MM-dd HH:mm:ss')}"></td>
+		</tr>
+	</table>
+	<br>
+
+	<!-- if조건식-->
+	<!-- th:if ~ th:unless-->
+	<table border="1" align="center" width="300" th:with="target='u0001'">
+		<tr>
+			<td>ID</td>
+			<td>NAME</td>
+			<td>REGDATE</td>
+		</tr>
+		<!-- member.id값이 target(u0001)과 같으면(= 1 혹은 3배수+1이면) Modify(링크)를 출력 하고
+			 member.id값이 target(u0001)과 같지 않으면 View를 출력-->
+		<tr th:each="member : ${list}">
+			<td th:if="${member.id}">
+				<a href="/modify" th:if="${member.id == target}">Modify</a>
+				<p th:unless="${member.id == target}">View</p>
+			</td>
+			<td th:text="${member.name}"></td>
+			<td th:text="${#dates.format(member.regdate,'yyyy-MM-dd HH:mm:ss')}"></td>
+		</tr>
+	</table>
+	<br>
+</body>
+</html>

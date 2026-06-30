@@ -1,0 +1,3 @@
+package springboot_test.jpaoracle3
+
+rootProject.name = 'japoracle3'

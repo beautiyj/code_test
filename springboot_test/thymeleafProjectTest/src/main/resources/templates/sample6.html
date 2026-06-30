@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>sample6</title>
+</head>
+<body>
+
+	<h1 th:text="${now}"></h1>		<!-- Thu Jun 25 12:30:30 KST 2026 현재 날짜 시간 출력 -->
+	<h1 th:text="${price}"></h1>
+	<h1 th:text="${title}"></h1>
+	<h1 th:text="${options}"></h1>		<!-- [AAA, BBB, CCC, DDD] 리스트화돼서 출력 -->
+
+
+	<!--  원하는 형태로 포맷팅하여 출력하기 -->
+	
+	<!--1.날짜 관련 : #dates
+		2026-06-25 12:30:30	원하는 포맷팅으로 현재 날짜 시간 출력 -->
+	<h2 th:text="${#dates.format(now, 'yyyy-MM-dd HH:mm:ss')}"></h2>
+
+	<!--2.숫자 관련 : #numbers 
+		123,456,789 원하는 포맷팅 적용돼서 출력됨 -->
+	<h2 th:text="${#numbers.formatInteger(price, 3, 'COMMA')}"></h2>
+
+
+	<!--3.문자 관련 : #strings  -->	
+	<h1 th:text="${title}"></h1>
+	
+	<!-- replace()함수를 이용해서 s를 진하게 출력
+		 This is a just sample 에서 s만 볼드로 출력됨 -->
+	<span th:utext="${#strings.replace(title,'s','<b>s</b>')}"></span><br>
+	<!-- 태그 부분은 html 서식으로 그대로 진행되는 거라서 다른 방식도 가능 -->
+	<!-- 순서대로 이탤릭체, 밑줄, 취소선, 글자색 변경, 형광펜(배경색)효과, 위첨자, 아래첨자 -->
+	<span th:utext="${#strings.replace(title,'s','<i>s</i>')}"></span><br>
+	<span th:utext="${#strings.replace(title,'s','<u>s</u>')}"></span><br>
+	<span th:utext="${#strings.replace(title,'s','<s>s</s>')}"></span><br>
+	<span th:utext="${#strings.replace(title,'s','<span style=&quot;color:skyblue&quot;>s</span>')}"></span><br>
+	<span th:utext="${#strings.replace(title,'s','<mark>s</mark>')}"></span><br>
+	<span th:utext="${#strings.replace(title,'s','<sup>s</sup>')}"></span><br>
+	<span th:utext="${#strings.replace(title,'s','<sub>s</sub>')}"></span>	<br>
+	
+	<!-- listSplit()함수를 이용해서 title변수의 값을 리스트로 처리하고 출력
+		 리스트를 공백 단위로 구분해서 목록화 출력됨. 출력 결과는 다음처럼
+		 ㆍ This
+	 	 ㆍ is
+		 ㆍ a
+		 ㆍ just
+		 ㆍ sample	-->
+	<ul>
+		<li th:each="str:${#strings.listSplit(title,' ')}">[[${str}]]</li>
+	</ul>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>sample2</title>
+</head>
+<body>
+	<!-- th:text : DTO 객체 출력
+		 Member(no=1, id=test, pw=1234, name=홍길동, regdate=2026-06-25 10:22:53.025)
+		 마지막은 현재시간으로 출력됨 -->
+	<h1 th:text="${member}">Thymeleaf Test page</h1>
+
+	<!-- th:text : 문자열(HTML태그) 출력
+		 <h3>1</h3> 로 출력됨 -->
+	<div th:text='${"<h3>"+member.no+"</h3>"}'></div>
+
+	<!-- th:utext : 데이터 출력 방법. 출력될 경우 순서대로 아래처럼 브라우저에 출력됨
+		1
+		test
+		1234
+		홍길동
+		2026-06-25 10:22:53.025(현재시간으로 뜸)
+	-->
+
+	<div th:utext='${"<h3>"+member.no+"</h3>"}'></div>
+	<div th:utext='${"<h3>"+member.id+"</h3>"}'></div>
+	<div th:utext='${"<h3>"+member.pw+"</h3>"}'></div>
+	<div th:utext='${"<h3>"+member.name+"</h3>"}'></div>
+	<div th:utext='${"<h3>"+member.regdate+"</h3>"}'></div>
+
+</body>
+</html>

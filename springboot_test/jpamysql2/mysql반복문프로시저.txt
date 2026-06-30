@@ -1,0 +1,36 @@
+-- 1. 동일한 이름의 프로시저가 있다면 삭제하고 시작하기
+DROP PROCEDURE IF EXISTS insert_dummy_boards;
+
+-- 2. 세미콜론(;) 문법 충돌을 방지하기 위해 구분자를 임시로 변경
+DELIMITER $$
+
+CREATE PROCEDURE insert_dummy_boards()
+BEGIN
+    -- 반복문에 사용할 카운터 변수 선언
+    DECLARE i INT DEFAULT 1;
+
+    -- 300번 반복하는 WHILE 루프 시작
+    WHILE i <= 300 DO
+        INSERT INTO boards (writer, passwd, subject, content, regdate, updatedate)
+        VALUES (
+            '홍길동', 
+            '1234', 
+            CONCAT('mysql jpa 연습 ', i), -- 제목 뒤에 순번을 붙여 구별하기 쉽게(선택사항)
+            '내용', 
+            NOW(), -- 현재 시간 입력 (@CreationTimestamp 대용)
+            NOW()  -- 현재 시간 입력 (@UpdateTimestamp 대용)
+        );
+        
+        -- 카운터 변수 1 증가
+        SET i = i + 1;
+    END WHILE;
+END $$
+
+-- 3. 구분자를 복구
+DELIMITER ;
+
+-- 4. 프로시저 실행
+CALL insert_dummy_boards();
+
+-- 데이터 체크
+SELECT COUNT(*) FROM boards;

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<div th:if="${result == 1}">
+		<script>
+			alert("글 작성 성공");
+			location.href = "boardlist";
+		</script>
+	</div>
+	<div th:if="${result != 1}">
+		<script>
+			alert("글 작성 실패");
+			histort.go(-1);
+		</script>
+	</div>
+
+</body>
+</html>

@@ -2,13 +2,18 @@ import axios from "axios";
 
 // Spring boot로 생성한 서버에 post 요청하기
 // 실제 만들어진 서버에 요청함
+// 스프링부트 서버는 "C:\Users\admin\Downloads\restapi01"
+// http://localhost:3000/ 로 켜지는데 실제 데이터는 포트 9999/sample의 데이터를 불러옴
+// 스프링부트 서버 켜진 상태에서, 리액트 PS D:\vs_test\reactworkspace\ajaxtest01> npm run dev 실행하면 데이터 받아온 거 확인 가능함
+
 
 const Main5 = () => {
     const loginaxios = (e) => {
         e.preventDefault();                      // 창이 새로고침 되는 것을 막아준다.
 
         axios
-            .post("http://172.30.1.76:80/register", {
+            // .post("http://172.30.1.76:80/register", {
+            .post("http://localhost:9999/register", {
                 mno: 30,
                 firstName: "김",
                 lastName: "길동",

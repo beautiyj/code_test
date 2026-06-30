@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+${member.no}
+
+<!-- th:text : DTO 객체 -->
+<h1 th:text="${member}"></h1>
+
+<!-- th:utext : 데이터 출력 -->
+<div th:utext='${"<h3>"+member.no+"</h3>"}'></div>
+
+<!-- th:text : 데이터 출력 -->
+<h3 th:text="${member.no}"></h3>
+<h3 th:text="${member.id}"></h3>
+<h3 th:text="${member.pw}"></h3>
+<h3 th:text="${member.name}"></h3>
+<h3 th:text="${member.regdate}"></h3>
+
+</body>
+</html>
+

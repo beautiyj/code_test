@@ -1,0 +1,43 @@
+CREATE TABLE myboard (
+    no          NUMBER         NOT NULL,                  -- 글번호 (PK)
+    writer      VARCHAR2(20)   NOT NULL,                  -- 작성자
+    passwd      VARCHAR2(20)   NOT NULL,                  -- 비밀번호
+    subject     VARCHAR2(50)   NOT NULL,                  -- 제목
+    content     VARCHAR2(100)  NOT NULL,                  -- 내용
+    readcount   NUMBER,                                   -- 조회수
+    register    DATE,                                     -- 작성일
+    CONSTRAINT pk_myboard_no PRIMARY KEY (no)             -- 기본키 제약조건 (이름 지정)
+);
+
+-- 글번호 자동증가용 시퀀스
+CREATE SEQUENCE myboard_seq
+    START WITH 1
+    INCREMENT BY 1
+    NOCACHE;
+    
+-- 페이징 처리를 위해 데이터 반복문으로 여러 개 삽입(프로시저)
+BEGIN
+    FOR i IN 1..300 LOOP
+        INSERT INTO myboard (
+            no, 
+            writer, 
+            passwd, 
+            subject, 
+            content, 
+            readcount, 
+            register
+        ) VALUES (
+            myboard_seq.NEXTVAL, 
+            '홍길동' || i, 
+            '1234', 
+            '게시판연습 ' || i, 
+            '게시판내용 ' || i, 
+            0, 
+            SYSDATE
+        );
+    END LOOP;
+    
+    COMMIT; -- 삽입 후 즉시 저장
+END;
+/    
+    

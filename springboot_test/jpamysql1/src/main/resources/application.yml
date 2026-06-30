@@ -1,0 +1,25 @@
+spring:
+  jpa:
+    generate-ddl: 'true'
+    database: mysql
+    hibernate:
+      ddl-auto: 'update   '
+    show-sql: 'true'
+  application:
+    name: jpamysql1
+  datasource:
+    password: jsppass
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: jspid
+    url: jdbc:mysql://localhost:3306/jsptest?autoReconnect=true&useUnicode=
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+true&characterEncoding: utf-8
+logging:
+  level:
+    org:
+      hibernate: info
+server:
+  port: '9999'

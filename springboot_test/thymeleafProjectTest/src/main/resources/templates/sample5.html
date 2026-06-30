@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>sample5</title>
+</head>
+<body>
+
+	<!-- javascript안에서 Thymeleaf 사용하기 -->
+	<!-- script태그에  th:inline="javascript"를 추가하면 script안에서 Thymeleaf를 사용할 수 있다. -->
+	<script th:inline="javascript">
+			var result = [[ ${ result } ]]	// result = "SUCCESS" 할당됨
+			document.write(result);		// SUCCESS  출력
+	</script>
+	
+	<!-- 자바스크립트 적용 안되는 경우. 타임리프 인라인으로 적용해줘야함 -->
+	<script>
+			var result = [[ ${ result } ]];	// result변수에 값이 할당 안됨
+			document.write(result);		// 아무것도 출력 안됨
+	</script>
+
+</body>
+</html>

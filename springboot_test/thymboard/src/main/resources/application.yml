@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: thymboard
+  
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false # 개발 중에는 캐시를 꺼놔야함(false) 그래야 수정 사항이 바로 반영됨
+      
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521:xe
+    username: totoro
+    password: totoro123
+    driver-class-name: oracle.jdbc.OracleDriver
+  
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.OracleDialect
+
+mybatis:
+  type-aliases-package: com.example.demo.model
+  mapper-locations: classpath:/mapper/*.xml
+
+server:
+  port: 9999
