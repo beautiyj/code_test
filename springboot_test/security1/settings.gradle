@@ -1,0 +1,3 @@
+package springboot_test.security1
+
+rootProject.name = 'security1'

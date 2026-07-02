@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.UserMapper">
+
+    <!-- 사용자 등록 -->
+    <insert id="insertUser" parameterType="com.example.demo.domain.UserDTO">
+        INSERT INTO users (id, username, password, name, email, role)
+        VALUES (users_seq.nextval, #{username}, #{password}, #{name}, #{email}, #{role})
+    </insert>
+
+    <!-- 로그인 시 ID로 사용자 조회 -->
+    <select id="findByUsername" resultType="com.example.demo.domain.UserDTO">
+        SELECT * FROM users WHERE username = #{username}
+    </select>
+
+    <!-- ID로 사용자 조회 -->
+    <select id="findById" resultType="com.example.demo.domain.UserDTO">
+        SELECT * FROM users WHERE id = #{id}
+    </select>
+
+</mapper>

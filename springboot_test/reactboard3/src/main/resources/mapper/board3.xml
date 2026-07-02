@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.dao.BoardDao">
+
+	<insert id="insert" parameterType="board">
+	   insert into reactboard3(no,writer,title,content,register) 
+	   values(reactboard3_seq.nextval,#{writer},#{title},#{content},sysdate)
+	</insert>	
+	
+	<select id="count" resultType="int">
+        select count(*) from reactboard3	
+    </select>
+	
+	<select id="list" parameterType="int" resultType="board"> 
+		select * from ( select rownum rnum, b.* from ( 
+		select * from reactboard3 order	by no desc ) b ) 
+		where  rnum between (#{page}-1)*10+1 and  #{page}*10		
+	</select>
+
+	<select id="content" parameterType="int" resultType="board">
+		select * from reactboard3 where no=#{no}
+	</select>
+
+	<update id="update" parameterType="board">
+		update reactboard3 set writer=#{writer}, title=#{title}, content=#{content}
+		where no=#{no}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		delete from reactboard3 where no=#{no}
+	</delete>
+	
+</mapper>
+
+
+
+

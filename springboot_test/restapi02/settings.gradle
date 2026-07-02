@@ -1,0 +1,3 @@
+package springboot_test.restapi02
+
+rootProject.name = 'restapi02'

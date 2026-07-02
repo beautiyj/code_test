@@ -1,0 +1,59 @@
+SecurityContextHolder, SecurityContext, Authentication
+
+	유저의 아이디와 패스워드 사용자 정보를 넣고 실제 가입된 사용자인지 체크한 후
+	인증에 성공하면 사용자의 principal(username)과 credential(password)정보를 Authentication 안에 담는다.
+	스프링 시큐리티에서 방금 담은 Authentication을 SecurityContext에 보관한다.
+	SecurityContext를 SecurityContextHolder에 담아 보관해서 관리한다.
+	
+	SecurityContextHolder
+    └── SecurityContext
+            └── Authentication
+                    ├── Principal
+                    ├── Credentials
+                    └── Authorities
+                    
+	Principal : 사용자 식별 정보(Index, ID, 이름 등)를 저장하고 있다.
+	Credentials : 사용자의 패스워드 정보를 저장하고 있으며, 인증 후 제거된다.
+	Authorities : 사용자에게 부여된 권한(Admin, User 등) 정보를 저장하고 있다.
+
+
+
+SecurityContext 구조
+
+	Spring Security는 로그인 후 다음과 같은 구조로 인증 정보를 보관한다.
+	로그인이 완료되면, SecurityContextHolder 안에 Authentication 객체가 저장되고
+	그 안에 principal(사용자 정보)이 저장된다.
+
+	SecurityContext
+		    └── Authentication
+		            ├── Principal (UserDetails 또는 CustomUserDetails)
+		            ├── Credentials (보통 비밀번호)
+		            └── Authorities (권한 목록)
+		            
+		            
+	- 현재 로그인한 사용자 정보 구해오기
+		▪ 방법1.
+			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+			CustomUserDetails user = (CustomUserDetails) auth.getPrincipal();
+			
+		▪ 방법2. @AuthenticationPrincipal  이용
+		
+			@GetMapping("/mypage")
+			public String myPage( @AuthenticationPrincipal  CustomUserDetails user) {
+			System.out.println("로그인 사용자: " + user.getUsername());
+			return "mypage";
+			}
+	     
+	- Controller 에서 현재 로그인 사용자 구해오기
+		@GetMapping("/profile")
+		public String profile(@AuthenticationPrincipal CustomUserDetails user, Model model) {
+		model.addAttribute("user", user);
+		return "profile";
+		}
+		
+	- REST API 컨트롤러에서 JWT 기반 로그인 사용자 구해오기
+		@GetMapping("/api/user")
+		public ResponseEntity<UserDTO> getUserInfo(@AuthenticationPrincipal CustomUserDetails user) {
+		return ResponseEntity.ok(new UserDTO(user.getUsername(), user.getEmail()));
+		}
+            
