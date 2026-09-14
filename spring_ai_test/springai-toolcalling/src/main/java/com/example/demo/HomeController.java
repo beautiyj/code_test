@@ -1,0 +1,34 @@
+package com.example.demo;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class HomeController {
+	
+  @GetMapping("/")
+  public String home() {
+    return "home";
+  }
+
+  @GetMapping("/date-time-tools")
+  public String dateTimeTools() {
+    return "date-time-tools";
+  }  
+
+  @GetMapping("/heating-system-tools")
+  public String heatingSystemTools() {
+    return "heating-system-tools";
+  }
+
+  @GetMapping("/recommend-movie-tools")
+  public String recommendMovieTools() {
+    return "recommend-movie-tools";
+  }  
+
+  @GetMapping("/internet-search-tools")
+  public String internetSearchTools() {
+    return "internet-search-tools";
+  } 
+  
+}

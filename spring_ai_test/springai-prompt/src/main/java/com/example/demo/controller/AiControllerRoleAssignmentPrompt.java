@@ -1,0 +1,34 @@
+package com.example.demo.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.service.AiServiceRoleAssignmentPrompt;
+
+import lombok.extern.slf4j.Slf4j;
+import reactor.core.publisher.Flux;
+
+
+@RestController
+@RequestMapping("/ai")
+@Slf4j
+public class AiControllerRoleAssignmentPrompt {
+  
+  @Autowired
+  private AiServiceRoleAssignmentPrompt aiService; 
+  
+  // 역할 부여를 활용한 여행지 추천을 스트리밍으로 제공하는 메서드
+  @PostMapping(
+    value = "/role-assignment",
+    consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE,
+    produces = MediaType.APPLICATION_NDJSON_VALUE     
+  )
+  public Flux<String> roleAssignment(@RequestParam("requirements") String requirements) {
+    Flux<String> travelSuggestions = aiService.roleAssignment(requirements);
+    return travelSuggestions;
+  }  
+}

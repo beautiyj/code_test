@@ -1,0 +1,37 @@
+package springboot_test.mybatismember.src.main.java.service;
+
+import dao.MemberDAO;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import model.MemberDTO;
+
+public class UpdateMember implements Action{
+
+	@Override
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+		System.out.println("UpdateMember");
+		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		System.out.println("id:"+id);
+		
+		MemberDAO dao = MemberDAO.getInstance();
+		MemberDTO member = dao.getMember(id);
+		System.out.println("member:"+member);
+		
+		String hobby = member.getHobby();	// "공부-게임-등산-"
+		String[] h = hobby.split("-");
+		
+		request.setAttribute("member", member);				
+		request.setAttribute("h", h);				
+		
+		ActionForward forward = new ActionForward();	
+		forward.setRedirect(false);        // dispatcher 방식으로 포워딩
+		forward.setPath("/member/updateform.jsp");
+		
+		return forward;
+	}
+
+}

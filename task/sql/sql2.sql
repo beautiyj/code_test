@@ -24,7 +24,7 @@ DELETE FROM member WHERE id='test';
 
  create table myboard(
 	no int auto_increment primary key,
-	writer varchar(20),
+	myboardwriter varchar(20),
 	passwd varchar(20),
 	subject varchar(50),
 	content varchar(100),
