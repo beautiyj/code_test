@@ -1,0 +1,26 @@
+1~45사이의 숫자를 6개 추출 하는 프로그램을 작성 하시오? (단, 중복된 숫자는 1번만 출력 되도록 한다.) (20점)
+(답안은 txt. 파일로 작성하여 첨부파일란에 올려주세요.)
+
+import java.util.*;
+
+class Task107T6 {
+    public static void main(String[] args) {
+        TreeSet treeSet = new TreeSet();
+        while (treeSet.size() < 6) {
+            int num = (int) (Math.random() * 45) + 1;
+            treeSet.add(num);
+        }
+        System.out.println(treeSet);
+    }
+}
+
+
+public class JavaTask107 {
+    public static void main(String[] args) {
+//        Task107T1.main(args);
+//        Task107T3.main(args);
+//        Task107T4.main(args);
+//        Task107T5.main(args);
+        Task107T6.main(args);
+    }
+}
