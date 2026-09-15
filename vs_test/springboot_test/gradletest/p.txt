@@ -1,0 +1,40 @@
+스프링 부트에서 프로퍼티를 변수화하는 법 (안드로이드 방식과 비교)
+안드로이드에서 하던 것처럼, 데이터베이스 접속 정보 같은 비밀번호를 코드에 직접 안 적고 프로퍼티로 빼서 관리하는 방법입니다.
+
+1. 프로퍼티 파일에 정의 (application.properties)
+파일에 변수명(Key)과 값(Value)을 적습니다.
+
+Properties
+db.password=mySecretPassword123
+2. 자바 코드에서 변수로 불러오기 (@Value)
+자바 코드에서는 @Value 어노테이션을 쓰면, 설정 파일에 적힌 값을 즉시 변수에 할당(Injection)해 줍니다. 이게 안드로이드에서 변수처럼 가져다 쓰는 것과 똑같은 원리예요.
+
+Java
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component
+public class DbConfig {
+
+    // ${...} 안에 아까 정한 키값을 넣으면 자동으로 값이 들어옵니다.
+    @Value("${db.password}")
+    private String password;
+
+    public void printPassword() {
+        System.out.println("비밀번호는: " + password);
+    }
+}
+🧐 왜 이렇게 하나요? (학습 포인트)
+안드로이드에서 왜 local.properties를 썼었나요? 바로 보안과 환경 분리 때문이죠. 스프링 부트도 똑같습니다.
+
+보안: application.properties는 깃허브 같은 곳에 올리지 않도록 .gitignore에 등록해서 서버 접속 정보가 유출되는 것을 막습니다.
+
+환경 분리: 개발용(localhost), 운영용(실제 서버) DB가 다를 때, 코드 수정 없이 프로퍼티 파일만 바꿔 끼우면 되니까요.
+
+💡 팁: 더 강력한 방법 (YAML)
+요즘은 properties보다 application.yml 형식을 더 많이 씁니다. 계층 구조로 보여서 훨씬 깔끔하거든요.
+
+YAML
+db:
+  password: mySecretPassword123
+이렇게 적고 자바에서 @Value("${db.password}")라고 똑같이 쓰면 됩니다.

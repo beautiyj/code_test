@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<!-- 요즘은 fetch API 나 axios 많이 씀
+        실시간 기능은 요즘 이런 방식 사용함
+        채팅, 실시간 경매  → WebSocket (소켓 통신)
+        일반 데이터 통신   → fetch / axios
+
+            Ajax (구방식)           fetch (현재)            axios (실무)
+코드 길이       김                      중간                 짧고 간결
+실무 사용      레거시               코드에 많이 씀            제일 많이 씀
+비동기 방식     콜백                    Promise                Promise
+예전 코드는 XMLHttpRequest내장객체 사용한 ajax코드
+
+
+    Javascript의 ajax 함수
+        fetch : 패치함수는 브라우저 내장돼있어서 라이브러리 설치 없이도 원격 서버의 API 호출 가능함
+                fetch(url, options) 
+                // 요청에 대한 응답에 성공 했을때 실행
+                .then((response) => console.log("response: ", response))
+                // 요청에 대한 응답에 실패 했을때 실행
+                .catch((error) => console.log("error: ", error));
+
+        Axios : 1.브라우저에 내장된 함수가 아니라서 직접 라이브러리 설치 필요 (npm install axios)
+                2. 자동 JSON 변환 기능 지원함
+                    패치함수의 이 2가지 과정을 엑시오는 JSON 변환 자동으로 해줌 = .json() 안써도 됨.
+                    axios.post(url, { name: '홍길동' })  // 객체 그대로 넣어도 자동 변환
+
+                    .then(response => response.json())          // 이거2줄 패치함수
+                    body: JSON.stringify({ name: '홍길동' })
+
+-->
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,41 @@
+plugins {
+	id 'java'
+	// 4.1.0 최신버전 -> 안정적인 3.4버전으로 변경
+	id 'org.springframework.boot' version '3.4.0'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.gnagnoohc'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// implementation 'org.springframework.boot:spring-boot-starter-webmvc'
+    // 1. API 서버를 위한 핵심 라이브러리 (위에 주석버전은 기본, api서버만 만드는 거라 스타터 웹버전으로 변경)
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    
+    // 2. 개발 편의성 (자동 재시작, Lombok)
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    annotationProcessor 'org.projectlombok:lombok'
+    
+    // 3. 테스트 라이브러리
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	testCompileOnly 'org.projectlombok:lombok'
+	testAnnotationProcessor 'org.projectlombok:lombok'
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

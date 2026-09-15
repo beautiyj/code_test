@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- select 객체 : select 객체의 항목을 선택할때 change 이벤트가 발생한다.
+
+    attr() 함수
+        .attr( attributeName )         : 속성명으로 속성값을 구해온다.
+        .attr( attributeName, value )  : 속성에 속성값을 설정한다.
+
+    attr()함수와 prop()함수
+        attr()함수 : 태그(element)가 가지는 속성값이나 정보를 조회(style, src, rowspan 등)
+                    하거나 설정하는 기능
+        prop()함수 : 태그(element)가 가지는 실제적인 상태(활성화, 체크, 선택여부 등)를
+                    제어하는 기능
+    
+    -->
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("select").change(function () {
+
+          if ($("select").val() == "10") {                             // 10대 선택
+            $("input").attr("readOnly", true);
+            // $("input").attr("readOnly", "readOnly");
+
+            $("input").val("").focus();
+          } else {                                                     // 나머지 연령대 선택
+            $("input").attr("readOnly", false);
+            // $("input").removeAttr("readOnly");
+
+            $("input").val("").focus();
+          }
+
+        });
+        
+      });
+    </script>
+  </head>
+  <body>
+    나이 :
+    <select>
+      <option value="">나이 선택</option>
+      <option value="10">10대</option>
+      <option value="20">20대</option>
+      <option value="30">30대</option>
+      <option value="40">40대 이상</option></select
+    ><br />
+    좋아하는 술 : <input type="text" />
+  </body>
+</html>

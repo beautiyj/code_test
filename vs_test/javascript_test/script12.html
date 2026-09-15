@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 자바스크립트 내장 객체
+         
+        Date 객체는 날짜와 시간을 처리하는데 사용되는 객체
+        let t = new Date();                         // 현재 날짜와 시간
+        let y = t.getFullYear();                    // 년
+        let m = t.getMonth() + 1;                   // 월(0~11) -> 1월이 0, 2월이 1, ... 12월이 11이므로 +1을 해줌                            
+        let d = t.getDate();                        // 일
+        let h = t.getHours();                       // 시간
+        let mm = t.getMinutes();                    // 분
+        let s = t.getSeconds();                     // 초
+        let w = t.getDay();                         // 요일(0~6) -> 일요일이 0, 월요일이 1, ... 토요일이 6
+        let ms = t.getTime();                      // 1970년 1월 1일 00:00:00 UTC로부터 경과된 밀리초        
+    -->
+    
+    <script>
+        // 내장객체 date를 활용한 타이머 함수
+        let timer;
+        function showTime() {
+            let t = new Date();
+            let y = t.getFullYear();
+            let m = t.getMonth() + 1;
+            let d = t.getDate();
+            let h = t.getHours();
+            let mm = t.getMinutes();
+            let s = t.getSeconds();
+            let w = t.getDay();
+
+            let week = ["일", "월", "화", "수", "목", "금", "토"]; // 0 일요일 ~ 6 토요일
+            let time = y + "-" + m + "-" + d + " " + h + ":" + mm + ":" + s + " " + week[w] + "요일";
+            document.getElementById('mytime').value = time;
+        }
+
+        /*
+        setTimeout( 명령, 1/1000초 시간) : 주어진 시간마다  명령을 실행하는 함수
+        clearTimeout() : setTimeout() 에 의해서 실행한 명령을 취소시켜주는 함수
+        */
+        function startTime() {
+            showTime();                          // 누르자마자 바로 1회 실행
+            timer = setInterval(showTime, 1000); // 1초마다 showTime() 실행   
+        }
+
+        function stopTime() {
+            clearInterval(timer);            // 타이머 멈춤
+        }
+
+
+
+        // ======================================================================
+        // 배경 컬러 변경하는 프로그램
+        let c = ["aqua", "mistyrose", "mediumslateblue", "lightseagreen", "peru", "thistle"];
+
+        function changeColor() {
+            let t = new Date();
+            let s = t.getSeconds();
+            let na = s%6; // 0~5        // 나머지: 0~5
+            document.bgColor = c[na];   // 배경색 설정
+            w = setTimeout(changeColor, 1500); // 1초마다 changeColor() 실행
+        }
+
+        function stopColor() {
+            clearTimeout(w); // 타이머 멈춤
+        }
+
+    </script>
+  </head>
+
+  <!-- onload="showTime()" 설정이 없으면 현재시간 빈칸으로 나옴
+   온로드 설정 시 현재시간이 html에 출력됨(타이머 아니고 기본 시간 텍스트만) -->
+  <body onload="showTime()">
+        현재 시간: <input type="text" id="mytime"</><br>
+        <input type="button" value="start timer" onclick="startTime()"/>
+        <input type="button" value="stop timer" onclick="stopTime()"/><br>
+        <input type="button" value="change color" onclick="changeColor()"/>
+        <input type="button" value="stop color" onclick="stopColor()"/>
+        <script>
+            // 현재 시간을 웹 브라우저에 1번만 출력하는 프로그램 작성하기
+            // 연, 월, 일, 시:분:초, 요일 출력하기
+
+            let t = new Date();
+            let y = t.getFullYear();
+            let m = t.getMonth() + 1;
+            let d = t.getDate();
+            let h = t.getHours();
+            let mm = t.getMinutes();
+            let s = t.getSeconds();
+            let w = t.getDay();
+
+            let week = ["일", "월", "화", "수", "목", "금", "토"]; // 0 일요일 ~ 6 토요일
+            document.write(y + "-" + m + "-" + d + " " + h + ":" + mm + ":" + s + " " + week[w] + "요일");
+            document.write("<br>");
+        </script>
+  </body>
+</html>

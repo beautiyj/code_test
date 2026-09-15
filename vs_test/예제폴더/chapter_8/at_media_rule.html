@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Media Type</title>
+    <style>
+
+        /* 화면 출력을 위한 미디어 쿼리 @ 규칙.
+        @import 규칙 - 외부 스타일을 가져옴
+        @font-face 규칙 - 글꼴을 추가로 정의함
+        @media 규칙 - 특정 미디어 유형에 대한 스타일 정의
+
+        @미디어 (미디어 유형) { css 스타일 정의 } 같은 서식도 가능하고
+        링크 태그에 입력해서 미디어 속성 적용도 가능하다
+        <링크 rel="stylesheet" href="파일이름" media="여기에 미디어쿼리">
+        
+        */
+
+        @media screen {     /* pc화면(화면출력) 에선 붉은 배경색이 보이는데 */
+            body {
+                background-color: red;
+            }
+        }
+
+        @media print {      /* 인쇄할 때는 녹색 배경색이 보인다.(옵션->배경그래픽 체크 필요) */
+            body {
+                background-color: green;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1> Lorem ipsum dolor sit amet</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras faucibus hendrerit nunc at consectetur. In hac habitasse platea dictumst. Ut a luctus neque, et tempor erat. Aliquam quis arcu id lectus fringilla volutpat id tempor lorem. Duis vitae odio vehicula dui vulputate mollis et sit amet mauris. Nulla facilisi. Praesent non sapien ac sapien malesuada ornare eget at libero. Aenean et faucibus arcu, id maximus mi. Curabitur tincidunt mi vitae orci porttitor, quis laoreet justo iaculis.</p>
+</body>
+</html>

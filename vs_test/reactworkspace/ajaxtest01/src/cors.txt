@@ -1,0 +1,52 @@
+리액트의 로컬호스트는 3000포트인데
+엑시오는 로컬포트 80이라 서로 다른 출처가 됨
+
+CORS : 교차 출처 리소스 공유 (Cross-origin Resource Sharing, Cors)
+    추가 HTTP헤더를 사용하여, 한 출처에서 실행 중인 웹 애플리케이션이
+    다른 출처의 선택한 자원에 접근할 수 있는 권한을 부여하도록 브라우저에 알려주는 체제
+
+    쉽게 말해서 도메인,프로토콜,포트번호가 하나라도 다를 경우에
+    출처가 다른 교차출처(Cross Origin)라고 판단되며
+    브라우저에서는 보안 때문에 Cross-Origin HTTP 요청을 제한한다.
+    권한을 부여 받기 위한 Cross-Origin 요청은 서버에서 허가를 받아야 한다.
+    Protocol + Host + Port 3가지가 같으면 동일 출처(Origin)라고 한다.
+
+
+React CORS문제 해결하기 
+    1. Controller에 CrossOrigin 어노테이션을 사용하는 방법
+        클래스나 메소드 위에 @CrossOrigin 어노테이션을 추가한다
+
+        @RestController
+        @CrossOrigin("*")                           <- 어노테이션 추가
+        public class HomeController {
+
+            @RequestMapping("/sample")
+            public SampleVo sample() {
+                SampleVo sv = new SampleVo();
+                sv.setMno(23);
+                sv.setFirstName("홍");
+                sv.setLastName("길동");
+                return sv;
+            }
+        }
+
+
+    2. WebConfig 클래스 생성해서 react의 3000번 포트허용하는 방법
+
+    package com.example.demo.config;
+
+    @Configuration
+    public class WebConfig implements WebMvcConfigurer{
+
+        @Override
+        public void addCorsMappings(CorsRegistry registry) {
+            registry.addMapping("/**")          <- 경로(Path) 매핑
+                                                   어떤 경로에 CORS 정책을 적용할지
+
+                    .allowedOrigins("http://localhost:3000")  <- 출처(Origin) 허용
+                                                                 react의 3000번 포트 허용
+                    .allowedMethods("GET", "POST", "PUT","DELETE")
+                    .allowedHeaders("*")
+                    .maxAge(3600);
+        }
+    }

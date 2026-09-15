@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Responsive Web Basic</title>
+    <style>
+
+        /*
+        스마트폰 -빨간색 배경
+        태블릿PC 세로 화면 - 초록색 배경
+        태블릿PC 가로 화면과 데스크톱 - 파란색 배경
+        반응형이라서 페이지 사이즈 조절하면 컬러 바뀌는 거 확인 가능함
+        */
+
+        @media (max-width: 499px) {
+            body { background: red; }
+        }
+
+        @media (min-width: 500px) and (max-width: 799px) {
+            body { background: green; }
+        }
+
+        @media (min-width: 800px) {
+            body { background: blue; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Lorem ipsum dolor sit amet</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras faucibus hendrerit nunc at consectetur. In hac habitasse platea dictumst. Ut a luctus neque, et tempor erat. Aliquam quis arcu id lectus fringilla volutpat id tempor lorem. Duis vitae odio vehicula dui vulputate mollis et sit amet mauris. Nulla facilisi. Praesent non sapien ac sapien malesuada ornare eget at libero. Aenean et faucibus arcu, id maximus mi. Curabitur tincidunt mi vitae orci porttitor, quis laoreet justo iaculis.</p>
+</body>
+</html>

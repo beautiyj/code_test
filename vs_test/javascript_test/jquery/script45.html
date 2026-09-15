@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- 객체                설명
+        form 객체           <form> 태그가 HTML 문서에 삽입되어 있을 때 생성되는 객체
+        text 객체           <input type="text">가 HTML 문서에 삽입되어 있을 때 생성되는 객체
+        password 객체       <input type="password">가 HTML 문서에 있을 때 생성되는 객체
+        file upload 객체    <input type="file">가 HTML 문서에 있을 때 생성되는 객체
+        radio 객체          <input type="radio">가 HTML 문서에 있을 때 생성되는 객체
+        checkbox 객체       <input type="checkbox">가 HTML 문서에 있을 때 생성되는 객체
+        button 객체         <input type="button">가 HTML 문서에 있을 때 생성되는 객체
+        submit 객체         <input type="submit">가 HTML 문서에 있을 때 생성되는 객체
+        reset 객체          <input type="reset">가 HTML 문서에 있을 때 생성되는 객체
+        textarea 객체       <textarea>가 HTML 문서에 있을 때 생성되는 객체
+        select 객체         <select>가 HTML 문서에 있을 때 생성되는 객체
+
+    
+        text 객체 메소드: val() 메소드는 입력, 선택 양식에서만 사용할 수 있다.
+            val()         : text 객체의 값을 구해온다.
+            val(value)    : text 객체에 값을 설정한다.
+            $('input').val()        : input 태그 안의 값을 구해온다.
+            $('input').val('가위')  : input 태그 안에 '가위'를 설정한다.
+
+        text() 메소드: text() 메소드는 특정 태그 안의 값을 구해오거나, 값을 설정할 수 있다.
+            text()        : 특정 태그 사이의 값을 구해온다.
+            text(value)   : 특정 태그 사이에 값을 설정한다.
+    -->
+
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+      $(document).ready(function () {
+        
+        // 모든 button 태그를 구해온다.
+        $("button").on("click", function () {
+          // $(this)는 클릭한 button 태그를 의미한다.
+          let text = $(this).text();     // text():button태그 안의 text를 구해옴
+          $("input").val(text);          // val(text):입력양식에 text를 설정함
+        });
+
+      });
+    </script>
+  </head>
+  <body>
+    <div>
+      <button>가위</button>
+      <button>바위</button>
+      <button>보</button>
+    </div>
+    <input type="text" value="버튼 클릭 하세요." />
+  </body>
+</html>

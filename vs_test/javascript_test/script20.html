@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+        <!-- Ketup 키업 이벤트 예제 ver 2
+        해당 영역에서 키보드를 눌렀다 뗄 때의 이벤트. 키보드 입력 감지 (검색창 등) 같은 거
+        예제에서는 6글자 다 채우면 자동으로 tab 다음칸으로 넘어가는 이벤트
+        
+        KeyUp Event
+        <input type="text" id="jumin1" onKeyup="move()">
+        
+        -->
+    <script>
+      function move() {
+        var jumin1 = document.getElementById("jumin1");
+        var jumin2 = document.getElementById("jumin2");
+
+        //주민번호 앞자리를 6자리 입력 했으면
+        if (jumin1.value.length == 6) jumin2.focus();
+      }
+    </script>
+  </head>
+  <body>
+    <form>
+      주민번호:
+      <input type="text" size="6" maxlength="6" id="jumin1" onKeyup="move()" />-
+      <input type="text" size="7" maxlength="7" id="jumin2" />
+    </form>
+  </body>
+</html>

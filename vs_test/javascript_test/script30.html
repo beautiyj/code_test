@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>입력양식 객체 form</title>
+
+    <!--
+    폼 객체에선 두루두루 거의 다 씀
+    form 객체 : <form> 태그가 HTML 문서에 삽입되어 있을 때 생성되는 객체
+    text 객체 : <input type="text">가 HTML 문서에 삽입되어 있을 때 생성되는 객체
+    password 객체 : <input type="password">가 HTML 문서에 있을 때 생성되는 객체
+    radio 객체 : <input type="radio">가 HTML 문서에 있을 때 생성되는 객체
+    checkbox 객체 : <input type="checkbox">가 HTML 문서에 있을 때 생성되는 객체
+    button 객체 : <input type="button">가 HTML 문서에 있을 때 생성되는 객체
+    submit 객체 : <input type="submit">가 HTML 문서에 있을 때 생성되는 객체
+    textarea 객체 : <textarea>가 HTML 문서에 있을 때 생성되는 객체
+    select 객체 : <select>가 HTML 문서에 있을 때 생성되는 객체
+        
+    얘네는 잘 안씀. 파일 업로드는 파일 업로드 특수 케이스에만 사용하고
+    리셋은 요즘 리셋 버튼 잘 안 만들고 JS로 직접 초기화해서 잘 안쓰는 편.
+    file upload 객체 : <input type="file">가 HTML 문서에 있을 때 생성되는 객체
+    reset 객체 : <input type="reset">가 HTML 문서에 있을 때 생성되는 객체
+
+
+    이벤트 처리 순서
+    1. 각 컴퍼넌트에 발생한 이벤트 종류를 파악한다.
+        Click, Focus, Blur, Load, MouseOver, MouseOut …
+    2. 각 이벤트명에다 on을 붙여서 이벤트 핸들러를 생성한다.
+        onClick,  onFocus, onBlur, onload ...
+    3. 이벤트 핸들러를 이용해서 함수를 호출한다.
+        <input type=button value="회원가입"  onClick="check()">
+    
+    form 폼 객체:  <form  name="myform"  method="post"   action="send.jsp">
+        form 객체의 속성
+            name : form객체의 name을 설정하는 속성
+            method : 값을 전달하는 방식을 설정하는 속성( get  or  post)
+            action : 값이 전달될 url 주소를 설정하는 속성
+
+        form 객체의 메소드
+            submit() : action값으로 설정된 url로 값을 전달하는 메소드
+                document.form_name.submit();
+            reset() : 입력 양식의 값을 초기화 시켜주는 메소드
+                document.form_name.reset();
+    -->
+
+    <!-- radio 라디오 객체 속성
+    checked : radio 버튼의 선택 유무를 판별하는 속성. radio버튼이 선택되면 true를 리턴한다.
+    length : radio 버튼의 개수를 구하는 속성
+    -->
+    <script>
+      function check1() {
+        let r = document.getElementById("r");
+        let b = document.getElementById("b");
+        let y = document.getElementById("y");
+
+        if (r.checked) document.bgColor = r.value;
+        if (b.checked) document.bgColor = b.value;
+        if (y.checked) document.bgColor = y.value;
+      }
+
+      function check2() {
+        let s1 = document.getElementById("s1");
+        let s2 = document.getElementById("s2");
+        let s3 = document.getElementById("s3");
+        let s4 = document.getElementById("s4");
+        let s5 = document.getElementById("s5");
+        let s6 = document.getElementById("s6");
+
+        if (s1.checked) alert(s1.value + "를 좋아하는군요");
+        if (s2.checked) alert(s2.value + "를 좋아하는군요");
+        if (s3.checked) alert(s3.value + "를 좋아하는군요");
+        if (s4.checked) alert(s4.value + "를 좋아하는군요");
+        if (s5.checked) alert(s5.value + "를 좋아하는군요");
+        if (s6.checked) alert(s6.value + "를 좋아하는군요");
+
+        if (!s1.checked && !s2.checked && !s3.checked && !s4.checked && !s5.checked && !s6.checked) {
+          alert("선택안함");
+        }
+      }
+
+      // =========================================================================================================
+      /*
+       checkbox객체 속성
+          checked : checkbox의 선택 유무를 판별하는 속성. checkbox가 선택되면 true를 리턴한다.
+          length : checkbox의 개수를 구하는 속성
+
+        라디오객체는 단일 선택만 가능한 반면 체크박스객체는 다중 선택이 가능함
+        name 동일하면 라디오객체는 하나만 선택 가능(자동으로 나머지 해제)
+                     체크박스객체는 name 동일 여부에 관계없이 각각 독립 선택
+      */
+      function fruit() {
+        let f1 = document.getElementById("f1");
+        let f2 = document.getElementById("f2");
+        let f3 = document.getElementById("f3");
+        let f4 = document.getElementById("f4");
+        let f5 = document.getElementById("f5");
+        let f6 = document.getElementById("f6");
+
+        let s = "";
+        if (f1.checked == true) s += "사과";
+        if (f2.checked) s += "\n배";
+        if (f3.checked) s += "\n복숭아";
+        if (f4.checked) s += "\n수박";
+        if (f5.checked) s += "\n체리";
+        if (f6.checked) s += "\n오렌지";
+
+        alert(s + "\n을/를 좋아하는군요");
+      }
+
+      function copyfunc(checkbox) {
+        let address1 = document.getElementById("address1");
+        let address2 = document.getElementById("address2");
+
+        if (address1.value == "") {
+          alert("주소를 입력 하세요.");
+          address1.focus();
+          // setTimeout으로 브라우저 체크 동작 이후에 강제 해제
+          setTimeout(() => {
+            checkbox.checked = false;
+          }, 0);
+          return false;
+        }
+
+        address2.value = address1.value; // 주소를 배송지 주소로 복사
+      }
+
+      /* 이렇게만 쓰면 if (address1.value == "") { ~ 부분의 알림 뜬 뒤 체크박스 설정 on됨
+      체크박스 해제 상태 유지하려면 위에 코드로 해야함. 주소 빈칸 상태일 때 차이 확인할 것
+      function copyfunc() {
+        let address1 = document.getElementById("address1");
+        let address2 = document.getElementById("address2");
+
+        if (address1.value == "") {
+          alert("주소를 입력 하세요.");
+          address1.focus();
+          return false;
+        }
+
+        address2.value = address1.value; // 주소를 배송지 주소로 복사
+      }      
+      */
+
+      // ===========================================================================================
+      /*
+      select 객체의 속성
+        name : 선택 리스트 박스의 이름
+        multiple : 사용자가 한 개 이상의 리스트를 선택할 수 있도록 해주는 속성(다중선택 속성)
+        size : 스크롤 시 한 번에 출력할 수 있는 리스트의 수
+        selected : 초기 선택(기본값) 셀렉티드가 없다면 가장 첫 번째가 기본값으로 자동 지정됨.
+      */
+
+      function check() {
+        let sel = document.getElementById("sel");
+        if (sel.value == "") {
+          alert("색깔을 선택 하세요.");
+          return false;
+        }
+        document.bgColor = sel.value;
+      }
+
+
+      function move() {
+        let sel = document.getElementById("select");
+        location.href = sel.value;
+      }
+
+    </script>
+  </head>
+  <body>
+    <form>
+      <!-- 라디오 예시 -->
+
+      <input type="radio" id="r" name="color" value="IndianRed" onClick="check1()" />빨강색
+      <input type="radio" id="b" name="color" value="MediumTurquoise" onClick="check1()" />파랑색
+      <input type="radio" id="y" name="color" value="PaleGoldenRod" onClick="check1()" />노랑색
+
+      <h1>좋아하는 운동은?</h1>
+      <input type="radio" id="s1" name="sports" value="축구" />축구
+      <input type="radio" id="s2" name="sports" value="야구" />야구
+      <input type="radio" id="s3" name="sports" value="농구" />농구
+      <input type="radio" id="s4" name="sports" value="탁구" />탁구
+      <input type="radio" id="s5" name="sports" value="수구" />수구
+      <input type="radio" id="s6" name="sports" value="배구" />배구 <br /><br />
+      <input type="button" value="확인" onClick="check2()" /><br /><br />
+
+      <!--  =========================================================================================== -->
+
+      <!-- 체크박스 예시 -->
+
+      <h3>좋아하는 과일을 선택하세요?</h3>
+      <input type="checkbox" id="f1" />사과
+      <input type="checkbox" id="f2" />배
+      <input type="checkbox" id="f3" />복숭아
+      <input type="checkbox" id="f4" />수박
+      <input type="checkbox" id="f5" />체리
+      <input type="checkbox" id="f6" />오렌지<br /><br />
+      <input type="button" value="확인" onClick="fruit()" /><br /><br />
+
+      주소 : <input type="text" id="address1" /><br />
+      배송지주소 : <input type="text" id="address2" /><br />
+
+      <!-- <input type="checkbox" onClick="copyfunc()" />주소복사  <br /><br /> 위의주석코드와세트임--> 
+      <input type="checkbox" onClick="copyfunc(this)" />주소복사 <br /><br />
+
+      <!--  =========================================================================================== -->
+
+      <!-- 셀렉트 예시 -->
+
+
+      <h3>좋아하는 색깔을 선택하세요?</h3>
+      <select id="sel" onChange="check()">  <!-- 체인지이벤트가 바로 실행돼서 확인 안눌러도 컬러 적용됨 -->
+      <!-- <select size="3" multiple> 멀티플 설정 시 다중선택 가능 -->  
+        <option value="">색깔선택</option>
+        <option value="LightCoral">빨강</option>
+        <option value="RoyalBlue">파랑</option>
+        <option value="LemonChiffon">노랑</option>
+        <option value="Aquamarine">하늘색</option>
+        <option value="SandyBrown">오렌지</option>
+      </select>
+      <input type="button" value="확인" onClick="check()"> <br /><br />
+
+
+      방송국 : <select id="select" onChange="move()">
+              <option value="">방송국 선택</option>
+              <option value="http://www.kbs.co.kr">KBS</option>
+              <option value="http://www.imbc.com">MBC</option>
+              <option value="http://www.sbs.co.kr">SBS</option> <br /><br />
+        </select>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- var let const 모두 동시에 여러 개 변수에 값 할당 가능함 a=10. b=20, c=30; 가능! -->
+    
+    <!-- var는 자바, 코틀린과 같은 변수선언자.
+    var 변수명; 혹은 변수명 = 값, b = 값;처럼 여러 개 할당 및 재할당도 가능함. -->
+    
+    <script>
+        var a;              // 변수 선언
+        a = 10;             // 변수 초기화
+        var b = 20;         // 변수 선언과 초기화 동시에
+        var c = a + b;      // 변수 선언과 초기화 동시에, a와 b의 합을 c에 할당
+        document.write("a: " + a + "<br>"); // a: 10
+        document.write("b: " + b + "<br>"); // b: 20
+        document.write("c: " + c + "<br>"); // c: 30
+        console.log("a: " + a); // 콘솔에 a: 10 출력
+        console.log("b: " + b); // 콘솔에 b: 20 출력
+        console.log("c: " + c); // 콘솔에 c: 30 출력
+
+        // var는 재선언과 재할당이 모두 가능함
+        var a = 100;        // var로 재선언 가능
+        a = 200;            // 재할당 가능
+        document.write("재선언 및 재할당된 a: " + a + "<br>"); // 재선언 및 재할당된 a: 200
+        console.log("재선언 및 재할당된 a: " + a); // 콘솔에 재선언 및 재할당된 a: 200 출력
+    </script>
+
+
+<br>
+
+    <!-- let과 const는 ES6에서 도입된 변수 선언자. var와 달리 블록 스코프를 가짐
+    let 선언자로 선언된 변수는 재선언 불가함 -->
+
+    <script>
+        // let은 ES6에서 도입된 변수 선언자로, var와 달리 블록 스코프를 가짐
+        let x = 10;                         // let으로 변수 선언과 초기화
+        document.write("x: " + x + "<br>"); // x: 10
+        console.log("x: " + x);             // 콘솔에 x: 10 출력
+
+        // let은 재선언이 불가능하지만 재할당은 가능함
+        // let x = 20;      // SyntaxError: Identifier 'x' has already been declared
+        x = 20;             // 재할당 가능
+        document.write("재할당된 x: " + x + "<br>"); // 재할당된 x: 20
+        console.log("재할당된 x: " + x);             // 콘솔에 재할당된 x: 20 출력
+    </script>
+
+<br>
+
+    <script>
+        // const는 ES6에서 도입된 상수 선언자로, 블록 스코프를 가짐
+        const PI = 3.14;                         // const로 상수 선언과 초기화
+        document.write("PI: " + PI + "<br>");    // PI: 3.14
+        console.log("PI: " + PI);                // 콘솔에 PI: 3.14 출력
+
+        // const는 재선언과 재할당이 모두 불가능함 상수니까
+        // const PI;          // 변수 초기화 필요함
+        // const PI = 3.1415; // SyntaxError: Identifier 'PI' has already been declared
+        // PI = 3.1415;       // TypeError: Assignment to constant variable.
+    </script>
+
+<br>
+
+    <script>
+        // 1. 숫자 데이터
+        var num = 10;
+        var pi = 3.14;
+        document.write("num=" + num + "<br>");
+        document.write("pi=", pi + "<br>");
+        document.write(typeof(num)+"<br>");        // 자료형 확인하는 typeof 연산자
+        document.write(typeof(pi)+"<br><br>");     // 둘 다 number 출력됨
+        
+        // 2. 문자 데이터
+        var str1 = '자바스크립트';
+        var str2 = "javascript";
+        document.write("str1=", str1 + "<br>");
+        document.write("str2=", str2 + "<br>");
+        document.write(typeof(str1)+"<br>");       // string
+        document.write(typeof(str2)+"<br><br>");   // string
+
+        // 3. 논리 데이터
+        var b1 = true;
+        var b2 = false;
+        document.write("b1=", b1 + "<br>");
+        document.write("b2=", b2 + "<br>");
+        document.write(typeof(b1)+"<br>");         // boolean
+        document.write(typeof(b2)+"<br><br>");     // boolean
+
+        // 4. null 데이터
+        var str = null;
+        document.write("str=", str + "<br>");      // null
+        document.write(typeof(str)+"<br><br>");    // object로 출력되는 거 버그인데 하위호환때문에 그냥 유지중이라고 함
+        
+        // 자료형변환
+        var result = 30;
+        var result = "자바스크립트";                // 재할당해서 30 없어지고 문자열로 바뀜
+        document.write("result=" + result);        // result=자바스크립트
+    </script>
+
+</body>
+</html>

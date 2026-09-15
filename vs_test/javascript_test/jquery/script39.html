@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- click 이벤트: button이나 text 등의 엘리먼트를 클릭할 때 발생하는 이벤트
+         attr() 함수: 태그 내부의 특정 속성(Attribute)값을 구해오거나 설정하는 역할 함수
+            .attr( attributeName ) : 지정한 속성명으로 속성값을 구해온다.
+            .attr( attributeName, value ) : 지정한 속성에 새로운 속성값을 설정한다.
+
+// 하나의 <img> 태그에 이미지 경로, 타이틀, 가로/세로 크기를 연속으로 설정(체이닝)하는 예시            $("img")
+            .attr("src", "sea.jpg")
+            .attr("title", "바다")
+            .attr("width", 150)
+            .attr("height", 150);S
+
+            amélie
+    -->
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+      $(document).ready(function () {
+        // 화면 변경 버튼을 클릭했을 때 이벤트
+        $("#b1").click(function () {
+          $("img")
+            .attr("src", "img/src/moodindigo.jpeg")
+            .attr("title", "Mood Indigo")
+            .attr("width", 150)
+            .attr("height", 150);
+
+          alert("그림이 바뀌었습니다.");
+        });
+
+        // 화면 변경 하이퍼링크를 클릭했을 때 이벤트
+        $("a").click(function () {
+          $("img")
+            .attr("src", "img/src/sister.jpeg")
+            .attr("title", "sister")
+            .attr("width", 150)
+            .attr("height", 150);
+
+          alert("이미지 변경");
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <input type="button" value="화면 변경" id="b1" />
+    <p><img src="img/src/amélie.jpeg" title="Amélie" width="300" /></p>
+
+    <a href="#">화면을 변경</a>
+    <p><img src="img/src/toy.jpeg" title="Amélie" width="300" /></p>
+  </body>
+</html>

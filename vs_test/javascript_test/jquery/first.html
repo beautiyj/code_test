@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- 제이쿼리 적용 방법 1. 다운로드 받은 라이브러리 사용하기-->
+    <!-- <script src="js/jquery-3.7.1.js"></script> -->
+
+    <!-- 방법 2. CDN 방식 이걸 더 많이 쓰긴 하는데 제이쿼리자체를 요즘은 잘 안씀 -->
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+  </head>
+  <body>
+    <script>
+      //  $는 jQuery 함수를 의미함. jQuery(document)로 진행해도 된다
+      $(document).ready(function () {
+        alert("제이쿼리 ready함수 출력 성공");
+      });
+
+      jQuery(document).ready(function () {
+        alert("제이쿼리 ready함수 출력 성공2");
+      });
+    </script>
+  </body>
+</html>

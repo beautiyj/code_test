@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>event</title>
+
+    <!-- 자바스크립트 이벤트
+    
+    이벤트종류   이벤트명        설명                                      주로 쓰는 곳
+   ==============================================================================
+    focus       onFocus         입력양식을 선택해 포커스가 주어졌을 때      input 클릭해서 커서 들어올 때
+    blur        onBlur          포커스가 폼의 입력 양식을 벗어났을 때       input에서 커서 나갈 때 (유효성검사 자주 씀)
+    change      onChange        입력 양식에서 값이 바뀌었을 때 발생         input 값 바뀔 때
+    load        onLoad          해당 페이지가 로딩 되었을 때(처음 읽힐 때)  페이지 로딩 완료 때
+    click       onClick         해당 영역을 마우스로 클릭할 때              버튼 클릭
+    keyup       onKeyup         해당 영역에서 키보드를 눌렀다 뗄 때         키보드 입력 감지 (검색창 등)
+    submit      onSubmit        입력 양식의 내용을 전송 할 때               폼 전송할 때
+    
+    mouseover   onMouseover     해당 영역에 마우스 포인터가 올라갈 때       둘 다 hover 효과 줄 때 위주인데,
+                                                                         요즘은 css로 호버처리함.
+    mouseout    onMouseout      해당 영역에서 마우스 포인터가 빠져 나갈 때  그래서 최근엔 JS로 동적 제어가 필요할 때 씀
+  
+
+    잘안쓰는거
+    select      onSelect        입력 양식에서 한 필드를 선택했을 때
+    unload      onUnload        해당 페이지를 빠져 나갈 때
+    mousemove   onMouseMove     해당 영역에서 마우스 포인터가 움직일 때
+    mousedown   onMousedown     해당 영역을 마우스로 클릭할 때
+    mouseup     onMouseup       해당 영역을 마우스로 클릭했다 뗄 때
+    keydown     onKeydown       해당 영역에서 키보드를 눌렀을 때
+    keypress    onKeypress      해당 영역에서 키보드를 계속 누르고 있을 때
+    reset       onReset         입력 양식의 내용을 초기화 할 때
+    -->
+
+    <script>
+      // getElementById( ) 메서드를 사용해 문서객체 1개 선택하기
+
+      // 1. 로드 이벤트 연결
+      // 로드 이벤트: 현재 문서가 웹브라우저에 로딩될 때 발생하는 이벤트
+      window.onload = function () {
+        // 2. 문서 객체 선택    id속성이 header인 요소(=태그)를 구하는 메소드가 getElementById()
+        let header = document.getElementById("header");
+
+        // 3. 이벤트 처리
+        header.style.color = "tan";
+        header.style.backgroundColor = "steelblue";
+
+        // innerHTML는 태그 내부를 의미하는 속성
+        header.innerHTML = "From JavaScript getElementById 요소(태그) 버전";
+
+        // =======================================================================
+
+        // querySelector(선택자) 의 경우, h1과 헤더는 중복돼서 덮어쓰기됨(가장 마지막 스타일이 적용됨)
+        // document.querySelector("h1")        // 첫 번째 h1 하나만 ← Header
+        // header2.style.color = "salmon";
+        // header2.style.backgroundColor = "powderblue";
+        // header2.innerHTML = "From JavaScript querySelector 선택자 버전";
+
+        // 이렇게 적용하면 모든 h1에 스타일 적용 가능
+        let headers = document.querySelectorAll("h1"); // ← let으로 받아야 함
+        headers.forEach(function (header2) {
+          // ← forEach로 돌려야 함
+          header2.style.color = "salmon";
+          header2.style.backgroundColor = "powderblue";
+          header2.innerHTML = "From JavaScript querySelectorAll 선택자 버전 ";
+        });
+
+        let headers2 = document.querySelectorAll("h2");
+        for (let i = 0; i< headers.length; i++) {
+            let header2 = headers2[i];
+            header2.style.color = "peru";
+            header2.style.backgroundColor = "darkseagreen";
+            header2.innerHTML = "From JavaScript querySelectorAll 선택자 버전(for문 활용)";
+        }
+
+      };
+
+      /*  이렇게 온로드 분리도 가능한데, 보통은 하나에 전부 씀.
+        window.onload = function() {
+            let header2 = document.querySelector("h1");
+            header2.style.color = "salmon";
+            header2.style.backgroundColor = "powderblue";
+            header2.innerHTML = "From JavaScript";
+        };
+        */
+    </script>
+  </head>
+  <body>
+    <h1 id="header">Header</h1>
+    <h1>Header2</h1>
+    <h1 id="header">Header3</h1>  <!-- id 속성은 하나만 쓸 수 있어서 이건 스타일적용 안됨! -->
+    <h2>h2</h2>
+    <h2>h2!</h2>
+    <h3>h3</h3>
+  </body>
+</html>

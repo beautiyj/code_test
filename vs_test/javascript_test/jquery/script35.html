@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- jQuery 선택자 종류
+        전체    : $("*")
+        태그    : $("태그명")
+        아이디  : $("#id 명")
+        클래스  : $(".class 명") 
+        
+        jQuery로 css 적용하는 방법
+        .css( propertyName ) : 속성명으로 속성값을 구해온다.
+        .css( propertyName, value ) : 속성에 속성값을 설정한다.
+        ex) li.css(‘color’, ‘red’) : li 태그에 color를 red로 설정한다.
+    
+    -->
+
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $("li").css("color", "tan"); // 모든 li태그를 불러와서 css를 적용함
+
+        $("#first").css("color", "lavender"); // id값이 first인 태그를 불러와서 css를 적용함
+        $("#second").css("color", "DarkSeaGreen"); // id값이 second인 태그를 불러와서 css를 적용함
+        $(".second").css("color", "MediumPurple"); // class값이 second인 태그를 불러와서 css를 적용함
+        $("#third").css("color", "CadetBlue").css("background-color", "DarkSeaGreen"); // id값이 second인 태그를 불러와서 css를 적용함
+       
+        // class값이 first이고 후손이 strong인 태그를 불러와서 css를 적용함
+        $(".first strong").css("color", "PaleVioletRed");
+
+        // li태그의 모든 후손 태그를 불러와서 css 적용함. 그냥 li는 적용 안됨
+        // $("li *").css("color", "powderblue");
+
+        // id값이 a거나 b인 태그를 불러와서 css 적용
+        $("#a, #b").css("color","DodgerBlue");
+      });
+    </script>
+  </head>
+  <body>
+    <ul>
+      <li>$("li").css("color", "tan"); 모든 li태그를 불러와서 css를 적용함 </li>
+      <li>$("li").css("color", "tan"); 텍스트 텍스트 텍스트 텍스트 텍스트</li>
+
+      <li id="first">$("#first").css("color", "lavender"); li id="first"
+                    // id값이 first인 태그를 불러와서 css를 적용함 </li>
+      <li id="second">$("#second").css("color", "DarkSeaGreen"); li id="second"
+                    // id값이 second인 태그를 불러와서 css를 적용함</li>
+      <li id="third">li id="third" 텍스트 텍스트 텍스트 텍스트 텍스트</li>
+      <li id="fourth">li id="fourth"텍스트 텍스트 텍스트 텍스트 텍스트</li>
+      <li class="first">li class="first"텍스트 텍스트 텍스트 텍스트 텍스트</li>
+      <li class="second">$(".second").css("color", "MediumPurple"); li class="second"
+                    // class값이 second인 태그를 불러와서 css를 적용함</li>
+      <li class="third">li class="third"텍스트 텍스트 텍스트 텍스트 텍스트</li>
+      <li class="fourth">li class="fourth"텍스트 텍스트 텍스트 텍스트 텍스트</li>
+      
+      <li class="first">
+          <strong> $(".first strong").css("color", "PaleVioletRed");
+              // class값이 first이고 후손이 strong인 태그를 불러와서 css를 적용함
+            </strong>이부분은 li class="first", 컬러 바뀐 부분은 스트롱태그 안의 내용
+        </li>
+      <li class="second"><strong> 기본적으로 스트롱은 굵은 글자 처리 태그 </strong>li class="second"</li>
+      <li class="fourth">
+        <em>$("li *").css("color", "powderblue");
+            // li태그의 모든 후손 태그를 불러와서 css 적용함. 그냥 li는 적용 안됨
+        </em> em태그 안의 내용은 li의 후손태그로 적용돼서 파우더블루 컬러 적용됨
+      </li>
+      <li class="fourth">후손태그 없으면 그대로 tan 컬러 적용</li>
+      
+      <li id="a">$("#a, #b").css("color","DodgerBlue"); // id값이 a거나 b인 태그를 불러와서 css 적용</li>
+      <li id="b">$("#a, #b").css("color","DodgerBlue"); // id값이 a거나 b인 태그를 불러와서 css 적용</li>
+      <li id="c">아이디 속성이 c라서 이건 해당 안됨</li>
+
+    </ul>
+  </body>
+</html>

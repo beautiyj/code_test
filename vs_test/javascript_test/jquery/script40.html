@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("a").click(function () {
+          $("img").attr("src", "img/src/sister.jpeg")
+                  .attr("title", "sister")
+                  .attr("width", 150)
+                  .attr("height", 150);
+
+          alert("이미지 변경");
+
+          // 💡 하이퍼링크 내용을 실행시키지 않는다.
+          return false; 
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <a href="#">화면을 변경</a>
+    <p><img src="img/src/toy.jpeg" title="Amélie" width="300" /></p>
+  </body>
+</html>

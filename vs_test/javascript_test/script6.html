@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <!-- 반복문: for문, while문, do ~ while문 -->
+
+  <body>
+    <script>
+      for (var i = 1; i <= 10; i++) {
+        document.write(i + "사랑해요<br>");
+      }
+    </script>
+
+    <script>
+      // 1~10까지의 누적합계        i++ ++i i+=1 i = i + 1 뭐든 가능
+      var sum = 0;
+      for (var i = 1; i <= 10; i++) {
+        sum += i; // sum = sum + i;
+      }
+      document.write("1~10까지의 누적합계: " + sum + "<br>");
+    </script>
+
+    <script>
+      // 1~100까지의 정수 중 홀수, 짝수의 누적합계
+      var oddSum = 0,
+        evenSum = 0; // 홀수의 누적합계, 짝수의 누적합계
+      for (var i = 1; i <= 100; i++) {
+        if (i % 2 == 0) {
+          evenSum += i;
+        } else {
+          oddSum += i;
+        }
+      }
+      document.write("1~100까지의 홀수 누적합계: " + oddSum + "<br>");
+      document.write("1~100까지의 짝수 누적합계: " + evenSum + "<br>");
+    </script>
+
+    <script>
+        // 배열을 활용하는 for문  (var도 가능하고 let도 가능하고 const도 가능하고)
+        let col = ["red", "orange", "yellow", "green", "blue", "navy", "purple"];
+        let f = ["고딕", "명조", "궁서", "바탕", "돋움", "견고딕", "새고딕"];
+
+        // 포문 let으로 설정해둘 경우 i는 포문 안에서만 유효한 지역변수됨(외부 사용 불가해서 자주 씀)
+        for (let i=1; i<=7; i++) {
+            document.write("<font size=" + i +
+                           " color=" + col[i-1] +
+                           " face=" + f[i-1] +
+                           " style='background-color:linen'" +
+                           ">JavaScript</font><br>");
+        }
+    </script>
+
+    <script>
+        // 키보드로 원하는 단을 입력받아서 해당 구구단 출력하기
+        var dan = prompt("원하는 단을 입력하세요");
+        for (var i=1; i<=9; i++) {
+            document.write(dan + " x " + i + " = " + (dan*i) + "<br>");
+        }
+    </script>
+
+    <script>
+        // 구구단 전체 출력하기
+        for (var dan=2; dan<=9; dan++) {
+            document.write("[" + dan + "단]<br>");
+            for (var i=1; i<=9; i++) {
+                document.write(dan + " x " + i + " = " + (dan*i) + "<br>");
+            }
+            document.write("<hr>");     // 수평선 넣어서 구분하기
+        }
+    </script>
+  </body>
+</html>

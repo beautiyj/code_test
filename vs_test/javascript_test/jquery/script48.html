@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- 정규 표현식(Regular Expression): 특정한 규칙을 가진 문자열의 집합을 표현하는데 사용하는 형식 언어
+        
+    정규 표현식         ^부분이 시작,    $부분이 끝
+        let pattern = /^[a-z]+[a-z0-9_]$/;      영문소문자, 숫자,언드바(_)만 사용가능
+        let num = /^[0-9]+$/;                   숫자만 사용가능
+
+        /          → 정규표현식 시작
+        ^          → 문자열의 시작
+        [a-z]      → a~z 소문자 중 하나
+        +          → 앞의 패턴이 1개 이상
+        [a-z0-9_]  → a~z 소문자 또는 0~9 숫자 또는 _ 중 하나
+        $          → 문자열의 끝
+        /          → 정규표현식 끝
+
+        /      → 정규표현식 시작
+        ^      → 문자열의 시작
+        [0-9]  → 0~9 숫자 중 하나
+        +      → 앞의 패턴이 1개 이상
+        $      → 문자열의 끝
+        /      → 정규표현식 끝
+
+        ^      → 시작               $      → 끝                     +      → 1개 이상
+        *      → 0개 이상           ?      → 0개 또는 1개           {n}    → 정확히 n개
+        {n,m}  → n개 이상 m개 이하  [a-z]  → a~z 중 하나            [0-9]  → 0~9 중 하나
+        .      → 아무 문자 1개      \d     → 숫자 ([0-9] 와 동일)    \w     → 영문+숫자+언더바
+    
+    test() : 정규 표현식의 형식에 맞지 않으면 false 값을 리턴한다.
+        if( !pattern.test(id) )
+        if( !num.test(passwd) )
+
+    -->
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("form").submit(function () {
+          // 정규 표현식        
+          let pattern = /^[a-z]+[a-z0-9_]$/;    // 영문 소문자, 숫자, 언더바만 사용 가능한 정규표현식
+          let num = /^[0-9]+$/;                 // 숫자만 사용 가능한 정규표현식
+
+          let id = $.trim($("#id").val());
+
+          if (id == "") {                                  // 유효성 검사
+            alert("아이디를 입력하세요.");
+
+            $("#id").focus();
+            return false;
+          } else if (!pattern.test(id)) {                 // 정규 표현식 검사
+            alert("아이디는 영문소문자로 시작하고\r\n"
+                  + "영문소문자, 숫자, 언더바(_)만 사용하실 수 있습니다.");
+
+            $("#id").val("").focus();
+            return false;
+          }
+
+          let passwd = $.trim($("#passwd").val());
+
+          if (passwd == "") {                             // 유효성 검사
+            alert("비밀번호를 입력 하세요.");
+
+            $("#passwd").focus();
+            return false;
+          } else if (!num.test(passwd)) {                 // 정규 표현식 검사
+            alert("비밀번호는 숫자만 가능합니다.");
+            
+            $("#passwd").val("").focus();
+            return false;
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <form method="post" action="send.jsp">
+      ID : <input type="text" id="id" /><br />
+      비밀번호 : <input type="text" id="passwd" /><br /><br />
+      <input type="submit" id="join_button" value="전송" />
+
+    </form>
+  </body>
+</html>

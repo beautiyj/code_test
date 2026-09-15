@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+
+        // $(this)
+        // 1. 이벤트가 발생한 태그를 얻어오는 셀렉터가 $(this)
+        // 2. click 이벤트만 사용할 수 있다.
+
+        // img 태그의 src 속성과 title 속성을 attr()함수로 구함.
+        // 클릭한 태그의 href 속성을 $(this).attr("href")로 구함.
+        // 클릭한 태그안의 텍스트를 $(this).text()로 구함.
+
+      $(document).ready(function () {
+        $("a").click(function () {
+          $("img").attr("src", $(this).attr("href"))
+                  .attr("title", $(this).text());
+          // 페이지 이동은 하지 말고 지금 이 화면 그대로 유지하면서
+          // 아래에 있는 <img> 태그의 사진만 바꾸려면 하이퍼링크 a태그 속성이 실행 안되게 해야해서
+          // 리턴 폴스 설정 필요함 없으면 html 창이 아예 넘어감      
+          return false;
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <ul>
+      <li><a href="img/src/amélie.jpeg">아멜리에</a></li>
+      <li><a href="img/src/moodindigo.jpeg">무드 인디고</a></li>
+      <li><a href="img/src/sister.jpeg">시스터</a></li>
+      <li><a href="img/src/toy.jpeg">토이</a></li>
+    </ul>
+    <p><img src="img/src/Jellyfish.jpg" title="해파리" width="250" /></p>
+  </body>
+</html>
+
+
+<!-- 이거랑 똑같은 상황. eq필터보단 this 사용하는 게 깔끔하고 자주 쓰이기도 하고
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+    // eq 필터 : 특정 태그안에 지정한 태그의 순서를 구하는 셀렉터
+    $(document).ready(function(){
+        $("a:eq(0)").click(function(){
+            $("img").attr("src","flower.jpg")
+                    .attr("title","꽃");
+            return false;
+        });
+        $("a:eq(1)").click(function(){
+            $("img").attr("src","sea.jpg")
+                    .attr("title","바다");
+            return false;
+        });
+        $("a:eq(2)").click(function(){
+            $("img").attr("src","jellyfish.jpg")
+                    .attr("title","해파리");
+            return false;
+        });
+        $("a:eq(3)").click(function(){
+            $("img").attr("src","building.jpg")
+                    .attr("title","건물");
+            return false;
+        });
+    });
+    </script>
+</head>
+  <body>
+    <ul>
+      <li><a href="img/src/amélie.jpeg">아멜리에</a></li>
+      <li><a href="img/src/moodindigo.jpeg">무드 인디고</a></li>
+      <li><a href="img/src/sister.jpeg">시스터</a></li>
+      <li><a href="img/src/toy.jpeg">토이</a></li>
+    </ul>
+    <p><img src="img/src/Jellyfish.jpg" title="해파리" width="250" /></p>
+  </body>
+</html>
+-->

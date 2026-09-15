@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ocus, Blur Event 포커스,블러 이벤트 예제 ver 1</title>
+    <!-- 자바스크립트 주요 이벤트
+        Focus Event, Blur Event
+            <input type="text" onFocus="id_focus()" onBlur="id_blur()">
+        -->
+  </head>
+  <body>
+    <!-- Focus, Blur Event 포커스,블러 이벤트 예제 ver 1
+         커서로 누르면 내용 텍스트가 자동으로 사라지는 경우 -->
+    <form>
+      아이디 :<input
+        type="text"
+        id="id"
+        value="아이디 입력"
+        onFocus="id_focus()"
+        onBlur="id_blur()"
+       /><br />
+      비밀번호:<input
+        type="text"
+        id="passwd"
+        value="비밀번호 입력"
+        onFocus="passwd_focus()"
+        onBlur="passwd_blur()"
+      /><br />
+    </form>
+    <script>
+      // Focus, Blur Event 포커스,블러 이벤트 예제
+      let id = document.getElementById("id");
+      let passwd = document.getElementById("passwd");
+
+      function id_focus() {
+        // focus 이벤트
+        id.value = "";
+      }
+
+      function id_blur() {
+        // blur 이벤트
+        id.value = id.defaultValue;
+      }
+
+      function passwd_focus() {
+        // focus 이벤트
+        passwd.value = "";
+      }
+
+      function passwd_blur() {
+        // blur 이벤트
+        passwd.value = passwd.defaultValue;
+      }
+    </script>
+  </body>
+</html>

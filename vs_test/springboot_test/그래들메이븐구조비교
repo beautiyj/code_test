@@ -1,0 +1,29 @@
+프로젝트 구조 비교표
+
+구분            기존 메이븐 (JSP 방식)              변경될 그래들 (React + API 방식)
+빌드 도구       pom.xml                            "build.gradle, settings.gradle"
+컨트롤러        @Controller (JSP 반환)              @RestController (JSON 데이터 반환)
+화면 위치       src/main/webapp/WEB-INF/views/      frontend/src/ (리액트 프로젝트 폴더)
+정적 리소스     src/main/resources/static/          frontend/build/ (빌드 후 static으로 복사)
+설정 파일       application.properties              application.yml (권장)
+
+프론트엔드(화면)의 이동
+기존: src/main/webapp/WEB-INF/views/ 안에 .jsp 파일들이 위치했습니다.
+      스프링이 직접 이 파일들을 찾아서 해석했습니다.
+변경: 이제 스프링은 JSP를 쳐다보지 않습니다.
+      대신 프로젝트 루트에 frontend/라는 별도의 폴더를 만들고, 그 안에 리액트의 src/ 폴더가 들어갑니다.
+      스프링은 오직 JSON 데이터만 리턴합니다.
+
+
+
+        bootOne (루트)
+        ├── build.gradle            <-- pom.xml 대칭
+        ├── src
+        │   ├── main
+        │   │   ├── java/com/...    <-- 여기엔 API 컨트롤러만 존재
+        │   │   └── resources
+        │   │       ├── static      <-- (빌드 시) 리액트 결과물이 여기로 복사됨
+        │   │       └── application.yml
+        └── frontend                <-- 리액트 프로젝트 (새로 추가)
+            ├── package.json        <-- 리액트 라이브러리 목록
+            └── src/                <-- 리액트 코드 위치

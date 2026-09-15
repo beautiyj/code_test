@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- 자바 스크립트 내장 객체
+    String 객체 : 문자를 처리하는 객체
+
+    String 객체 생성법
+    let str1 = '자바스크립트’;
+    let str2 = "자바스크립트";
+    let str3 = new String('javascript’);
+    let str4 = new String("javascript")
+
+    속성
+    length : 문자열의 길이를 구해준다.
+
+    메소드
+    substring(start index) : 시작 index번호 부터 끝까지 추출
+    substring(start index, end index) : 시작 index번호 부터 end-1번 인덱스 번호까지 추출
+
+    substr(start index) : 시작 index번호 부터 끝까지 추출
+    substr(start index, 추출할 문자열 개수) : 시작 index번호 부터 추출할 문자열 개수만큼 추출
+
+    -->
+  </head>
+  <body>
+    <script>
+        // String 객체
+        let str1 = "자바스크립트";
+        let str2 = "자바스크립트";
+        let str3 = new String("javascript");
+        let str4 = new String("javascript");
+
+        document.write("str1=" + str1 + "<br>");
+        document.write("str2=" + str2 + "<br>");
+        document.write("str3=" + str3 + "<br>");
+        document.write("str4=" + str4 + "<br>");
+
+        // length 속성 : 문자열의 길이를 구해주는 속성
+        document.write("문자열의 길이:" + str1.length + "<br>");
+        document.write("문자열의 길이:" + str2.length + "<br>");
+        document.write("문자열의 길이:" + str3.length + "<br>");
+        document.write("문자열의 길이:" + str4.length + "<br>");
+    </script>
+
+    <script>
+        var t = "Hello Thanks you good luck to you";
+
+        // charAt(16) : 인덱스 16번 문자를 추출
+        document.write(t.charAt(16)+"<br>");                // 공백
+
+        // indexOf('you') : 가장 먼저 나오는 'you'의 인덱스 번호를 구해준다.
+        document.write(t.indexOf('you')+"<br>");            // 13
+
+        // indexOf('you',16) : 인덱스 16번 이후에 가장 먼저 나오는 'you'의 인덱스 번호를 구해준다.
+        document.write(t.indexOf('you', 16)+"<br>");        // 30
+
+        // lastIndexOf('you') : 끝에서 가장 먼저 나오는 'you'의 인덱스 번호를 구해준다.
+        document.write(t.lastIndexOf('you')+"<br>");        // 30
+
+        // match('luck') : 가장 먼저 나오는 'luck'과 일치가 되는 문자를 반환
+        document.write(t.match('luck')+"<br>");             // luck
+
+        // toUpperCase() : 대문자로 변환해주는 함수
+        document.write(t.toUpperCase()+"<br>");
+
+        // toLowerCase() : 소문자로 변환해주는 함수
+        document.write(t.toLowerCase()+"<br>");
+
+        // substring(start index, end index)
+        // : start 인덱스 번호부터 end-1번 인덱스 번호의 문자를 추출
+        //   sbustring(6, 12) : 인덱스 6번부터 11번 까지의 문자를 추출
+        document.write(t.substring(6, 12)+"<br>");          // Thanks
+
+        // substr(start index, 추출할 문자열의 길이)
+        // substr(22, 4) : 인덱스 22번 부터 4개의 문자를 추출
+        document.write(t.substr(22, 4)+"<br>");             // luck
+
+        document.write("<br>");
+
+        // split("구분기호") : 구분기호를 이용해서 문자들을 분리해서 배열로 리턴해주는 함수
+        // split(" ") : 공백문자를 기준으로 문자를 분리해서 배열로 리턴 해준다.
+        let s = t.split(" ");
+        document.write(s[0]+"<br>");            // Hello
+        document.write(s[1]+"<br>");
+        document.write(s[2]+"<br>");
+        document.write(s[3]+"<br>");
+        document.write(s[4]+"<br>");
+        document.write(s[5]+"<br>");
+        document.write(s[6]+"<br>");
+        document.write(s+"<br>");               // Hello,Thanks,you,good,luck,to,you
+
+        for(let i=0; i<s.length; i++) {
+            document.write(s[i]+"\t");          // Hello Thanks you good luck to you
+        }
+
+        document.write("<br>");
+    </script>
+
+    <script>
+        // 키보드로 입력한 영문이름을 대문자로 변환해서 출력하는 프로그램
+        let name = prompt("영문 이름을 입력하세요");
+        let upperName = name.toUpperCase();
+        document.write("대문자로 변환한 이름:" + upperName + "<br>");
+
+        // 키보드로 핸드폰 번호를 입력 받아서 마지막 4자리를 별표시(*)로 마킹해서 출력하는 프로그램
+        let num = prompt("핸드폰 번호를 입력하세요");
+        let resultnum1 = num.substring(0, num.length-4) + "****";    // 0번~6번 → "0101234"
+        let resultnum2 = num.substr(0, num.length-4) + "****";       // 0번부터 7개 → "0101234"
+        document.write("마킹된 핸드폰 번호:" + resultnum1 + "<br>");
+        document.write("마킹된 핸드폰 번호:" + resultnum2 + "<br>");
+    </script>
+
+  </body>
+</html>

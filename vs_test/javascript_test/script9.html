@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- 자바스크립트 함수 (함수는 헤드에, 호출은 바디에서 하는 게 일반적) -->
+    <!-- 재귀함수 : 함수 안에서 자기 자신의 함수를 호출하는 함수 -->
+
+    <script>
+      // 팩토리얼 구하기(정수는 170까지만 가능)
+      function factorial(n) {
+        if (n > 1) {
+          let result = n * factorial(n - 1);
+          return result;
+        } else {
+          return n;
+        }
+      }
+    </script>
+
+    <!-- 자바스크립트 내장함수
+    1. parseInt("3.14")     // 3 : 문자형 데이터를 정수형 데이터로 변환
+    2. parseFloat("3.14")   // 3.14 : 문자형 데이터를 실수형 데이터로 변환
+    3. Number("3.14")       // 3.14 : 문자형 데이터를 정수형 데이터로 변환
+    4. String(1000)         // "1000" : 숫자형 데이터를 문자형 데이터로 변환
+    5. eval("10+20")        // 30 : 문자형 산술식을 연산 수행     
+    6. isNaN(Not a Number)  // 숫자가 아니면(문자가 포함되면) true값을 리턴하는 함수
+       isNaN("10+20")          // true  
+       isNaN("10")             // false
+    -->
+  </head>
+  <body>
+    <script>
+      let n = prompt("팩토리얼을 구할 숫자를 입력하세요", "");
+      document.write(n + "! = " + factorial(n) + "<br>");
+    </script>
+
+    <script>
+      // 1. parseInt("3.14")      --> 3.
+      document.write("문자형 데이터를 정수형 데이터로 변환:" + parseInt("3.14") + "<br>");
+
+      // 2. parseFloat("3.14")      --> 3.14
+      document.write("문자형 데이터를 실수형 데이터로 변환:" + parseFloat("3.14") + "<br>");
+
+      // 3. Number("3.14")      -->  3.14
+      document.write("문자형 데이터를 숫자형 데이터로 변환:" + Number("3.14") + "<br>");
+      document.write(typeof "3.14" + "<br>"); // string
+      document.write(typeof Number("3.14") + "<br>"); // number
+
+      // 4. String(1000)      --> "1000"
+      document.write("숫자형 데이터를 문자형 데이터로 변환:" + String(1000) + "<br>");
+      document.write(typeof 1000 + "<br>"); // number
+      document.write(typeof String(1000) + "<br>"); // string
+
+      // 5. eval("10+20")          --> 30
+      document.write("문자형 산술식을 연산 수행:" + eval("10+20") + "<br>");
+
+      // 6. isNaN(Not a Number) : 숫자가 아니면(문자가 포함되면)  true값을 리턴하는 함수
+      //      isNaN("10+20")      --> true
+      //      isNaN("10")         --> false
+      document.write("문자가 포함되면 true 값을 리턴:" + isNaN("10+20") + "<br>"); //true
+      document.write("문자가 포함되면 true 값을 리턴:" + isNaN("10") + "<br>"); //false ""붙여도 숫자라서 안됨
+      document.write("문자가 포함되면 true 값을 리턴:" + isNaN(10) + "<br>"); //false
+    </script>
+  </body>
+</html>

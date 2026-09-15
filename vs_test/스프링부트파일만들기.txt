@@ -1,0 +1,18 @@
+프로젝트 생성 순서 (VS Code)
+
+확장 도구 설치: VS Code 왼쪽 메뉴의 [Extensions (Ctrl+Shift+X)]에서
+"Extension Pack for Java"와 "Spring Boot Extension Pack"을 반드시 먼저 설치하세요.
+
+
+1. 명령 팔레트 열기 (단축키): Ctrl + Shift + P를 누릅니다. (모든 명령을 여기서 실행합니다.)
+2. Spring Initializr 선택: 검색창에 Spring: Create Maven Project
+                           또는 Spring: Create Gradle Project를 입력하고 클릭합니다.
+3. 옵션 설정: Spring Boot Version: 최신 버전(Stable) 선택.
+                    Project Language: Java 선택.
+                    Group ID: com.example (보통 회사 도메인을 거꾸로 씁니다).
+                    Artifact ID: 프로젝트 이름 (예: bootOne).
+                    Packaging: Jar.
+                    Java Version: 17 또는 21 (현재 실무 표준).
+                    Dependencies (의존성 추가): 'Spring Web'은 필수로 선택하고,
+                        JSP를 쓴다면 나중에 pom.xml이나 build.gradle에 직접 추가하는 게 더 빠릅니다.
+                    폴더 선택: 프로젝트를 저장할 위치를 선택하면 끝!

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- on() 메소드로 이벤트 연결
+        $(selector).on( eventName, function() { } );
+        $(‘#box’).on( ‘click’, function() { } );         - click 이벤트
+        $(‘#box’).on( ‘mouseover’, function() { } );     - mouseover 이벤트
+        $(‘#box’).on( ‘mouseout’, function() { } );      - mouseout 이벤트
+
+        
+         form 객체의 속성
+            id : form객체의 id를 설정하는 속성
+            name : form객체의 name을 설정하는 속성
+            method : 값을 전달하는 방식을 설정하는 속성( get  or  post)
+            action : 값이 전달될 url 주소를 설정하는 속성
+    -->
+
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+      $(document).ready(function () {
+        // 박스(div)에 스타일 설정 및 이벤트를 연결
+        // 기본 레베카퍼플이지만 마우스 커서 대면 아쿠아마린 컬러로 바뀌고
+        // 마우스커서를 떼면 다크살몬 컬러로만 유지됨(퍼플사라짐), 클릭하면 레몬시폰컬러 나옴 
+        $("#box")
+          .css({
+            width: 100,
+            height: 100,
+            background: "RebeccaPurple",
+          })
+          .on("click", function () {
+            $(this).css("background", "LemonChiffon");
+          })
+          .on("mouseover", function () {
+            $(this).css("background", "Aquamarine");
+          })
+          .on("mouseout", function () {
+            $(this).css("background", "DarkSalmon");
+          });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="box"></div>
+  </body>
+</html>

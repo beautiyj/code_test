@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>계산기</title>
+    <style>
+      /* 테이블 내부의 버튼들을 칸에 꽉 차게 정렬 */
+      table input[type="button"] {
+        width: 60px;
+        height: 40px;
+      }
+      td[colspan="2"] input[type="button"] {
+        width: 128px; /* 60px * 2 + border/간격 보정 */
+        height: 40px;
+      }
+      #result {
+        width: 96%;
+        height: 30px;
+      }
+    </style>
+
+    <script>
+      // 계산기 입력창
+      function resultfunc(num) {
+        document.getElementById("result").value += num;
+      }
+
+      // = (eval 계산)
+      function calc() {
+        let display = document.getElementById("result");
+        display.value = eval(display.value);
+        /*  유효성 검사 추가 시
+                try {
+                    display.value = eval(display.value);
+                } catch (e) {
+                    alert("잘못된 수식입니다");
+                    display.value = "";
+                }
+            */
+      }
+
+      // sqrt() 제곱근 계산
+      function sqrtfunc() {
+        let sqrtNum = document.getElementById("result");
+        sqrtNum.value = Math.sqrt(sqrtNum.value);
+        // resultfunc()함수를 넣는 건 불가하고 결과창에 있는 현재 값을 가져와야 함
+        // document.write()는 화면출력용, value 대입에 못 씀
+      }
+
+      // clear() 초기화 - result 결과창을 초기화하는 역할.
+      function clearfunc() {
+        let clearNum = document.getElementById("result");
+        clearNum.value = "";
+        // document.getElementById("result").value = "";
+        // 위에도 이렇게 한줄처리 가능하지만 가독성을 위해 변수 지정
+      }
+    </script>
+  </head>
+  <body>
+    <form>
+      <table border="1">
+        <tr>
+          <!-- 입력창 -->
+          <td colspan="4" width="250">
+            <input type="text" id="result" style="width: 95%" />
+          </td>
+        </tr>
+        <tr align="center">
+          <td><input type="button" value="7" onClick="resultfunc('7')" /></td>
+          <td><input type="button" value="8" onClick="resultfunc('8')" /></td>
+          <td><input type="button" value="9" onClick="resultfunc('9')" /></td>
+          <td><input type="button" value="/" onClick="resultfunc('/')" /></td>
+        </tr>
+        <tr align="center">
+          <td><input type="button" value="4" onClick="resultfunc('4')" /></td>
+          <td><input type="button" value="5" onClick="resultfunc('5')" /></td>
+          <td><input type="button" value="6" onClick="resultfunc('6')" /></td>
+          <td><input type="button" value="*" onClick="resultfunc('*')" /></td>
+        </tr>
+        <tr align="center">
+          <td><input type="button" value="1" onClick="resultfunc('1')" /></td>
+          <td><input type="button" value="2" onClick="resultfunc('2')" /></td>
+          <td><input type="button" value="3" onClick="resultfunc('3')" /></td>
+          <td><input type="button" value="-" onClick="resultfunc('-')" /></td>
+        </tr>
+        <tr align="center">
+          <td><input type="button" value="0" onClick="resultfunc('0')" /></td>
+          <td><input type="button" value="." onClick="resultfunc('.')" /></td>
+          <td><input type="button" value="sqrt" onClick="sqrtfunc()" /></td>
+          <td><input type="button" value="+" onClick="resultfunc('+')" /></td>
+        </tr>
+        <tr align="center">
+          <td colspan="2"><input type="button" value="=" onClick="calc()" /></td>
+          <td colspan="2"><input type="button" value="Clear" onClick="clearfunc()" /></td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>

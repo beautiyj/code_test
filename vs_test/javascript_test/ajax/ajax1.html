@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // JSON 규격은 "" 큰따옴표만 허용, 키값 가져올 때는 '' 선호(""도 가능하긴 함)
+      // { "title": "값" }
+
+      // GET : 데이터 조회 요청하기
+      // 콘솔 출력용 코드
+      fetch("https://jsonplaceholder.typicode.com/posts/1")
+        .then((response) => {
+          console.log("상태 코드:", response.status); // 200 정상 출력
+          return response.json(); // 응답을 JSON 형식으로 변환
+        })
+        .then((data) => {
+          // 변환된 데이터를 콘솔에 출력하기
+          console.log(data);
+          console.log("userId:", data.userId); // userId는 키 값.
+          console.log("id:", data.id);
+          console.log("title:", data.title);
+          console.log("body:", data.body);
+
+          // 주석 처리로 변경해 두신 덕분에 스크립트 마비 오류가 완벽히 해결되었습니다!
+          //   console.log(response.status);
+        })
+        .catch((error) => console.error(error));
+    </script>
+
+    <script>
+      // 브라우저 출력용 코드
+      fetch("https://jsonplaceholder.typicode.com/posts/1")
+        .then((response) => response.json())
+        .then((data) => {
+          const userIdEl = document.getElementById("userId");
+          const idEl = document.getElementById("id");
+          const titleEl = document.getElementById("title");
+          const bodyEl = document.getElementById("body");
+
+          userIdEl.innerHTML = "userId: " + data.userId;
+          idEl.innerHTML = "id: " + data.id;
+          titleEl.innerHTML = "title: " + data.title;
+          bodyEl.innerHTML = "body: " + data.body;
+        })
+        .catch((error) => console.error(error));
+
+      // item.JSON 브라우저 출력용 코드
+      fetch("item.json")
+        .then((response) => response.json())
+        .then((data) => {
+          const treeData = document.getElementById("treeData");
+          treeData.innerHTML += "<tr><td>id</td><td>name</td>" + "<td>price</td><td>description</td></tr>";
+
+          // forEach는 반복문 역할의 함수(배열전용). 반복문과는 조금 다르긴 함
+          // 배열 안에 데이터가 몇 개든 상관없이 알아서 하나씩 순서대로 item에 넣어서 가져옴.
+          data.forEach(function (item) {
+            treeData.innerHTML +=
+              "<tr><td>" +
+              item.id +
+              "</td>" +
+              "    <td>" +
+              item.name +
+              "</td>" +
+              "    <td>" +
+              item.price +
+              "</td>" +
+              "    <td>" +
+              item.description +
+              "</td></tr>";
+          });
+          
+        })
+        .catch((error) => console.error(error));
+    </script>
+
+    <style>
+      table,
+      td {
+        border: 1px solid gray;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="userId"></div>
+    <div id="id"></div>
+    <div id="title"></div>
+    <div id="body"></div>
+    <br /><br />
+
+    ajax는 콘솔창 확인 필요함 라이브뷰로도 f12 콘솔확인 가능<br /><br />
+
+    <table id="treeData"></table>
+  </body>
+</html>
